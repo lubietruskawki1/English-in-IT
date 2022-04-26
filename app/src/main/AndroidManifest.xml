@@ -10,7 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.English_in_IT">
         <activity
-                android:name=".StartMenuActivity"
+                android:name=".StartListActivity"
                 android:exported="true"/>
         <activity
                 android:name=".MainActivity"
