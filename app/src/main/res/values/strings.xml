@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">English in IT</string>
+    <string name="welcome_text">Welcome to our application! <br/>
+                                Here you can learn some IT vocabulary in English</string>
+</resources>
