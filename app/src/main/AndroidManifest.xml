@@ -10,6 +10,12 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.English_in_IT">
         <activity
+                android:name=".BrowseVocabulary"
+                android:exported="true"/>
+        <activity
+                android:name=".Memory"
+                android:exported="true"/>
+        <activity
                 android:name=".StartListActivity"
                 android:exported="true"/>
         <activity
