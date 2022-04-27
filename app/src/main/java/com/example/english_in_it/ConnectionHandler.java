@@ -1,11 +1,11 @@
 package com.example.english_in_it;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Pair;
 
 import java.util.ArrayList;
 
@@ -59,7 +59,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         String selectQuery = "select * from glossary";
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
             do {
