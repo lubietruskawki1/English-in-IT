@@ -7,10 +7,10 @@
                 android:layout_height="match_parent"
                 tools:context=".MainActivity">
 
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/menuElementsList"
-                    android:backgroundTint="@color/white"/>
+    <ListView
+        android:id="@+id/menuElementsList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white" />
 
 </RelativeLayout>
