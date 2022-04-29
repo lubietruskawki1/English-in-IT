@@ -22,11 +22,11 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL("drop table if exists glossary");
         String query = "create table glossary (term text, definition text)";
         db.execSQL(query);
-        fillDatabase();
+        fillDatabase(db);
     }
 
-    public void fillDatabase() {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public void fillDatabase(SQLiteDatabase db) {
+        //SQLiteDatabase db = this.getWritableDatabase();
 
         // tak jest ładniej ale nie chce mi sie xd
         ContentValues values = new ContentValues();
@@ -45,7 +45,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL("insert into glossary values('algorithm design', 'A method or mathematical process for problem-solving and for engineering algorithms.')");
         db.execSQL("insert into glossary values('algorithmic efficiency', 'A property of an algorithm which relates to the number of computational resources used by the algorithm.')");
 
-        db.close();
+        //db.close();
     }
 
     @Override
