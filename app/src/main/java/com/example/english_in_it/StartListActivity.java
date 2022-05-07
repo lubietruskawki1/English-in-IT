@@ -30,10 +30,12 @@ public class StartListActivity extends AppCompatActivity {
 
         final ArrayList<String> menu_elements = new ArrayList<>();
         menu_elements.add("Browse vocabulary");
+        menu_elements.add("Choose words to learn");
         menu_elements.add("Learn with flashcards");
         menu_elements.add("Play memory");
         menu_elements.add("Play falling comet");
         menu_elements.add("Set course preferences");
+
 
         ListRecViewAdapter adapter = new ListRecViewAdapter(this);
         adapter.setItems(menu_elements);

@@ -46,15 +46,18 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                 uri = "@drawable/vocab_img";
                 break;
             case 1:
-                uri = "@drawable/flashcard_img";
+                uri = "@drawable/choosing_img";
                 break;
             case 2:
-                uri = "@drawable/memory_img";
+                uri = "@drawable/flashcard_img";
                 break;
             case 3:
-                uri = "@drawable/comet_img";
+                uri = "@drawable/memory_img";
                 break;
             case 4:
+                uri = "@drawable/comet_img";
+                break;
+            case 5:
                 uri = "@drawable/settings_img";
                 break;
         }
@@ -75,11 +78,12 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                     case 1:
                         break;
                     case 2:
+                    case 3:
                         Intent memory_intent = new Intent(context, Memory.class);
                         context.startActivity(memory_intent);
                         break;
-                    case 3:
                     case 4:
+                    case 5:
                 }
             }
         });
