@@ -11,16 +11,22 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 public class StartListActivity extends AppCompatActivity {
+    private RecyclerView main_list_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        ListView menuList = findViewById(R.id.menuElementsList);
+        //ListView menuList = findViewById(R.id.menuElementsList);
+        main_list_view = findViewById(R.id.mainListRecView);
 
         final ArrayList<String> menu_elements = new ArrayList<>();
         menu_elements.add("Browse vocabulary");
@@ -29,8 +35,13 @@ public class StartListActivity extends AppCompatActivity {
         menu_elements.add("Play falling comet");
         menu_elements.add("Set course preferences");
 
+        ListRecViewAdapter adapter = new ListRecViewAdapter(this);
+        adapter.setItems(menu_elements);
 
-        ArrayAdapter<String> menu_adapter = new ArrayAdapter<String>(
+        main_list_view.setAdapter(adapter);
+        main_list_view.setLayoutManager(new GridLayoutManager(this, 2));
+
+        /* ArrayAdapter<String> menu_adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_list_item_1, menu_elements);
 
         menuList.setAdapter(menu_adapter);
@@ -55,7 +66,7 @@ public class StartListActivity extends AppCompatActivity {
                     case 4:
                 }
             }
-        });
+        });*/
     }
 
     @Override
