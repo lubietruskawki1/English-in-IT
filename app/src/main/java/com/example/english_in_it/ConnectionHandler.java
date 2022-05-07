@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ConnectionHandler extends SQLiteOpenHelper {
     private static final String DB_NAME = "sample";
@@ -64,6 +65,22 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 glossary.add(cursor.getString(0) + ": " + cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        return glossary;
+    }
+
+    public HashMap<String, String> getGlossaryMap() { // term -> definition
+        HashMap<String, String> glossary = new HashMap<>();
+        String selectQuery = "select * from glossary";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                glossary.put(cursor.getString(0), cursor.getString(1));
             } while (cursor.moveToNext());
         }
 

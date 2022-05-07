@@ -19,10 +19,10 @@ public class BrowseVocabulary extends AppCompatActivity {
 
         ArrayList<String> glossary = connection_handler.getGlossary();
 
-        ListView menuList = findViewById(R.id.menuElementsList);
-        ArrayAdapter<String> menu_adapter = new ArrayAdapter<>(
+        ListView browseVocabularyList = findViewById(R.id.browseVocabularyList);
+        ArrayAdapter<String> browseVocabularyAdapter = new ArrayAdapter<>(
                 BrowseVocabulary.this, android.R.layout.simple_list_item_1, glossary);
 
-        menuList.setAdapter(menu_adapter);
+        browseVocabularyList.setAdapter(browseVocabularyAdapter);
     }
 }
