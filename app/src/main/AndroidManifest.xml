@@ -21,6 +21,9 @@
                 android:name=".ChooseWordsToLearn"
                 android:exported="true"/>
         <activity
+                android:name=".TypingWordsExercise"
+                android:exported="true"/>
+        <activity
                 android:name=".StartListActivity"
                 android:exported="true"/>
         <activity

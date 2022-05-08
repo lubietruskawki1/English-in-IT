@@ -20,9 +20,10 @@ import java.util.ArrayList;
 
 
 public class ChooseWordsToLearn extends AppCompatActivity {
-    ArrayList<Word> str = new ArrayList<Word>();
+    ArrayList<Word> chosen_words = new ArrayList<Word>();
     private ConnectionHandler connection_handler;
     private ListView wordsList;
+    private Button startLearningButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,6 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                 ChooseWordsToLearn.this, android.R.layout.simple_list_item_1, glossary);
 
         wordsList.setAdapter(words_adapter);
-
 
         wordsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -63,6 +63,16 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                         });
                 AlertDialog alert = builder.create();
                 alert.show();
+            }
+        });
+
+
+        startLearningButton = findViewById(R.id.startLearning);
+        startLearningButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChooseWordsToLearn.this, TypingWordsExercise.class);
+                startActivity(intent);
             }
         });
     }

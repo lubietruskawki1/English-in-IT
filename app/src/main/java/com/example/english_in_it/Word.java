@@ -11,6 +11,14 @@ public class Word {
     int bad_answers;
     Date when_to_remind;
 
+    public Word(String word, String meaning, int good_answers, int bad_answers, Date when_to_remind) {
+        this.word = word;
+        this.meaning = meaning;
+        this.good_answers = good_answers;
+        this.bad_answers = bad_answers;
+        this.when_to_remind = when_to_remind;
+    }
+
     public static Date addDays(Date date, int days)
     {
         Calendar cal = Calendar.getInstance();
