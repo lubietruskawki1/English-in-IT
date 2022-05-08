@@ -29,6 +29,8 @@ public class TypingWordsExercise extends AppCompatActivity {
     public Button check_button;
     public EditText word;
     private Iterator<Word> iter = words.iterator();
+    private Word current_word;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Word word1 = new Word("a","b",0,0,new Date());
@@ -46,23 +48,29 @@ public class TypingWordsExercise extends AppCompatActivity {
         check_button = findViewById(R.id.check_button);
         word = findViewById(R.id.word);
 
-        Word current_word = iter.next();
+        current_word = iter.next();
         meaning.setText(current_word.meaning);
         check_button.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
 
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public void onClick(View view) {
+                String entered_word = word.getText().toString();
+                if(entered_word.equals(current_word.word)) {
+                    Toast.makeText(TypingWordsExercise.this, "CORRECT!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(TypingWordsExercise.this, "Incorrect, correct answer is: " + current_word.word, Toast.LENGTH_SHORT).show();
+                }
                 if(!iter.hasNext()) {
                     Toast.makeText(TypingWordsExercise.this, "FINISHED", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
                     startActivity(intent);
                     return;
                 }
-                Word current_word = iter.next();
+                current_word = iter.next();
                 meaning.setText(current_word.meaning);
-                String entered_word = word.getText().toString();
-                Toast.makeText(TypingWordsExercise.this, "entered: " + entered_word, Toast.LENGTH_SHORT).show();
+
             }
         }));
     }
