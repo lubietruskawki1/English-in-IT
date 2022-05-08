@@ -76,6 +76,8 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         context.startActivity(browse_intent);
                         break;
                     case 1:
+                        Intent choose_intent = new Intent(context, ChooseWordsToLearn.class);
+                        context.startActivity(choose_intent);
                         break;
                     case 2:
                     case 3:
