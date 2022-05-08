@@ -1,6 +1,7 @@
 package com.example.english_in_it;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -45,12 +46,23 @@ public class TypingWordsExercise extends AppCompatActivity {
         check_button = findViewById(R.id.check_button);
         word = findViewById(R.id.word);
 
+        Word current_word = iter.next();
+        meaning.setText(current_word.meaning);
         check_button.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public void onClick(View view) {
-                meaning.setText(iter.next().meaning);
-                //Toast.makeText(TypingWordsExercise.this, "Yup.", Toast.LENGTH_SHORT).show();
+                if(!iter.hasNext()) {
+                    Toast.makeText(TypingWordsExercise.this, "FINISHED", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
+                    startActivity(intent);
+                    return;
+                }
+                Word current_word = iter.next();
+                meaning.setText(current_word.meaning);
+                String entered_word = word.getText().toString();
+                Toast.makeText(TypingWordsExercise.this, "entered: " + entered_word, Toast.LENGTH_SHORT).show();
             }
         }));
     }
