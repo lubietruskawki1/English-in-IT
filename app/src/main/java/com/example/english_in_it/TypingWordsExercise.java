@@ -33,8 +33,8 @@ public class TypingWordsExercise extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Word word1 = new Word("a","b",0,0,new Date());
-        Word word2 = new Word("c","d",0,0,new Date());
+        Word word1 = new Word("abstract method","Method with only a signature and no implementation body.",0,0,new Date());
+        Word word2 = new Word("algorithm","An unambiguous specification of how to solve a class of problems.",0,0,new Date());
         words.add(word1);
         words.add(word2);
         Iterator<Word> iter = words.iterator();
