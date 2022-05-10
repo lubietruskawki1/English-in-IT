@@ -25,7 +25,6 @@ public class StartListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        //ListView menuList = findViewById(R.id.menuElementsList);
         main_list_view = findViewById(R.id.mainListRecView);
 
         final ArrayList<String> menu_elements = new ArrayList<>();
@@ -42,33 +41,6 @@ public class StartListActivity extends AppCompatActivity {
 
         main_list_view.setAdapter(adapter);
         main_list_view.setLayoutManager(new GridLayoutManager(this, 2));
-
-        /* ArrayAdapter<String> menu_adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, menu_elements);
-
-        menuList.setAdapter(menu_adapter);
-
-
-        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(StartListActivity.this, "selected " + menu_elements.get(position), Toast.LENGTH_SHORT).show();
-                switch (position) {
-                    case 0:
-                        Intent browse_intent = new Intent(StartListActivity.this, BrowseVocabulary.class);
-                        startActivity(browse_intent);
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        Intent memory_intent = new Intent(StartListActivity.this, Memory.class);
-                        startActivity(memory_intent);
-                        break;
-                    case 3:
-                    case 4:
-                }
-            }
-        });*/
     }
 
     @Override

@@ -80,6 +80,9 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         context.startActivity(choose_intent);
                         break;
                     case 2:
+                        Intent flashcards_intent = new Intent(context, FlashcardsOptions.class);
+                        context.startActivity(flashcards_intent);
+                        break;
                     case 3:
                         Intent memory_intent = new Intent(context, Memory.class);
                         context.startActivity(memory_intent);
@@ -112,9 +115,6 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
             parent = itemView.findViewById(R.id.parent);
             this.itemView = itemView;
             image = itemView.findViewById(R.id.list_image);
-
-            //if (image == null) System.out.println("jest nullem");
-            //else System.out.println("nie jest nullem");
         }
     }
 }
