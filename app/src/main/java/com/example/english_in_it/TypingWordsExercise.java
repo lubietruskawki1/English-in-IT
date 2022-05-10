@@ -34,7 +34,6 @@ public class TypingWordsExercise extends AppCompatActivity {
     private Iterator<Word> iter = words.iterator();
     private Word current_word;
     private int counter_for_clicks;
-    private boolean correct_current_answer;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +63,14 @@ public class TypingWordsExercise extends AppCompatActivity {
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public void onClick(View view) {
-                if(counter_for_clicks%2 == 0) {//pojawia się nowe słówko, użytkownik ma możliwośćc wpisania tłumaczenia
-                    //check_button.setText("CHECK");
+                if(counter_for_clicks%2 == 0) {//wpisywanie tłumaczenia, po którym pojawia się feedback
                     correct_answer.setText("");
                     good_bad.setText("");
                     String entered_word = word.getText().toString();
                     if (entered_word.equals(current_word.word)) {
-                        //Toast.makeText(TypingWordsExercise.this, "CORRECT!", Toast.LENGTH_SHORT).show();
-                        //correct_current_answer = true;
                         good_bad.setText("CORRECT!");
                         //good_bad.setTextColor(Color.parseColor("0xff00ff00"));
                     } else {
-                        //Toast.makeText(TypingWordsExercise.this, "Incorrect, correct answer is: " + current_word.word, Toast.LENGTH_SHORT).show();
-                        //correct_current_answer = false;
                         good_bad.setText("INCORRECT");
                         correct_answer.setText("correct answer: " + current_word.word);
                         //good_bad.setTextColor(Color.parseColor("0xffff0000"));
@@ -90,7 +84,6 @@ public class TypingWordsExercise extends AppCompatActivity {
                     good_bad.setText("");
                     check_button.setText("CHECK");
                     if (!iter.hasNext()) {
-                        //Toast.makeText(TypingWordsExercise.this, "FINISHED", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
                         startActivity(intent);
                         return;
@@ -98,12 +91,9 @@ public class TypingWordsExercise extends AppCompatActivity {
                     current_word = iter.next();
                     meaning.setText(current_word.meaning);
                     word.setText("");
-
                     counter_for_clicks++;
                 }
             }
         }));
     }
-
-
 }
