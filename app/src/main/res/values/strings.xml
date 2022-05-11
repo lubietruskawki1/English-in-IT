@@ -4,4 +4,12 @@
         <br />
         Here you can learn some IT vocabulary in English
     </string>
+    <string name="flashcards_settings">How do you want to learn?</string>
+    <string name="term_to_def">Term to definition</string>
+    <string name="def_to_term">Definition to term (default)</string>
+    <string name="next_caps">NEXT</string>
+    <string name="flashcard_progress_number">0/100</string>
+    <string name="flashcard_example_txt">term_or_def</string>
+
+
 </resources>

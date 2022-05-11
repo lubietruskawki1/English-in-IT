@@ -71,7 +71,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         return glossary;
     }
 
-    public HashMap<String, String> getGlossaryMap() { // term -> definition
+    public HashMap<String, String> getGlossaryMapTermToDef() { // term -> definition
         HashMap<String, String> glossary = new HashMap<>();
         String selectQuery = "select * from glossary";
 

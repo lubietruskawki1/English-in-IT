@@ -34,6 +34,7 @@ public class TypingWordsExercise extends AppCompatActivity {
     private Iterator<Word> iter = words.iterator();
     private Word current_word;
     private int counter_for_clicks;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
