@@ -51,14 +51,27 @@
         android:layout_below="@+id/flashcard"
         android:layout_centerHorizontal="true"/>
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/progressNumberTxt"
-        android:layout_marginTop="40dp"
+        android:id="@+id/flashcardsButtonsLayout"
+        android:layout_below="@+id/progressNumberTxt"
         android:layout_centerHorizontal="true"
-        android:text="@string/next_caps"/>
+        android:layout_marginTop="40dp">
 
+        <Button
+            android:id="@+id/btnPrevFlashcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prev_caps"
+            android:layout_marginEnd="25dp"/>
 
+        <Button
+            android:id="@+id/btnNextFlashcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_caps"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

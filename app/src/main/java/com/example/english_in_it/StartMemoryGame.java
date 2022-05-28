@@ -27,7 +27,7 @@ public class StartMemoryGame extends AppCompatActivity {
 
         connection_handler = new ConnectionHandler(StartMemoryGame.this);
 
-        glossary = connection_handler.getGlossaryMapTermToDef();
+        glossary = connection_handler.getGlossaryMapTermToDef(1);
         ArrayList<Pair<String, Boolean>> cards = new ArrayList<>(); // karta, czy użyta
         for (String key: glossary.keySet()) {
             cards.add(new Pair<>(key, false));

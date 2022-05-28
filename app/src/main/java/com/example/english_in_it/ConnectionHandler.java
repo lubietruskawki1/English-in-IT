@@ -67,7 +67,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         return glossary;
     }
 
-    public HashMap<String, String> getGlossaryMapTermToDef() { // term -> definition
+    public HashMap<String, String> getGlossaryMapTermToDef(int term_to_def) { // term -> definition
         HashMap<String, String> glossary = new HashMap<>();
         String selectQuery = "select * from glossary";
 
@@ -76,10 +76,14 @@ public class ConnectionHandler extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                glossary.put(cursor.getString(0), cursor.getString(1));
+                glossary.put(cursor.getString(1-term_to_def), cursor.getString(term_to_def));
             } while (cursor.moveToNext());
         }
 
         return glossary;
+    }
+
+    public HashMap<String, String> getGlossaryMapDefToTerm() { // definition -> term
+        return getGlossaryMapTermToDef(0);
     }
 }
