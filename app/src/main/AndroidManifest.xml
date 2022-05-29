@@ -45,6 +45,9 @@
         <activity
             android:name=".StartMemoryGame"
             android:exported="true" />
+        <activity
+            android:name=".MemoryWin"
+            android:exported="true" />
     </application>
 
 </manifest>

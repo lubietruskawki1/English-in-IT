@@ -9,10 +9,15 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/activity_memory.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/layout/activity_memory_win.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/button_template.xml" value="0.1546875" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.33125" />
         <entry key="app/src/main/res/layout/my_list.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/my_list_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/table_row_templae.xml" value="0.1546875" />
+        <entry key="app/src/main/res/layout/table_row_template.xml" value="0.15572916666666667" />
         <entry key="app/src/main/res/menu/start_menu.xml" value="0.35" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.171875" />
       </map>
     </option>
   </component>

@@ -11,6 +11,9 @@
     <string name="prev_caps">PREV</string>
     <string name="flashcard_progress_number">0/100</string>
     <string name="flashcard_example_txt">term_or_def</string>
+    <string name="memory_congratulations">Congratulations, you won!\n
+        Your score is:
+    </string>
 
 
 </resources>
