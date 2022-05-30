@@ -30,7 +30,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("drop table if exists glossary"); // to będzie do wykasowania gdy już będzie gotowa baza
-        String query = "create table if not exists glossary (term text, definition text)";
+        String query = "create table if not exists glossary (term text unique, definition text unique)";
         db.execSQL(query);
         fillDatabase(db);
     }
