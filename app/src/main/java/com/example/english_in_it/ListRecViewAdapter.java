@@ -88,7 +88,11 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         context.startActivity(memory_intent);
                         break;
                     case 4:
+                        break;
                     case 5:
+                        Intent settings_intent = new Intent(context, Settings.class);
+                        context.startActivity(settings_intent);
+                        break;
                 }
             }
         });
