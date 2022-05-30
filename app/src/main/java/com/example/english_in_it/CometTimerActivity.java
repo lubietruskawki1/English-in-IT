@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -31,6 +32,8 @@ public class CometTimerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        setTheme(Utils.getTheme(pref.getString("theme", null)));
         setContentView(R.layout.activity_comet_timer);
         startPlayingBtn = findViewById(R.id.btnPlayComet);
         countdownView = findViewById(R.id.countdownTxtView);

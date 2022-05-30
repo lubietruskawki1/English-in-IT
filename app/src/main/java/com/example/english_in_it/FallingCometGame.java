@@ -3,6 +3,7 @@ package com.example.english_in_it;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -45,6 +46,8 @@ public class FallingCometGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        setTheme(Utils.getTheme(pref.getString("theme", null)));
         setContentView(R.layout.activity_falling_comet_game);
 
         AtomicBoolean guessed = new AtomicBoolean(false);
@@ -112,7 +115,7 @@ public class FallingCometGame extends AppCompatActivity {
     }
 
     public void onBackPressed() {
-        overridePendingTransition(0, 0);
         finish();
+        overridePendingTransition(0, 0);
     }
 }
