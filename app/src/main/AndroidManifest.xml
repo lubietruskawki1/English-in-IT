@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.English_in_IT">
         <activity
+            android:name=".FallingCometGame"
+            android:exported="false" />
+        <activity
+            android:name=".CometTimerActivity"
+            android:exported="false" />
+        <activity
             android:name=".Flashcards"
             android:exported="false" />
         <activity

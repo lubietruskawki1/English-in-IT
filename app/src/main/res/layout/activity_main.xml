@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Start learning"
+        android:text="@string/start_learning"
         android:id="@+id/btnStart"
         android:layout_marginTop="20dp"
         android:layout_below="@id/flag"
