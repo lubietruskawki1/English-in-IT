@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+    android:background="?attr/backgroundColor"
     tools:context=".StartMemoryGame">
 
     <TableLayout
@@ -14,5 +14,5 @@
         android:layout_width="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:orientation="vertical"/>
+        android:orientation="vertical" />
 </RelativeLayout>

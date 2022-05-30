@@ -8,12 +8,15 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -85,10 +88,11 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         context.startActivity(memory_intent);
                         break;
                     case 4:
-                        Intent comet_intent = new Intent(context, CometTimerActivity.class);
-                        context.startActivity(comet_intent);
                         break;
                     case 5:
+                        Intent settings_intent = new Intent(context, Settings.class);
+                        context.startActivity(settings_intent);
+                        break;
                 }
             }
         });

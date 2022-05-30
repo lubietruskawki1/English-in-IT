@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+    android:background="?attr/backgroundColor"
     tools:context=".MemoryWin">
 
     <TextView
@@ -41,7 +41,8 @@
         android:layout_below="@+id/txtScore"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/congrats" />
+        android:src="@drawable/congrats"
+        android:contentDescription="@string/congrats_img_description" />
 
     <Button
         android:layout_width="wrap_content"
@@ -52,7 +53,6 @@
         android:layout_marginTop="50dp"
         android:layout_below="@+id/imgCongrats"
         android:textColor="@color/white"
-        android:backgroundTint="@color/purple_700"
-        />
+        android:backgroundTint="@color/purple_700" />
 
 </RelativeLayout>
