@@ -3,6 +3,7 @@ package com.example.english_in_it;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,12 +16,13 @@ import java.util.HashMap;
 
 public class Memory extends AppCompatActivity {
     SharedPreferences pref;
-    protected ConnectionHandler connection_handler;
+    private ConnectionHandler connection_handler;
     private Button buttonStart;
-    protected HashMap<String, String> glossary;
+    private HashMap<String, String> glossary = new HashMap<>();
     // todo: wybór levelu - hard: 10 pojęć (4x5), medium: 8 pojęć (4x4), easy: 6 pojęć (3x4)
     // todo: na tej podstawie calculate columns, height
     // todo: instrukcja
+    int level = 20; // temp liczba kart
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,13 @@ public class Memory extends AppCompatActivity {
         setContentView(R.layout.activity_memory);
 
         connection_handler = new ConnectionHandler(Memory.this);
-        glossary = connection_handler.getGlossaryMapTermToDef(1);
+        HashMap<String, String> fullGlossary = connection_handler.getGlossaryMapTermToDef(1);
+        for (String key: fullGlossary.keySet()) {
+            glossary.put(key, fullGlossary.get(key));
+            if (2 * glossary.size() == level) {
+                break;
+            }
+        }
 
         buttonStart = findViewById(R.id.btnStart);
         buttonStart.setOnClickListener(view -> {

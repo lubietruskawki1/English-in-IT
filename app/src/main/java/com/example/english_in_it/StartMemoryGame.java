@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class StartMemoryGame extends AppCompatActivity {
-    protected HashMap<String, String> glossary;
+    private HashMap<String, String> glossary;
     private TableLayout table;
     private TableRow row;
     private int total_cards = 0;
@@ -27,15 +27,16 @@ public class StartMemoryGame extends AppCompatActivity {
     private int paddingLeftAndRight = 15;
     private int paddingTopAndBottom = 0;
     private TextView[] buttons;
-    private final Random random_generator = new Random();
+    private final Random randomGenerator = new Random();
     private boolean purgatory = false;
     private int level = 0; // liczba par do dopasowania
-    protected int score = 0; // todo: im większy tym lepszy lub you made x mistakes
-    private int pairs_left_to_match = 0;
+    private float correctAnswers = 0;
+    private float totalAnswers = 0;
+    private int pairsLeftToMatch = 0;
     private String[] board;
     private Boolean shown = true;
-    private int first_card = -1;
-    private int second_card = -1;
+    private int firstCard = -1;
+    private int secondCard = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class StartMemoryGame extends AppCompatActivity {
 
         glossary = (HashMap<String, String>) getIntent().getSerializableExtra("glossary");
 
-        pairs_left_to_match = glossary.size();
+        pairsLeftToMatch = glossary.size();
         total_cards = 2 * glossary.size();
         buttons = new TextView[total_cards];
         board = new String[total_cards];
@@ -90,9 +91,9 @@ public class StartMemoryGame extends AppCompatActivity {
         table.addView(row);
         int buttonsInCurrentRow = 0;
         for (int i = 0; i < total_cards; i++) {
-            int random_card = random_generator.nextInt(total_cards);
+            int random_card = randomGenerator.nextInt(total_cards);
             while (cards.get(random_card).second) { // while czy_użyta == true
-                random_card = random_generator.nextInt(total_cards); // losowanie nowej karty
+                random_card = randomGenerator.nextInt(total_cards); // losowanie nowej karty
             }
 
             if (buttonsInCurrentRow == columns) {
@@ -145,12 +146,10 @@ public class StartMemoryGame extends AppCompatActivity {
             int finalI = i;
             buttons[i].setOnClickListener(view -> {
                 if (purgatory) {
-                    score++;
-                    System.out.println("score: "+score);
-                    switchSpot(first_card);
-                    switchSpot(second_card);
-                    first_card = -1;
-                    second_card = -1;
+                    switchSpot(firstCard);
+                    switchSpot(secondCard);
+                    firstCard = -1;
+                    secondCard = -1;
                     purgatory = false;
                 }
 
@@ -158,21 +157,23 @@ public class StartMemoryGame extends AppCompatActivity {
                     hideFields();
                 } else {
                     switchSpot(finalI);
-                    if (first_card == -1) {
-                        first_card = finalI;
+                    if (firstCard == -1) {
+                        firstCard = finalI;
                     } else {
-                        if ((!Objects.equals(glossary.get(board[first_card]), board[finalI]) &&
-                                !Objects.equals(glossary.get(board[finalI]), board[first_card])) ||
-                                first_card == finalI) { // niepoprawne
-                            second_card = finalI;
+                        totalAnswers++;
+                        if ((!Objects.equals(glossary.get(board[firstCard]), board[finalI]) &&
+                                !Objects.equals(glossary.get(board[finalI]), board[firstCard])) ||
+                                firstCard == finalI) { // niepoprawne
+                            secondCard = finalI;
                             purgatory = true;
                         } else { // poprawne
                             // todo: też można by jakoś ładniej ewentualnie kiedyś zrobić
                             board[finalI] = "done";
-                            board[first_card] = "done";
-                            pairs_left_to_match -= pairs_left_to_match; // todo debug
+                            board[firstCard] = "done";
+                            correctAnswers++;
+                            pairsLeftToMatch -= pairsLeftToMatch; // todo debug
                             checkWin();
-                            first_card = -1;
+                            firstCard = -1;
                         }
                     }
                 }
@@ -198,7 +199,7 @@ public class StartMemoryGame extends AppCompatActivity {
     }
 
     public void checkWin() {
-        if (pairs_left_to_match > 0) {
+        if (pairsLeftToMatch > 0) {
             return;
         }
         winner();
@@ -206,8 +207,8 @@ public class StartMemoryGame extends AppCompatActivity {
 
     public void winner() {
         Intent intent = new Intent(StartMemoryGame.this, MemoryWin.class);
-        intent.putExtra("playerScore", Integer.toString(score));
-        // if int extras.getInt("new_variable_name")
+        int score = Math.max(Math.round(correctAnswers * 100 / totalAnswers), 0);
+        intent.putExtra("score", Integer.toString(score));
         startActivity(intent);
     }
 
