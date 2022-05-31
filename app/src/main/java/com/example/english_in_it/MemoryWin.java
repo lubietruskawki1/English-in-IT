@@ -22,11 +22,10 @@ public class MemoryWin extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         setTheme(Utils.getTheme(pref.getString("theme", null)));
         setContentView(R.layout.activity_memory_win); // todo: lepszy obrazek xd
+
         txtScore = findViewById(R.id.txtScore);
-
         Bundle extras = getIntent().getExtras();
-        score = extras.getString("playerScore");
-
+        score = extras.getString("score");
         txtScore.setText(score);
 
         // todo: play again
