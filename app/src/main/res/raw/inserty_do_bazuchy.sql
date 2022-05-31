@@ -19,7 +19,7 @@ insert into glossary values('automata theory', 'The study of abstract machines a
 insert into glossary values('automated reasoning', 'An area of computer science and mathematical logic dedicated to understanding different aspects of reasoning.');
 
 insert into glossary values('bandwidth', 'The maximum rate of data transfer across a given path.');
-insert into glossary values('Bayesian programming', 'a technique to solve problems when less than the necessary information is available.');
+insert into glossary values('Bayesian programming', 'A technique to solve problems when less than the necessary information is available.');
 insert into glossary values('benchmark', 'Running a computer program(s), or other operations, in order to assess the performance of an object');
 insert into glossary values('best, worst and average case', 'Expressions of what the resource usage is at least, at most, and on average, respectively, for a given algorithm.');
 insert into glossary values('big data', 'Data sets that are too large or complex for traditional data-processing application software to adequately deal with.');
@@ -138,7 +138,7 @@ insert into glossary values('gigabyte', 'A multiple of the unit byte for digital
 insert into glossary values('global variable', 'A variable that is visible and accessible throughout the program.');
 insert into glossary values('graph theory', 'The study of graphs - mathematical structures used to model pairwise relations between objects.');
 
-insert into glossary values('handle', 'An abstract reference to a resource'.);
+insert into glossary values('handle', 'An abstract reference to a resource.');
 insert into glossary values('hash function', 'Any function that can be used to map data of arbitrary size to data of a fixed size.');
 insert into glossary values('hash table', 'A data structure that implements an associative array abstract data type, a structure that can map keys to values.');
 insert into glossary values('heap', 'A specialized tree-based data structure which is an almost complete tree that satisfies the heap property');

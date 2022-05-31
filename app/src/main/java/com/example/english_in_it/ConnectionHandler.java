@@ -25,22 +25,24 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     public ConnectionHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
+        onCreate(this.getWritableDatabase());
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL("delete from glossary");
         db.execSQL("drop table if exists glossary"); // to będzie do wykasowania gdy już będzie gotowa baza
-        String query = "create table if not exists glossary (term text unique, definition text unique)";
+        String query = "create table if not exists glossary (term text, definition text)";
         db.execSQL(query);
         fillDatabase(db);
     }
 
     public void fillDatabase(SQLiteDatabase db) {
         // tak jest ładniej ale nie chce mi sie xd
-        ContentValues values = new ContentValues();
-        values.put("term", "abstract data type");
-        values.put("definition", "A mathematical model for data types in which a data type is defined by its behavior (semantics).");
-        db.insert("glossary", null, values);
+//        ContentValues values = new ContentValues();
+//        values.put("term", "abstract data type");
+//        values.put("definition", "A mathematical model for data types in which a data type is defined by its behavior (semantics).");
+//        db.insert("glossary", null, values);
 
 
         InputStream inserts = this.context.getResources().openRawResource(R.raw.inserty_do_bazuchy);
@@ -53,6 +55,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         //sql_inserts = new Scanner(new File(path)).useDelimiter("\\Z").next();
         db.execSQL(sql_inserts);
         for (int i = 0; i < single_inserts.length - 1; i++) {
+            System.out.println(i);
             db.execSQL(single_inserts[i]);
         }
 
@@ -75,9 +78,11 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     }
 
     public ArrayList<String> getGlossary() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
         ArrayList<String> glossary = new ArrayList<>();
         String selectQuery = "select * from glossary";
-        SQLiteDatabase db = this.getReadableDatabase();
+
         //this.onCreate(db);
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -90,10 +95,11 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     }
 
     public HashMap<String, String> getGlossaryMapTermToDef(int term_to_def) { // term -> definition
+        SQLiteDatabase db = this.getReadableDatabase();
+
         HashMap<String, String> glossary = new HashMap<>();
         String selectQuery = "select * from glossary";
 
-        SQLiteDatabase db = this.getReadableDatabase();
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
