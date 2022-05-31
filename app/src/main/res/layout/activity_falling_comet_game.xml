@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/purple_700"
+        android:backgroundTint="?attr/buttonColor"
         android:text="@string/submit"
         android:textColor="@color/white"
         android:layout_centerInParent="true"/>

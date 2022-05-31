@@ -64,17 +64,19 @@ public class SettingsListRecViewAdapter extends RecyclerView.Adapter<SettingsLis
                     pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
                     editor = pref.edit();
                     editor.putString("theme", "LightTheme");
-                    context.setTheme(R.style.LightTheme);
                     editor.commit();
+                    context.setTheme(R.style.LightTheme);
                     break;
                 case 1:
                     pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
                     editor = pref.edit();
                     editor.putString("theme", "DarkTheme");
-                    context.setTheme(R.style.DarkTheme);
                     editor.commit();
+                    context.setTheme(R.style.DarkTheme);
                     break;
             }
+            Intent intent = new Intent(context, Settings.class);
+            context.startActivity(intent);
         });
     }
 

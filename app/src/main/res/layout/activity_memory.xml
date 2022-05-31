@@ -18,7 +18,7 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:padding="15dp"
-        android:textColor="@color/purple_700"
+        android:textColor="?attr/buttonColor"
         android:textStyle="bold"/>
 
     <RadioGroup
@@ -67,7 +67,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/difficultySelection"
         android:textColor="@color/white"
-        android:backgroundTint="@color/purple_700"
+        android:backgroundTint="?attr/buttonColor"
         tools:ignore="NotSibling" />
 
 </RelativeLayout>

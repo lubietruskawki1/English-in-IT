@@ -19,7 +19,7 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:padding="15dp"
-        android:textColor="@color/purple_700"
+        android:textColor="?attr/buttonColor"
         android:textStyle="bold"/>
 
     <RadioGroup
@@ -61,7 +61,7 @@
         android:id="@+id/btnFlashcards"
         android:layout_marginTop="20dp"
         android:textColor="@color/white"
-        android:backgroundTint="@color/purple_700"
+        android:backgroundTint="?attr/buttonColor"
         />
 
 </RelativeLayout>
