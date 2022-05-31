@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:padding="15dp"
         android:text="@string/memory_congratulations"
         android:textAlignment="center"
@@ -41,18 +41,36 @@
         android:layout_below="@+id/txtScore"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/congrats"
-        android:contentDescription="@string/congrats_img_description" />
+        android:contentDescription="@string/congrats_img_description"
+        android:src="@drawable/congrats" />
+
+    <View android:id="@+id/fakeView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/btnPlayAgain"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Return to main menu"
-        android:id="@+id/btnReturn"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/imgCongrats"
+        android:layout_below="@+id/fakeView"
+        android:layout_marginTop="180dp"
+        android:backgroundTint="@color/purple_700"
+        android:text="@string/memory_play_again"
         android:textColor="@color/white"
-        android:backgroundTint="@color/purple_700" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"/>
+
+    <Button
+        android:id="@+id/btnReturn"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fakeView"
+        android:layout_marginTop="180dp"
+        android:backgroundTint="@color/purple_700"
+        android:text="@string/memory_return"
+        android:textColor="@color/white"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"/>
 
 </RelativeLayout>

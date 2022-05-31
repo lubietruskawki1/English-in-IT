@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StartMemoryGame"
+            android:name=".MemoryGame"
             android:exported="true" />
         <activity
             android:name=".MemoryWin"

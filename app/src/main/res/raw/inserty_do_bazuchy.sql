@@ -10,10 +10,10 @@ insert into glossary values('algorithmic efficiency', 'A property of an algorith
 insert into glossary values('American Standard Code for Information Interchange (ASCII)', 'A character encoding standard for electronic communications.');
 insert into glossary values('application programming interface (API)', 'A set of subroutine definitions, communication protocols, and tools for building software.');
 insert into glossary values('application software', 'Computer software designed to perform a group of coordinated functions, tasks, or activities for the benefit of the user.');
-insert into glossary values('array data structure', 'A data structure consisting of a collection of elements, each identified by at least one array index or key');
+insert into glossary values('array data structure', 'A data structure consisting of a collection of elements, each identified by at least one array index or key.');
 insert into glossary values('artifact', 'One of many kinds of tangible by-products produced during the development of software.');
 insert into glossary values('artificial intelligence (AI)', 'Intelligence demonstrated by machines.');
-insert into glossary values('assertion', 'In programming, a statement that a predicate is always true at that point in code execution');
+insert into glossary values('assertion', 'In programming, a statement that a predicate is always true at that point in code execution.');
 insert into glossary values('associative array', 'abstract data type composed of a collection of (key, value) pairs. Each possible key appears at most once.');
 insert into glossary values('automata theory', 'The study of abstract machines and automata, as well as the computational problems that can be solved using them.');
 insert into glossary values('automated reasoning', 'An area of computer science and mathematical logic dedicated to understanding different aspects of reasoning.');
@@ -92,9 +92,9 @@ insert into glossary values('cyberspace', 'Widespread, interconnected digital te
 
 insert into glossary values('daemon', 'A computer program that runs as a background process, while being out of user control.');
 insert into glossary values('data center', 'A dedicated space used to house computer systems and associated components.');
-insert into glossary values('database', 'An organized collection of data, generally stored and accessed electronically from a computer system');
+insert into glossary values('database', 'An organized collection of data, generally stored and accessed electronically from a computer system.');
 insert into glossary values('data mining', 'A process of discovering patterns in large data sets.');
-insert into glossary values('data science', 'A field using scientific methods to extract knowledge from data in various forms');
+insert into glossary values('data science', 'A field using scientific methods to extract knowledge from data in various forms.');
 insert into glossary values('data structure', 'A data organization, management, and storage format that enables efficient access and modification.');
 insert into glossary values('data type', 'An attribute of data which tells the compiler or interpreter how the programmer intends to use the data.');
 insert into glossary values('debugging', 'The process of finding and resolving defects or problems within a computer program.');
@@ -130,7 +130,7 @@ insert into glossary values('floating point arithmetic', 'Arithmetic using formu
 insert into glossary values('for loop', 'A control flow statement for specifying iteration, which allows code to be executed repeatedly.');
 insert into glossary values('formal methods', 'Techniques for the specification, development, and verification of software and hardware systems.');
 insert into glossary values('formal verification', 'The act of proving or disproving the correctness of intended algorithms.');
-insert into glossary values('functional programming', 'In programming, a style treating computation as the evaluation of mathematical functions');
+insert into glossary values('functional programming', 'In programming, a style treating computation as the evaluation of mathematical functions.');
 
 insert into glossary values('game theory', 'The study of mathematical models of strategic interaction between rational decision-makers.');
 insert into glossary values('garbage in, garbage out (GIGO)', 'The concept that flawed input data produces nonsense output or "garbage".');

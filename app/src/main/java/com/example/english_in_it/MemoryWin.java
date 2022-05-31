@@ -12,9 +12,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MemoryWin extends AppCompatActivity {
-    private String score;
-    private TextView txtScore;
-    private Button buttonReturn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +20,18 @@ public class MemoryWin extends AppCompatActivity {
         setTheme(Utils.getTheme(pref.getString("theme", null)));
         setContentView(R.layout.activity_memory_win); // todo: lepszy obrazek xd
 
-        txtScore = findViewById(R.id.txtScore);
+        TextView txtScore = findViewById(R.id.txtScore);
         Bundle extras = getIntent().getExtras();
-        score = extras.getString("score");
+        String score = extras.getString("score") + " / 100";
         txtScore.setText(score);
 
-        // todo: play again
-        buttonReturn = findViewById(R.id.btnReturn);
+        Button buttonPlayAgain = findViewById(R.id.btnPlayAgain);
+        buttonPlayAgain.setOnClickListener(view -> {
+            Intent intent = new Intent(MemoryWin.this, Memory.class);
+            startActivity(intent);
+        });
+
+        Button buttonReturn = findViewById(R.id.btnReturn);
         buttonReturn.setOnClickListener(view -> {
             Intent intent = new Intent(MemoryWin.this, StartListActivity.class);
             startActivity(intent);

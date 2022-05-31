@@ -5,8 +5,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundColor"
+    android:background="@color/white"
     tools:context=".Memory">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSelectDifficulty"
+        android:text="@string/memory_select_difficulty"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:padding="15dp"
+        android:textColor="@color/purple_700"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtSelectDifficulty"
+        android:layout_marginTop="10dp"
+        android:id="@+id/difficultySelection"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:id="@+id/easy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/memory_easy"
+            android:textSize="15sp"
+            android:buttonTint="@color/purple_500">
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/memory_medium"
+            android:textSize="15sp"
+            android:buttonTint="@color/purple_500">
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/hard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/memory_hard"
+            android:textSize="15sp"
+            android:buttonTint="@color/purple_500">
+        </RadioButton>
+
+    </RadioGroup>
 
     <Button
         android:layout_width="wrap_content"
@@ -15,7 +65,7 @@
         android:text="@string/memory_start"
         android:id="@+id/btnStart"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/flag"
+        android:layout_below="@id/difficultySelection"
         android:textColor="@color/white"
         android:backgroundTint="@color/purple_700"
         tools:ignore="NotSibling" />

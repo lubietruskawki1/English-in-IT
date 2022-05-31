@@ -17,19 +17,15 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 
-public class StartMemoryGame extends AppCompatActivity {
+public class MemoryGame extends AppCompatActivity {
+    private static final int PADDING_LEFT_AND_RIGHT = 15;
+    private static final int PADDING_TOP_AND_BOTTOM = 0;
+
     private HashMap<String, String> glossary;
-    private TableLayout table;
-    private TableRow row;
-    private int total_cards = 0;
-    private int columns = 4;
-    private int buttonHeight = 308;
-    private int paddingLeftAndRight = 15;
-    private int paddingTopAndBottom = 0;
+    private int totalCards;
     private TextView[] buttons;
     private final Random randomGenerator = new Random();
     private boolean purgatory = false;
-    private int level = 0; // liczba par do dopasowania
     private float correctAnswers = 0;
     private float totalAnswers = 0;
     private int pairsLeftToMatch = 0;
@@ -38,6 +34,7 @@ public class StartMemoryGame extends AppCompatActivity {
     private int firstCard = -1;
     private int secondCard = -1;
 
+    @SuppressLint("InflateParams")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +43,14 @@ public class StartMemoryGame extends AppCompatActivity {
         setContentView(R.layout.activity_memory_game);
 
         glossary = (HashMap<String, String>) getIntent().getSerializableExtra("glossary");
+        Bundle extras = getIntent().getExtras();
+        int columns = extras.getInt("columns");
+        int buttonHeight = extras.getInt("buttonHeight");
 
         pairsLeftToMatch = glossary.size();
-        total_cards = 2 * glossary.size();
-        buttons = new TextView[total_cards];
-        board = new String[total_cards];
+        totalCards = 2 * glossary.size();
+        buttons = new TextView[totalCards];
+        board = new String[totalCards];
 
         ArrayList<Pair<String, Boolean>> cards = new ArrayList<>(); // (karta, czy_użyta)
         for (String key: glossary.keySet()) {
@@ -58,91 +58,44 @@ public class StartMemoryGame extends AppCompatActivity {
             cards.add(new Pair<>(glossary.get(key), false));
         }
 
-        table = findViewById(R.id.tableLayout);
+        TableLayout table = findViewById(R.id.tableLayout);
 
-        //buttonWidth = 250;//Math.round(getResources().getDimension(R.dimen.button_width));
-        //buttonHeight = 300;//Math.round(getResources().getDimension(R.dimen.button_height));
-        //System.out.println(buttonHeight + " "+ buttonWidth);
-        //rowWidth = Math.round(getResources().getDimension(R.dimen.row_width));
-
-        // todo: XD
-        //row = new TableRow(this);
-        //row.setWeightSum(4);
-//        table.addView(row, new ViewGroup.LayoutParams(
-//               rowWidth, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
-//        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.MATCH_PARENT,
-//                1.0f
-//        );
-//        LinearLayout.LayoutParams paramBtn = new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.WRAP_CONTENT,
-//                LinearLayout.LayoutParams.WRAP_CONTENT,
-//                1.0f
-//        );
-       // row.setLayoutParams(param);
-        row = (TableRow) LayoutInflater.from(this).
+        @SuppressLint("InflateParams") TableRow row = (TableRow) LayoutInflater.from(this).
                 inflate(R.layout.table_row_template, null);
-
-//        row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-//                TableRow.LayoutParams.WRAP_CONTENT, 1f));
-        row.setPadding(paddingLeftAndRight, paddingTopAndBottom,
-                paddingLeftAndRight, paddingTopAndBottom);
+        row.setPadding(PADDING_LEFT_AND_RIGHT, PADDING_TOP_AND_BOTTOM,
+                PADDING_LEFT_AND_RIGHT, PADDING_TOP_AND_BOTTOM);
         table.addView(row);
         int buttonsInCurrentRow = 0;
-        for (int i = 0; i < total_cards; i++) {
-            int random_card = randomGenerator.nextInt(total_cards);
-            while (cards.get(random_card).second) { // while czy_użyta == true
-                random_card = randomGenerator.nextInt(total_cards); // losowanie nowej karty
+
+        for (int i = 0; i < totalCards; i++) {
+            int random_card = randomGenerator.nextInt(totalCards);
+            while (cards.get(random_card).second) {
+                random_card = randomGenerator.nextInt(totalCards);
             }
 
             if (buttonsInCurrentRow == columns) {
                 row = (TableRow) LayoutInflater.from(this).
                         inflate(R.layout.table_row_template, null);
-//                row = new TableRow(this);
-//                row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-//                        TableRow.LayoutParams.WRAP_CONTENT, 1f));
-                //table.addView(row, new ViewGroup.LayoutParams(
-                 //       rowWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
-                //row.setLayoutParams(param);
-               // row.setWeightSum(4);
-                row.setPadding(paddingLeftAndRight, paddingTopAndBottom,
-                        paddingLeftAndRight, paddingTopAndBottom);
+                row.setPadding(PADDING_LEFT_AND_RIGHT, PADDING_TOP_AND_BOTTOM,
+                        PADDING_LEFT_AND_RIGHT, PADDING_TOP_AND_BOTTOM);
                 table.addView(row);
                 buttonsInCurrentRow = 0;
             }
 
             board[i] = cards.get(random_card).first;
 
-            //buttons[i] = (TextView)getLayoutInflater().inflate(R.layout.button_template, null);
             buttons[i] = (TextView) LayoutInflater.from(this).
                     inflate(R.layout.button_template, null);
-            //buttons[i] = new TextView(this);
             buttons[i].setText(cards.get(random_card).first);
-            //buttons[i].setTextSize(buttonTextSize);
             buttons[i].setId(i);
-            //buttons[i].setSingleLine(false);
-            //buttons[i].setMaxLines(20);
-            //buttons[i].setHeight(300);
-            //buttons[i].setLayoutParams(paramBtn);
-            //buttons[i].setEms(4);
-            //buttons[i].setMinHeight(200);
-//            buttons[i].setLayoutParams(new ViewGroup.LayoutParams(
-//                    250, 300));
-                    //ViewGroup.LayoutParams.WRAP_CONTENT));
-            //row.addView(buttons[i]);//, buttonWidth, buttonHeight);
-            //buttons[i].setWidth(250);
-            //buttons[i].setHeight(310);
-            //row.addView(buttons[i]);
             row.addView(buttons[i], new TableRow.LayoutParams(0,
                     buttonHeight, 1f));
-                    //TableRow.LayoutParams.MATCH_PARENT, 1f));
 
             cards.set(random_card, new Pair<>(cards.get(random_card).first, true));
             buttonsInCurrentRow++;
         }
 
-        for (int i = 0; i < total_cards; i++) {
+        for (int i = 0; i < totalCards; i++) {
             int finalI = i;
             buttons[i].setOnClickListener(view -> {
                 if (purgatory) {
@@ -167,11 +120,10 @@ public class StartMemoryGame extends AppCompatActivity {
                             secondCard = finalI;
                             purgatory = true;
                         } else { // poprawne
-                            // todo: też można by jakoś ładniej ewentualnie kiedyś zrobić
                             board[finalI] = "done";
                             board[firstCard] = "done";
                             correctAnswers++;
-                            pairsLeftToMatch -= pairsLeftToMatch; // todo debug
+                            pairsLeftToMatch--;
                             checkWin();
                             firstCard = -1;
                         }
@@ -182,7 +134,7 @@ public class StartMemoryGame extends AppCompatActivity {
     }
 
     public void hideFields() {
-        for (int i = 0; i < total_cards; i++){
+        for (int i = 0; i < totalCards; i++){
             buttons[i].setText("");
         }
         shown = false;
@@ -206,7 +158,7 @@ public class StartMemoryGame extends AppCompatActivity {
     }
 
     public void winner() {
-        Intent intent = new Intent(StartMemoryGame.this, MemoryWin.class);
+        Intent intent = new Intent(MemoryGame.this, MemoryWin.class);
         int score = Math.max(Math.round(correctAnswers * 100 / totalAnswers), 0);
         intent.putExtra("score", Integer.toString(score));
         startActivity(intent);
@@ -224,11 +176,11 @@ public class StartMemoryGame extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.settings_menu:
-                Intent settings_intent = new Intent(StartMemoryGame.this, Settings.class);
+                Intent settings_intent = new Intent(MemoryGame.this, Settings.class);
                 startActivity(settings_intent);
                 return true;
             case R.id.home_menu:
-                Intent home_intent = new Intent(StartMemoryGame.this, StartListActivity.class);
+                Intent home_intent = new Intent(MemoryGame.this, StartListActivity.class);
                 startActivity(home_intent);
                 return true;
             default:
