@@ -15,13 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
+import activities_menu.StartListActivity;
 
 
 public class ChooseWordsToLearn extends AppCompatActivity {

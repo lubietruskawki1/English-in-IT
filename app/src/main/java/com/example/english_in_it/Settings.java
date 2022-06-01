@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import activities_menu.StartListActivity;
+
 public class Settings extends AppCompatActivity {
     private RecyclerView settings_list_view;
 

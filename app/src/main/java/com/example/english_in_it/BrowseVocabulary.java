@@ -9,10 +9,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ShareActionProvider;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+
+import activities_menu.StartListActivity;
 
 public class BrowseVocabulary extends AppCompatActivity {
     private ConnectionHandler connection_handler;

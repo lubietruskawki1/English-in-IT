@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package flashcards;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,8 +15,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.example.english_in_it.ConnectionHandler;
+import com.example.english_in_it.R;
+import com.example.english_in_it.Settings;
+import activities_menu.StartListActivity;
+import com.example.english_in_it.Utils;
+
 import java.util.HashMap;
 import java.util.Set;
 

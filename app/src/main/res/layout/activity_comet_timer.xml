@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/stars_bg"
 
-    tools:context=".CometTimerActivity">
+    tools:context="comet.CometTimerActivity">
 
     <Button
         android:id="@+id/btnPlayComet"

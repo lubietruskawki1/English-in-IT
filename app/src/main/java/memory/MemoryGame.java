@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package memory;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,6 +11,11 @@ import android.view.MenuItem;
 import android.widget.*;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.english_in_it.R;
+import com.example.english_in_it.Settings;
+import activities_menu.StartListActivity;
+import com.example.english_in_it.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package comet;
 
 import android.annotation.SuppressLint;
 import android.view.Menu;
@@ -14,6 +14,11 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.english_in_it.R;
+import com.example.english_in_it.Settings;
+import activities_menu.StartListActivity;
+import com.example.english_in_it.Utils;
 
 public class CometTimerActivity extends AppCompatActivity {
     public int counter;

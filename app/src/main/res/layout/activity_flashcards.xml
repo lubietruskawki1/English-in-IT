@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/backgroundColor"
-    tools:context=".Flashcards">
+    tools:context="flashcards.Flashcards">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/flashcard"
@@ -21,7 +21,7 @@
         android:padding="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
-        tools:context=".Flashcards">
+        tools:context="flashcards.Flashcards">
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package activities_menu;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +15,16 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.example.english_in_it.BrowseVocabulary;
+import com.example.english_in_it.ChooseWordsToLearn;
+import com.example.english_in_it.R;
+import com.example.english_in_it.Settings;
 
 import java.util.ArrayList;
+
+import comet.CometTimerActivity;
+import flashcards.FlashcardsOptions;
+import memory.Memory;
 
 public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.ViewHolder> {
     private ArrayList<String> items = new ArrayList<>();

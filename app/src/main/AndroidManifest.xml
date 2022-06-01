@@ -13,22 +13,22 @@
         android:supportsRtl="true">
 <!--        android:theme="@style/LightTheme">-->
         <activity
-            android:name=".FallingCometGame"
+            android:name="comet.FallingCometGame"
             android:exported="false" />
         <activity
-            android:name=".CometTimerActivity"
+            android:name="comet.CometTimerActivity"
             android:exported="false" />
         <activity
-            android:name=".Flashcards"
+            android:name="flashcards.Flashcards"
             android:exported="false" />
         <activity
-            android:name=".FlashcardsOptions"
+            android:name="flashcards.FlashcardsOptions"
             android:exported="false" />
         <activity
             android:name=".BrowseVocabulary"
             android:exported="true" />
         <activity
-            android:name=".Memory"
+            android:name="memory.Memory"
             android:exported="true" />
         <activity
             android:name=".Settings"
@@ -40,7 +40,7 @@
             android:name=".TypingWordsExercise"
             android:exported="true" />
         <activity
-            android:name=".StartListActivity"
+            android:name="activities_menu.StartListActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
@@ -52,10 +52,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MemoryGame"
+            android:name="memory.MemoryGame"
             android:exported="true" />
         <activity
-            android:name=".MemoryWin"
+            android:name="memory.MemoryWin"
             android:exported="true" />
     </application>
 

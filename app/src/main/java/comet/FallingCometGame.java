@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package comet;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -18,6 +18,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.english_in_it.ConnectionHandler;
+import com.example.english_in_it.R;
+import com.example.english_in_it.Settings;
+import activities_menu.StartListActivity;
+import com.example.english_in_it.Utils;
 
 import java.util.HashMap;
 import java.util.Set;

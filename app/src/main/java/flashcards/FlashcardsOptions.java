@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package flashcards;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
@@ -12,6 +12,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
+
+import com.example.english_in_it.R;
+import com.example.english_in_it.Settings;
+import activities_menu.StartListActivity;
+import com.example.english_in_it.Utils;
 
 public class FlashcardsOptions extends AppCompatActivity {
     private boolean defToTerm = true;
