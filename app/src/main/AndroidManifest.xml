@@ -11,7 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-<!--        android:theme="@style/LightTheme">-->
+        <activity
+            android:name="learning_sets.NewSet"
+            android:exported="false" />
+        <activity
+            android:name="learning_sets.CreateOwnTermSets"
+            android:exported="false" /> <!-- android:theme="@style/LightTheme"> -->
         <activity
             android:name="comet.FallingCometGame"
             android:exported="false" />

@@ -37,8 +37,8 @@ public class StartListActivity extends AppCompatActivity {
         menu_elements.add("Learn with flashcards");
         menu_elements.add("Play memory");
         menu_elements.add("Play falling comet");
+        menu_elements.add("Do typing exercise");
         menu_elements.add("Set course preferences");
-
 
         ListRecViewAdapter adapter = new ListRecViewAdapter(this);
         adapter.setItems(menu_elements);

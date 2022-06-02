@@ -19,10 +19,12 @@ import com.example.english_in_it.BrowseVocabulary;
 import com.example.english_in_it.ChooseWordsToLearn;
 import com.example.english_in_it.R;
 import com.example.english_in_it.Settings;
+import com.example.english_in_it.TypingWordsExercise;
 
 import java.util.ArrayList;
 
 import comet.CometTimerActivity;
+import learning_sets.CreateOwnTermSets;
 import flashcards.FlashcardsOptions;
 import memory.Memory;
 
@@ -64,6 +66,9 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                 uri = "@drawable/comet_img";
                 break;
             case 5:
+                uri = "@drawable/pencil_no_background_img";
+                break;
+            case 6:
                 uri = "@drawable/settings_img";
                 break;
         }
@@ -82,7 +87,7 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         context.startActivity(browse_intent);
                         break;
                     case 1:
-                        Intent choose_intent = new Intent(context, ChooseWordsToLearn.class);
+                        Intent choose_intent = new Intent(context, CreateOwnTermSets.class);
                         context.startActivity(choose_intent);
                         break;
                     case 2:
@@ -98,6 +103,10 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         context.startActivity(comet_intent);
                         break;
                     case 5:
+                        Intent typing_exercise_intent = new Intent(context, TypingWordsExercise.class);
+                        context.startActivity(typing_exercise_intent);
+                        break;
+                    case 6:
                         Intent settings_intent = new Intent(context, Settings.class);
                         context.startActivity(settings_intent);
                         break;
