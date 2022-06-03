@@ -13,24 +13,53 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 import activities_menu.StartListActivity;
 
 
 public class ChooseWordsToLearn extends AppCompatActivity {
-    ArrayList<Word> chosen_words = new ArrayList<Word>();
+    ArrayList<Word> chosen_words; //= new ArrayList<Word>();
     private ConnectionHandler connection_handler;
     private ListView wordsList;
     private Button startLearningButton;
 
+    private void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(chosen_words);
+        editor.putString("task list", json);
+        editor.apply();
+    }
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("task list", null);
+        Type type = new TypeToken<ArrayList<Word>>() {}.getType();
+        chosen_words = gson.fromJson(json, type);
+
+        if (chosen_words == null) {
+            chosen_words = new ArrayList<>();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        loadData();
         super.onCreate(savedInstanceState);
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         setTheme(Utils.getTheme(pref.getString("theme", null)));
@@ -57,8 +86,11 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                         .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(ChooseWordsToLearn.this, "Added.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChooseWordsToLearn.this, "Added " + glossary.get(position), Toast.LENGTH_SHORT).show();
                                 //TODO dodawanie do bazy
+                                Date firstDate1 = new Date(2023, 11, 2);
+                                Word to_add = new Word(glossary.get(position),  glossary.get(position), 0, 0, firstDate1);
+                                chosen_words.add(to_add);
                             }
                         })
                         .setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -77,6 +109,11 @@ public class ChooseWordsToLearn extends AppCompatActivity {
         startLearningButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                saveData();
+                for(int i = 0; i < chosen_words.size(); i++) {
+                    //Toast pokazujący, że wartości tablicy chosen_words zachowują się pomiedzy wywołaniami
+                    Toast.makeText(ChooseWordsToLearn.this, chosen_words.get(i).word, Toast.LENGTH_SHORT).show();
+                }
                 Intent intent = new Intent(ChooseWordsToLearn.this, TypingWordsExercise.class);
                 startActivity(intent);
             }
@@ -97,7 +134,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu (Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.start_menu, menu);
         return true;
