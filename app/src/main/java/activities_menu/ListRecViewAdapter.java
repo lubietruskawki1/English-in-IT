@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.english_in_it.BrowseVocabulary;
 import com.example.english_in_it.ChooseWordsToLearn;
+import com.example.english_in_it.DailyRepetitions;
 import com.example.english_in_it.R;
 import com.example.english_in_it.Settings;
 import com.example.english_in_it.TypingWordsExercise;
@@ -94,6 +95,8 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         context.startActivity(choose_intent);
                         break;
                     case 2:
+                        Intent repetitions_intent = new Intent(context, DailyRepetitions.class);
+                        context.startActivity(repetitions_intent);
                         break;
                     case 3:
                         Intent flashcards_intent = new Intent(context, FlashcardsOptions.class);

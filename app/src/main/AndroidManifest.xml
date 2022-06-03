@@ -18,6 +18,9 @@
             android:name="learning_sets.CreateOwnTermSets"
             android:exported="false" /> <!-- android:theme="@style/LightTheme"> -->
         <activity
+            android:name=".DailyRepetitions"
+            android:exported="false" />
+        <activity
             android:name="comet.FallingCometGame"
             android:exported="false" />
         <activity
