@@ -3,7 +3,7 @@ insert into glossary values('abstraction', 'Creating an abstract concept-object 
 insert into glossary values('agent architecture', 'A blueprint for software agents and intelligent control systems depicting the arrangement of components.');
 insert into glossary values('agent-based model (ABM)', 'A class of computational models for simulating the actions and interactions of autonomous agents with a view to assessing the effects on the system as a whole.');
 insert into glossary values('aggregate function', 'In database management, a function in which the values of multiple rows are grouped to form a single value, such as a sum or max.');
-insert into glossary values('agile software development', 'An approach to software development under which and solutions evolve through self-organizing and cross-functional teams');
+insert into glossary values('agile software development', 'An approach to software development under which and solutions evolve through self-organizing and cross-functional teams.');
 insert into glossary values('algorithm', 'An unambiguous specification of how to solve a class of problems.');
 insert into glossary values('algorithm design', 'A method or mathematical process for problem-solving and for engineering algorithms.');
 insert into glossary values('algorithmic efficiency', 'A property of an algorithm which relates to the number of computational resources used by the algorithm.');
@@ -20,7 +20,7 @@ insert into glossary values('automated reasoning', 'An area of computer science 
 
 insert into glossary values('bandwidth', 'The maximum rate of data transfer across a given path.');
 insert into glossary values('Bayesian programming', 'A technique to solve problems when less than the necessary information is available.');
-insert into glossary values('benchmark', 'Running a computer program(s), or other operations, in order to assess the performance of an object');
+insert into glossary values('benchmark', 'Running a computer program(s), or other operations, in order to assess the performance of an object.');
 insert into glossary values('best, worst and average case', 'Expressions of what the resource usage is at least, at most, and on average, respectively, for a given algorithm.');
 insert into glossary values('big data', 'Data sets that are too large or complex for traditional data-processing application software to adequately deal with.');
 insert into glossary values('big O notation', 'A notation that describes the limiting behavior of a function when the argument tends towards a particular value/infinity.');
@@ -32,18 +32,18 @@ insert into glossary values('bit', 'A basic unit of information used in computin
 insert into glossary values('bit rate (R)', 'The number of bits that are conveyed or processed per unit of time.');
 insert into glossary values('blacklist', 'An access control mechanism that allows through all elements, except those explicitly mentioned in a list of prohibited elements.');
 insert into glossary values('BMP file format', 'A raster graphics image file format used to store bitmap digital images independently of the display device.');
-insert into glossary values('Boolean data type', 'A data type that has one of two possible values (usually denoted true and false)');
+insert into glossary values('Boolean data type', 'A data type that has one of two possible values (usually denoted true and false.');
 insert into glossary values('Boolean expression', 'An expression used in a programming language that returns a Boolean value when evaluated.');
-insert into glossary values('Boolean algebra', 'The branch of algebra in which the values of the variables are the truth values');
+insert into glossary values('Boolean algebra', 'The branch of algebra in which the values of the variables are the truth values.');
 insert into glossary values('byte', 'A unit of digital information that most commonly consists of eight bits, representing a binary number.');
 insert into glossary values('booting', 'The procedures implemented in starting up a computer or computer appliance until it can be used.');
 
 insert into glossary values('callback', 'Any executable code that is passed as an argument to other code that is expected to execute the argument at a given time.');
 insert into glossary values('central processing unit (CPU)', 'The electronic circuitry within a computer that carries out the instructions of a computer program.');
-insert into glossary values('character', 'A unit of information that roughly corresponds to a grapheme, grapheme-like unit, or symbol');
+insert into glossary values('character', 'A unit of information that roughly corresponds to a grapheme, grapheme-like unit, or symbol.');
 insert into glossary values('cipher', 'An algorithm for performing encryption or decryption.');
-insert into glossary values('class', 'An extensible program-code-template for creating objects, providing implementations of behavior');
-insert into glossary values('class-based programming', 'A style of object-oriented programming which inheritance occurs via defining "classes" of objects');
+insert into glossary values('class', 'An extensible program-code-template for creating objects, providing implementations of behavior.');
+insert into glossary values('class-based programming', 'A style of object-oriented programming which inheritance occurs via defining "classes" of objects.');
 insert into glossary values('client', 'A piece of computer hardware or software that accesses a service made available by a server.');
 insert into glossary values('cleanroom software engineering', 'A software development process intended to produce software with a certifiable level of reliability.');
 insert into glossary values('closure', 'A technique for implementing lexically scoped name binding in a language with first-class functions.');
@@ -52,14 +52,14 @@ insert into glossary values('code library', 'A collection of non-volatile resour
 insert into glossary values('coding', 'The process of designing and building an executable computer program for accomplishing a specific computing task.');
 insert into glossary values('coding theory', 'The study of the properties of codes and their respective fitness for specific applications.');
 insert into glossary values('cognitive science', 'The interdisciplinary, scientific study of the mind and its processes.');
-insert into glossary values('collection', 'Some number of data items that have some shared significance to the problem being solved');
+insert into glossary values('collection', 'Some number of data items that have some shared significance to the problem being solved.');
 insert into glossary values('comma-separated values (CSV)', 'A delimited text file that uses a comma to separate values.');
-insert into glossary values('compiler', 'A computer program that transforms code written in one programming language into another');
+insert into glossary values('compiler', 'A computer program that transforms code written in one programming language into another.');
 insert into glossary values('computability theory', 'The study of computable functions, Turing degrees,generalized computability and definability.');
 insert into glossary values('computation', 'A calculation that includes both arithmetical and non-arithmetical steps and follows a well-defined model.');
 insert into glossary values('computational biology', 'Involves computational simulation techniques to the study of biological, ecological, behavioural, and social systems.');
 insert into glossary values('computational chemistry', 'A branch of chemistry that uses computer simulation to assist in solving chemical problems.');
-insert into glossary values('computational complexity theory', 'A subfield of computational science focusing on classifying computational problems by their difficulty');
+insert into glossary values('computational complexity theory', 'A subfield of computational science focusing on classifying computational problems by their difficulty.');
 insert into glossary values('computational model', 'A mathematical model that requires computational resources to study the behavior of a complex system by computer simulation.');
 insert into glossary values('computational neuroscience', 'A branch of neuroscience employing mathematical models to understand the structure of the nervous system.');
 insert into glossary values('computational physics', 'the study and implementation of numerical analysis to solve problems in physics for which a quantitative theory already exists.');
@@ -80,7 +80,7 @@ insert into glossary values('computer vision', 'A scientific field that deals wi
 insert into glossary values('computing', 'Is any goal-oriented activity requiring, benefiting from, or creating computing machinery.');
 insert into glossary values('concatenation', 'String concatenation is the operation of joining character strings end-to-end.');
 insert into glossary values('concurrency', 'The ability of different parts of a program to be executed parallel, without affecting the outcome.');
-insert into glossary values('conditional', 'A feature of a programming language performing different actions depending on a specified boolean');
+insert into glossary values('conditional', 'A feature of a programming language performing different actions depending on a specified boolean.');
 insert into glossary values('container', 'Is a class, a data structure, or an abstract data type whose instances are collections of other objects.');
 insert into glossary values('continuation-passing style (CPS)', 'A style of functional programming in which control is passed explicitly in the form of a continuation.');
 insert into glossary values('control flow', 'The order in which individual statements, instructions or function calls of an imperative program are executed or evaluated.');
@@ -113,12 +113,12 @@ insert into glossary values('download', 'In computer networks, to receive data f
 
 insert into glossary values('edge device', 'A device which provides an entry point into enterprise or service provider core networks.');
 insert into glossary values('encryption', 'In cryptography, encryption is the process of encoding information.');
-insert into glossary values('event', 'An action or occurrence recognized by software, that may be handled by the software. ');
+insert into glossary values('event', 'An action or occurrence recognized by software, that may be handled by the software.');
 insert into glossary values('event-driven programming', 'A programming paradigm determining the program flow by events like user actions, or messages from other programs.');
 insert into glossary values('evolutionary computing', 'A family of algorithms for global optimization inspired by biological evolution.');
 insert into glossary values('executable', 'Causes a computer "to perform indicated tasks according to encoded instructions.');
 insert into glossary values('execution', 'the process by which a computer executes the instructions of a program.');
-insert into glossary values('exception handling', 'Handling the occurrence of exceptions – anomalous conditions requiring special processing');
+insert into glossary values('exception handling', 'Handling the occurrence of exceptions – anomalous conditions requiring special processing.');
 insert into glossary values('expression', ' combination of one or more constants, variables, operators, and functions.');
 
 insert into glossary values('fault-tolerant computer system', 'A system designed around the concept of fault tolerance.');
@@ -141,7 +141,7 @@ insert into glossary values('graph theory', 'The study of graphs - mathematical 
 insert into glossary values('handle', 'An abstract reference to a resource.');
 insert into glossary values('hash function', 'Any function that can be used to map data of arbitrary size to data of a fixed size.');
 insert into glossary values('hash table', 'A data structure that implements an associative array abstract data type, a structure that can map keys to values.');
-insert into glossary values('heap', 'A specialized tree-based data structure which is an almost complete tree that satisfies the heap property');
+insert into glossary values('heap', 'A specialized tree-based data structure which is an almost complete tree that satisfies the heap property.');
 insert into glossary values('heapsort', 'A comparison-based sorting algorithm using a heap structure.');
 insert into glossary values('human-computer interaction (HCI)', 'Researches the use of computer technology in interfaces between people and computers.');
 
