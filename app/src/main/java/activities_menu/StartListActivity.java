@@ -34,6 +34,7 @@ public class StartListActivity extends AppCompatActivity {
         final ArrayList<String> menu_elements = new ArrayList<>();
         menu_elements.add("Browse vocabulary");
         menu_elements.add("Choose words to learn");
+        menu_elements.add("Daily repetitions");
         menu_elements.add("Learn with flashcards");
         menu_elements.add("Play memory");
         menu_elements.add("Play falling comet");

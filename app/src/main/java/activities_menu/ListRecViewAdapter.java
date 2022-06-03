@@ -57,18 +57,21 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                 uri = "@drawable/choosing_img";
                 break;
             case 2:
-                uri = "@drawable/flashcard_img";
+                uri = "@drawable/dali_clock";
                 break;
             case 3:
-                uri = "@drawable/memory_img";
+                uri = "@drawable/flashcard_img";
                 break;
             case 4:
-                uri = "@drawable/comet_img";
+                uri = "@drawable/memory_img";
                 break;
             case 5:
-                uri = "@drawable/pencil_no_background_img";
+                uri = "@drawable/comet_img";
                 break;
             case 6:
+                uri = "@drawable/pencil_no_background_img";
+                break;
+            case 7:
                 uri = "@drawable/settings_img";
                 break;
         }
@@ -91,22 +94,24 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         context.startActivity(choose_intent);
                         break;
                     case 2:
+                        break;
+                    case 3:
                         Intent flashcards_intent = new Intent(context, FlashcardsOptions.class);
                         context.startActivity(flashcards_intent);
                         break;
-                    case 3:
+                    case 4:
                         Intent memory_intent = new Intent(context, Memory.class);
                         context.startActivity(memory_intent);
                         break;
-                    case 4:
+                    case 5:
                         Intent comet_intent = new Intent(context, CometTimerActivity.class);
                         context.startActivity(comet_intent);
                         break;
-                    case 5:
+                    case 6:
                         Intent typing_exercise_intent = new Intent(context, TypingWordsExercise.class);
                         context.startActivity(typing_exercise_intent);
                         break;
-                    case 6:
+                    case 7:
                         Intent settings_intent = new Intent(context, Settings.class);
                         context.startActivity(settings_intent);
                         break;
