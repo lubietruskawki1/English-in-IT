@@ -7,14 +7,14 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class Word /*implements Parcelable*/ {
+public class Word implements Parcelable {
     String word;
     String meaning;
     int good_answers;
     int bad_answers;
     Date when_to_remind;
 
-    /*protected Word(Parcel in) {
+    protected Word(Parcel in) {
         word= in.readString();
         meaning = in.readString();
         good_answers = in.readInt();
@@ -44,7 +44,7 @@ public class Word /*implements Parcelable*/ {
         dest.writeString(meaning);
         dest.writeInt(good_answers);
         dest.writeInt(bad_answers);
-    }*/
+    }
 
     public Word(String word, String meaning, int good_answers, int bad_answers, Date when_to_remind) {
         this.word = word;
