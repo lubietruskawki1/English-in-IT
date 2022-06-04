@@ -41,7 +41,7 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
         switch (position) {
         }
 
-        holder.parent.setOnClickListener(view -> {
+        holder.edit_btn.setOnClickListener(view -> {
             Toast.makeText(context, "selected " + items.get(position), Toast.LENGTH_SHORT).show();
             switch (position) {
             }
@@ -60,7 +60,7 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textName;
         View itemView;
-        Button parent;
+        Button edit_btn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

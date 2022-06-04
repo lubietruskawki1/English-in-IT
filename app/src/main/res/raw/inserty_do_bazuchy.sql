@@ -1,4 +1,4 @@
-insert into glossary values('abstract method', 'One with only a signature and no implementation body.');
+insert into glossary values(0, 'abstract method', 'One with only a signature and no implementation body.', -1, '0-0-0');
 insert into glossary values('abstraction', 'Creating an abstract concept-object by keeping common features to various concrete objects/systems of study.');
 insert into glossary values('agent architecture', 'A blueprint for software agents and intelligent control systems depicting the arrangement of components.');
 insert into glossary values('agent-based model (ABM)', 'A class of computational models for simulating the actions and interactions of autonomous agents with a view to assessing the effects on the system as a whole.');

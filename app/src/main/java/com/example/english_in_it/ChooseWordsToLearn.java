@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import android.os.Bundle;
@@ -90,8 +91,13 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Toast.makeText(ChooseWordsToLearn.this, "Added " + glossary.get(position), Toast.LENGTH_SHORT).show();
                                 //TODO dodawanie do bazy
-                                Date firstDate1 = new Date(2023, 11, 2);
-                                Word to_add = new Word(glossary.get(position),  glossary.get(position), 0, 0, firstDate1);
+                                String firstDat = "2/11/2023";
+                                Word to_add = null;
+                                try {
+                                    to_add = new Word(glossary.get(position),  glossary.get(position), 0, firstDat);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
                                 chosen_words.add(to_add);
                             }
                         })

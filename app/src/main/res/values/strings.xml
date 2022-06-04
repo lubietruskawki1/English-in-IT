@@ -39,6 +39,11 @@
     <string name="edit">Edit</string>
     <string name="set_name_dummy">This is set name</string>
     <string name="set_terms_number_dummy">This is a number of sets you have</string>
+    <string name="set_name">new set name</string>
+    <string name="finish">Finish</string>
+    <string name="add_some_terms">Add some terms to your new set by clicking on a chosen term from the list below.</string>
+
+
 
 
 
