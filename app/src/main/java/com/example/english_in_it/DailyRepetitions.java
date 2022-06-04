@@ -11,8 +11,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import activities_menu.StartListActivity;
 import comet.CometTimerActivity;
@@ -21,36 +24,30 @@ public class DailyRepetitions extends AppCompatActivity {
     private ConnectionHandler connection_handler;
 
     //TODO trzeba podać mu arraylistę (edytowalną) ze słówkami do powtórzenia
-
+    ArrayList<Word> list_to_repeat = new ArrayList<Word>();
     Button start_button;// = findViewById();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         connection_handler = new ConnectionHandler(DailyRepetitions.this);
-
-        System.out.println("przed pobraniem listy setów");
         ArrayList<String> all_sets2 = connection_handler.getAllLearningSets();
-        if(all_sets2.isEmpty()) System.out.println("pusty set 2");
-        else System.out.println("NIie pusty set 2");
-
         for(int i = 0; i < all_sets2.size(); i++) {
-            System.out.println("set w liście setów: " + all_sets2.get(i));
-            //connection_handler.addWordToLearningSet("bit", all_sets2.get(i));
-            //System.out.println("Dodało bit");
-            //connection_handler.addWordToLearningSet("blacklist", all_sets2.get(i));
-            //System.out.println("Dodało blacklist");
+            Date today = new Date();
+            connection_handler.setWordRepetitionDate("bit", today);
             try {
-                ArrayList<Word> aktualna_lista = connection_handler.getLearningSetList(all_sets2.get(i));
-                System.out.println("Printujemy listę:");
-                for(int j = 0; j < aktualna_lista.size(); j++) {
-                    System.out.println(aktualna_lista.get(j).word);
+                ArrayList<Word> current_list = connection_handler.getLearningSetList(all_sets2.get(i));
+                for(int j = 0; j < current_list.size(); j++) {
+                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+                    String formated_today = formatter.format(today);
+                    if(current_list.get(j).when_to_remind != null && formated_today.equals(formatter.format(current_list.get(j).when_to_remind))) {
+                        list_to_repeat.add(current_list.get(j));
+                    }
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
-
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         setTheme(Utils.getTheme(pref.getString("theme", null)));

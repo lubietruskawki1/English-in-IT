@@ -24,7 +24,7 @@ import activities_menu.StartListActivity;
 
 public class TypingWordsExercise extends AppCompatActivity {
 
-    ArrayList<Word> words = new ArrayList<Word>();
+    ArrayList<Word> words;// = new ArrayList<Word>();
     //ArrayList<Word> words = (ArrayList<Word>) getIntent().getSerializableExtra("words");
 
     private ConnectionHandler connection_handler;
@@ -52,8 +52,11 @@ public class TypingWordsExercise extends AppCompatActivity {
         //ArrayList<Word> words = (ArrayList<Word>) getIntent().getParcelableExtra("words");
         Intent intent = getIntent();
         Bundle args = intent.getBundleExtra("bundle");
-        ArrayList<Word> words = (ArrayList<Word>) args.getSerializable("words");
-
+        words = (ArrayList<Word>) args.getSerializable("words");
+        System.out.println("W Typin:");
+        for(int i = 0; i < words.size(); i++) {
+            System.out.println(words.get(i).word);
+        }
 
         Iterator<Word> iter = words.iterator();
 
