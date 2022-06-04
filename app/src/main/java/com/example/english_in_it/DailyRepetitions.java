@@ -11,6 +11,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 import activities_menu.StartListActivity;
 import comet.CometTimerActivity;
 
@@ -25,6 +27,22 @@ public class DailyRepetitions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         connection_handler = new ConnectionHandler(DailyRepetitions.this);
+
+        System.out.println("przed pobraniem listy setów");
+        ArrayList<String> all_sets = connection_handler.getAllLearningSets();
+        if(all_sets.isEmpty()) System.out.println("pusty set");
+        else System.out.println("NIie pusty set");
+        System.out.println("przed dodaniem seta");
+        connection_handler.newLearningSet("set2");
+        System.out.println("po dodaniu seta");
+        ArrayList<String> all_sets2 = connection_handler.getAllLearningSets();
+        if(all_sets2.isEmpty()) System.out.println("pusty set 2");
+        else System.out.println("NIie pusty set 2");
+
+        for(int i = 0; i < all_sets2.size(); i++) {
+            System.out.println("set w liście setów: " + all_sets2.get(i));
+        }
+
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         setTheme(Utils.getTheme(pref.getString("theme", null)));
         setContentView(R.layout.activity_repetitions);

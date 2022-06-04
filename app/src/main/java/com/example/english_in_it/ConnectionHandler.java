@@ -83,7 +83,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Word> result = new ArrayList<>();
 
-        String selectQuery = "select * from glossary right join learning_sets_contents s on glossary.term = s.term where s.set_name = " + set_name + ";";
+        String selectQuery = "select * from glossary right join learning_sets_contents s on glossary.term = s.term where s.set_name = '" + set_name + "';";
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -97,7 +97,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     public void setWordDaysWaitedPrev(String word_term, int new_value) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query_update = "update glossary set days_waited_prev = " + new_value + " where term = " + word_term + ";";
+        String query_update = "update glossary set days_waited_prev = '" + new_value + " where term = " + word_term + "';";
         db.execSQL(query_update);
     }
 
@@ -111,19 +111,19 @@ public class ConnectionHandler extends SQLiteOpenHelper {
             new_date = formatter.format(new_value);
         }
 
-        String query_update = "update glossary set repetition_date = " + new_date + " where term = " + word_term + ";";
+        String query_update = "update glossary set repetition_date = '" + new_date + "' where term = '" + word_term + "';";
         db.execSQL(query_update);
     }
 
     public void newLearningSet(String set_name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "insert into learning_sets values(" + set_name + ");";
+        String query = "insert into learning_sets values('" + set_name + "');";
         db.execSQL(query);
     }
 
     public void addWordToLearningSet(String word, String set_name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String insert_query = "insert into learning_sets_contents values(" + word + "," + set_name + ");";
+        String insert_query = "insert into learning_sets_contents values('" + word + "," + set_name + "');";
         db.execSQL(insert_query);
     }
 
