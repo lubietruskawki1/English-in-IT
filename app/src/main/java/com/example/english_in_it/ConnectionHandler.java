@@ -29,10 +29,10 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("drop table if exists glossary"); // to będzie do wykasowania gdy już będzie gotowa baza
         db.execSQL("drop table if exists learning_sets_contents");
-        db.execSQL("drop table if exists learning_sets_contents");
+        db.execSQL("drop table if exists learning_sets");
 
         String query_gloss = "create table if not exists glossary (id integer, term text unique, definition text, days_waited_prev integer, repetition_date text)";
-        String query_sets_contents = "create table if not exists learning_sets_contents (word_id integer, set_name text)";
+        String query_sets_contents = "create table if not exists learning_sets_contents (term text, set_name text)";
         String query_sets = "create table if not exists learning_sets (set_name text)";
 
         db.execSQL(query_gloss);
@@ -42,7 +42,6 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     }
 
     public void fillDatabase(SQLiteDatabase db) {
-        System.out.println("XXXXFILL");
         InputStream inserts = this.context.getResources().openRawResource(R.raw.nowe_inserty);
         Scanner s = new Scanner(inserts).useDelimiter("\\A");
         String sql_inserts = s.hasNext() ? s.next() : "";
@@ -60,7 +59,6 @@ public class ConnectionHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        System.out.println("XXXXUPGRADE");
         db.execSQL("drop table if exists glossary");
         onCreate(db);
     }
@@ -117,6 +115,33 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL(query_update);
     }
 
+    public void newLearningSet(String set_name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "insert into learning_sets values(" + set_name + ");";
+        db.execSQL(query);
+    }
+
+    public void addWordToLearningSet(String word, String set_name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String insert_query = "insert into learning_sets_contents values(" + word + "," + set_name + ");";
+        db.execSQL(insert_query);
+    }
+
+    public ArrayList<String> getAllLearningSets() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<String> result = new ArrayList<>();
+
+        String selectQuery = "select * from learning_sets;";
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+
+        return result;
+    }
 
     public HashMap<String, String> getGlossaryMapTermToDef(int term_to_def) { // term -> definition
         SQLiteDatabase db = this.getReadableDatabase();
@@ -131,7 +156,6 @@ public class ConnectionHandler extends SQLiteOpenHelper {
                 glossary.put(cursor.getString(1-term_to_def + 1), cursor.getString(term_to_def + 1));
             } while (cursor.moveToNext());
         }
-
         return glossary;
     }
 
