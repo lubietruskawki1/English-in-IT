@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
         <activity
-            android:name="learning_sets.NewSet"
+            android:name="learning_sets.EditSet"
             android:exported="false" />
         <activity
             android:name="learning_sets.CreateOwnTermSets"

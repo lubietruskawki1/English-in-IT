@@ -53,4 +53,11 @@
         android:layout_below="@+id/next_btn_and_txt"
         android:id="@+id/sets_number_txt" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/sets_recycler_view"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/sets_number_txt"/>
+
 </RelativeLayout>

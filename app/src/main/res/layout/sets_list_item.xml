@@ -3,21 +3,22 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:layout_centerVertical="true"
-    android:layout_centerHorizontal="true">
+    android:id="@+id/set_parent"
+    android:orientation="horizontal"
+    android:layout_centerInParent="true">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/set_description">
+        android:id="@+id/set_description"
+        android:minHeight="45dp">
 
         <TextView
             android:id="@+id/set_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/set_name_dummy"
-            android:layout_marginTop="7dp"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textColor="?attr/buttonColor"/>
 
         <TextView
@@ -26,16 +27,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/set_name"
             android:text="@string/set_terms_number_dummy"
-            android:layout_marginTop="7dp"
             android:textSize="12sp"
             android:textColor="?attr/buttonColor"/>
 
     </RelativeLayout>
 
     <Button
+        android:id="@+id/edit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit"
-        android:layout_marginStart="10dp"/>
+        android:textSize="12sp"
+        android:layout_marginStart="10dp"
+        android:minHeight="0dp"
+        android:minWidth="0dp"/>
 
 </LinearLayout>

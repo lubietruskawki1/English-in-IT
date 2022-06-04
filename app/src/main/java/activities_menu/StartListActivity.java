@@ -43,8 +43,8 @@ public class StartListActivity extends AppCompatActivity {
 
         ListRecViewAdapter adapter = new ListRecViewAdapter(this);
         adapter.setItems(menu_elements);
-
         main_list_view.setAdapter(adapter);
+
         main_list_view.setLayoutManager(new GridLayoutManager(this, 2));
     }
 
