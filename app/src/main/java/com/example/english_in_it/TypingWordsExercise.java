@@ -25,6 +25,7 @@ import activities_menu.StartListActivity;
 public class TypingWordsExercise extends AppCompatActivity {
 
     ArrayList<Word> words = new ArrayList<Word>();
+    //ArrayList<Word> words = (ArrayList<Word>) getIntent().getSerializableExtra("words");
 
     private ConnectionHandler connection_handler;
 
@@ -36,17 +37,24 @@ public class TypingWordsExercise extends AppCompatActivity {
     public EditText word;
     public TextView good_bad;
     public TextView correct_answer;
-    private Iterator<Word> iter = words.iterator();
+    //private Iterator<Word> iter = words.iterator();
     private Word current_word;
     private int counter_for_clicks;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Word word1 = new Word("abstract method","Method with only a signature and no implementation body.",0,0,new Date());
+        /*Word word1 = new Word("abstract method","Method with only a signature and no implementation body.",0,0,new Date());
         Word word2 = new Word("algorithm","An unambiguous specification of how to solve a class of problems.",0,0,new Date());
         words.add(word1);
-        words.add(word2);
+        words.add(word2);*/
+        //Bundle b = getIntent().getExtras();
+        //ArrayList<Word> words = (ArrayList<Word>) getIntent().getParcelableExtra("words");
+        Intent intent = getIntent();
+        Bundle args = intent.getBundleExtra("bundle");
+        ArrayList<Word> words = (ArrayList<Word>) args.getSerializable("words");
+
+
         Iterator<Word> iter = words.iterator();
 
         super.onCreate(savedInstanceState);

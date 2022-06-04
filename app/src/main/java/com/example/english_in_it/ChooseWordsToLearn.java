@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -115,6 +117,11 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                     Toast.makeText(ChooseWordsToLearn.this, chosen_words.get(i).word, Toast.LENGTH_SHORT).show();
                 }
                 Intent intent = new Intent(ChooseWordsToLearn.this, TypingWordsExercise.class);
+
+                Bundle args = new Bundle();
+                args.putSerializable("words",(Serializable)chosen_words);
+                intent.putExtra("bundle",args);
+
                 startActivity(intent);
             }
         });
