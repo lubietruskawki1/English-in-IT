@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import activities_menu.StartListActivity;
@@ -29,19 +30,27 @@ public class DailyRepetitions extends AppCompatActivity {
         connection_handler = new ConnectionHandler(DailyRepetitions.this);
 
         System.out.println("przed pobraniem listy setów");
-        ArrayList<String> all_sets = connection_handler.getAllLearningSets();
-        if(all_sets.isEmpty()) System.out.println("pusty set");
-        else System.out.println("NIie pusty set");
-        System.out.println("przed dodaniem seta");
-        connection_handler.newLearningSet("set2");
-        System.out.println("po dodaniu seta");
         ArrayList<String> all_sets2 = connection_handler.getAllLearningSets();
         if(all_sets2.isEmpty()) System.out.println("pusty set 2");
         else System.out.println("NIie pusty set 2");
 
         for(int i = 0; i < all_sets2.size(); i++) {
             System.out.println("set w liście setów: " + all_sets2.get(i));
+            //connection_handler.addWordToLearningSet("bit", all_sets2.get(i));
+            //System.out.println("Dodało bit");
+            //connection_handler.addWordToLearningSet("blacklist", all_sets2.get(i));
+            //System.out.println("Dodało blacklist");
+            try {
+                ArrayList<Word> aktualna_lista = connection_handler.getLearningSetList(all_sets2.get(i));
+                System.out.println("Printujemy listę:");
+                for(int j = 0; j < aktualna_lista.size(); j++) {
+                    System.out.println(aktualna_lista.get(j).word);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
+
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         setTheme(Utils.getTheme(pref.getString("theme", null)));

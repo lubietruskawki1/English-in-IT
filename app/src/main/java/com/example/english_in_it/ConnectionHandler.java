@@ -83,7 +83,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Word> result = new ArrayList<>();
 
-        String selectQuery = "select * from glossary right join learning_sets_contents s on glossary.term = s.term where s.set_name = '" + set_name + "';";
+        String selectQuery = "select * from glossary join learning_sets_contents s on glossary.term = s.term where s.set_name = '" + set_name + "';";
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -123,7 +123,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
 
     public void addWordToLearningSet(String word, String set_name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String insert_query = "insert into learning_sets_contents values('" + word + "," + set_name + "');";
+        String insert_query = "insert into learning_sets_contents values('" + word + "','" + set_name + "');";
         db.execSQL(insert_query);
     }
 
