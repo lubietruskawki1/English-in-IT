@@ -56,24 +56,7 @@ public class TypingWordsExercise extends AppCompatActivity {
         Bundle repetitions_bundle = getIntent().getExtras();
         Boolean repetitions = repetitions_bundle.getBoolean("repetitions");
         connection_handler = new ConnectionHandler(TypingWordsExercise.this);
-        Iterator<Word> iter = words.iterator();
 
-        super.onCreate(savedInstanceState);
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-        setTheme(Utils.getTheme(pref.getString("theme", null)));
-        setContentView(R.layout.activity_typing_words);
-
-        meaning = findViewById(R.id.meaning);
-        check_button = findViewById(R.id.check_button);
-        word = findViewById(R.id.word);
-        good_bad = findViewById(R.id.good_bad);
-        correct_answer = findViewById(R.id.correct_answer);
-
-        current_word = iter.next();
-        meaning.setText(current_word.meaning);
-        counter_for_clicks = 0;
-        correct_answer.setText("");
-        good_bad.setText("");
 
         if(repetitions) {
             System.out.println("Próbuję liczyć powtórki");
@@ -96,17 +79,35 @@ public class TypingWordsExercise extends AppCompatActivity {
                 }
             }
             System.out.println("Przed ifem isEmpty");
-            if(words.isEmpty()) {
+            /*if(words.isEmpty()) {
                 System.out.println(" w ifie isEmpty");
                 Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
                 startActivity(intent);
                 return;
-            }
+            }*/
         }
         else {
             //TODO trzeba napisać skąd wziąć listę słówek, jeśli nie robimy powtórek tylko uczymy się z zestawu
         }
 
+        Iterator<Word> iter = words.iterator();
+
+        super.onCreate(savedInstanceState);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        setTheme(Utils.getTheme(pref.getString("theme", null)));
+        setContentView(R.layout.activity_typing_words);
+
+        meaning = findViewById(R.id.meaning);
+        check_button = findViewById(R.id.check_button);
+        word = findViewById(R.id.word);
+        good_bad = findViewById(R.id.good_bad);
+        correct_answer = findViewById(R.id.correct_answer);
+
+        current_word = iter.next();
+        meaning.setText(current_word.meaning);
+        counter_for_clicks = 0;
+        correct_answer.setText("");
+        good_bad.setText("");
 
         check_button.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
             @SuppressLint("ClickableViewAccessibility")
