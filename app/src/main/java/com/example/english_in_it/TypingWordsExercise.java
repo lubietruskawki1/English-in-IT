@@ -56,9 +56,29 @@ public class TypingWordsExercise extends AppCompatActivity {
         Bundle repetitions_bundle = getIntent().getExtras();
         Boolean repetitions = repetitions_bundle.getBoolean("repetitions");
         connection_handler = new ConnectionHandler(TypingWordsExercise.this);
+        Iterator<Word> iter = words.iterator();
+
+        super.onCreate(savedInstanceState);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        setTheme(Utils.getTheme(pref.getString("theme", null)));
+        setContentView(R.layout.activity_typing_words);
+
+        meaning = findViewById(R.id.meaning);
+        check_button = findViewById(R.id.check_button);
+        word = findViewById(R.id.word);
+        good_bad = findViewById(R.id.good_bad);
+        correct_answer = findViewById(R.id.correct_answer);
+
+        current_word = iter.next();
+        meaning.setText(current_word.meaning);
+        counter_for_clicks = 0;
+        correct_answer.setText("");
+        good_bad.setText("");
 
         if(repetitions) {
+            System.out.println("Próbuję liczyć powtórki");
             ArrayList<String> all_sets = connection_handler.getAllLearningSets();
+            connection_handler.setWordDaysWaitedPrev("bit", 1);
             for(int i = 0; i < all_sets.size(); i++) {
                 Date today = new Date();
                 //connection_handler.setWordRepetitionDate("bit", today);
@@ -75,31 +95,19 @@ public class TypingWordsExercise extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+            System.out.println("Przed ifem isEmpty");
+            if(words.isEmpty()) {
+                System.out.println(" w ifie isEmpty");
+                Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
+                startActivity(intent);
+                return;
+            }
         }
         else {
-
+            //TODO trzeba napisać skąd wziąć listę słówek, jeśli nie robimy powtórek tylko uczymy się z zestawu
         }
 
-        Iterator<Word> iter = words.iterator();
 
-        super.onCreate(savedInstanceState);
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-        setTheme(Utils.getTheme(pref.getString("theme", null)));
-        setContentView(R.layout.activity_typing_words);
-
-
-
-        meaning = findViewById(R.id.meaning);
-        check_button = findViewById(R.id.check_button);
-        word = findViewById(R.id.word);
-        good_bad = findViewById(R.id.good_bad);
-        correct_answer = findViewById(R.id.correct_answer);
-
-        current_word = iter.next();
-        meaning.setText(current_word.meaning);
-        counter_for_clicks = 0;
-        correct_answer.setText("");
-        good_bad.setText("");
         check_button.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override
@@ -110,10 +118,12 @@ public class TypingWordsExercise extends AppCompatActivity {
                     String entered_word = word.getText().toString();
                     if (entered_word.equals(current_word.word)) {
                         good_bad.setText("CORRECT!");
+                        current_word.set_date_to_remind(true);
                         //good_bad.setTextColor(Color.parseColor("0xff00ff00"));
                     } else {
                         good_bad.setText("INCORRECT");
                         correct_answer.setText("correct answer: " + current_word.word);
+                        current_word.set_date_to_remind(false);
                         //good_bad.setTextColor(Color.parseColor("0xffff0000"));
                     }
                     check_button.setText("CONTINUE");
@@ -125,6 +135,13 @@ public class TypingWordsExercise extends AppCompatActivity {
                     good_bad.setText("");
                     check_button.setText("CHECK");
                     if (!iter.hasNext()) {
+                        //zapisuję do bazy danych info kiedy co powtórzyć
+                        int len = words.size();
+                        for(int i = 0; i < len; i++) {
+                            System.out.println(words.get(i).when_to_remind);
+                            connection_handler.setWordRepetitionDate(words.get(i).word, words.get(i).when_to_remind);
+                            connection_handler.setWordDaysWaitedPrev(words.get(i).word, words.get(i).days_we_waited_previously);
+                        }
                         Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
                         startActivity(intent);
                         return;
@@ -134,8 +151,10 @@ public class TypingWordsExercise extends AppCompatActivity {
                     word.setText("");
                     counter_for_clicks++;
                 }
+
             }
         }));
+
     }
 
     @Override
