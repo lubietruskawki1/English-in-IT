@@ -23,7 +23,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     public ConnectionHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
-        //onCreate(this.getWritableDatabase());
+        onCreate(this.getWritableDatabase());
     }
 
     @Override
@@ -211,8 +211,8 @@ public class ConnectionHandler extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                String term = cursor.getString(0);
-                String definition = cursor.getString(1);
+                String term = cursor.getString(1);
+                String definition = cursor.getString(2);
                 if (term.length() <= maxLength && definition.length() <= maxLength) {
                     glossary.put(term, definition);
                 }
