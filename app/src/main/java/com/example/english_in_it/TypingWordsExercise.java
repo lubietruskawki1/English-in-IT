@@ -56,7 +56,9 @@ public class TypingWordsExercise extends AppCompatActivity {
         Bundle repetitions_bundle = getIntent().getExtras();
         Boolean repetitions = repetitions_bundle.getBoolean("repetitions");
         connection_handler = new ConnectionHandler(TypingWordsExercise.this);
-
+        super.onCreate(savedInstanceState);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        setTheme(Utils.getTheme(pref.getString("theme", null)));
 
         if(repetitions) {
             System.out.println("Próbuję liczyć powtórki");
@@ -79,12 +81,12 @@ public class TypingWordsExercise extends AppCompatActivity {
                 }
             }
             System.out.println("Przed ifem isEmpty");
-            /*if(words.isEmpty()) {
+            if(words.isEmpty()) {
                 System.out.println(" w ifie isEmpty");
                 Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
                 startActivity(intent);
                 return;
-            }*/
+            }
         }
         else {
             //TODO trzeba napisać skąd wziąć listę słówek, jeśli nie robimy powtórek tylko uczymy się z zestawu
@@ -92,9 +94,8 @@ public class TypingWordsExercise extends AppCompatActivity {
 
         Iterator<Word> iter = words.iterator();
 
-        super.onCreate(savedInstanceState);
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-        setTheme(Utils.getTheme(pref.getString("theme", null)));
+        //super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_typing_words);
 
         meaning = findViewById(R.id.meaning);
