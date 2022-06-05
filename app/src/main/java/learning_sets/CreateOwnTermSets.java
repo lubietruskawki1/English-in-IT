@@ -12,7 +12,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.english_in_it.ConnectionHandler;
+import com.example.english_in_it.MainActivity;
 import com.example.english_in_it.R;
 import com.example.english_in_it.Settings;
 import com.example.english_in_it.Utils;
@@ -24,7 +31,13 @@ import activities_menu.StartListActivity;
 
 public class CreateOwnTermSets extends AppCompatActivity {
     private RecyclerView sets_view;
+    private Button new_set_btn;
+    private TextView learning_sets_number;
+    private TextView new_set_txt;
+    private EditText new_set_name;
+    private boolean new_set_clicked = false;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,20 +45,62 @@ public class CreateOwnTermSets extends AppCompatActivity {
         setTheme(Utils.getTheme(pref.getString("theme", null)));
         setContentView(R.layout.activity_create_own_term_sets);
 
-        final ArrayList<Set> example_sets = new ArrayList<>();
-        example_sets.add(new Set("Pierwszy set", 5));
-        example_sets.add(new Set("To jest set Agaty", 3));
-        example_sets.add(new Set("POtezny secik", 69));
+        new_set_btn = findViewById(R.id.new_set_btn);
+        learning_sets_number = findViewById(R.id.sets_number_txt);
+        new_set_name = findViewById(R.id.new_set_name_edit);
+        new_set_txt = findViewById(R.id.new_set_txt);
+
+        ConnectionHandler handler = new ConnectionHandler(this);
+        //handler.deleteAllSets();
+        //handler.addWordToLearningSet("algorithm", "se");
+
+        ArrayList<Set> user_sets = handler.getAllLearningSets();
+        ArrayList<String> empty_sets = handler.getEmptySets();
+
+        for (String set_name : empty_sets) {
+            user_sets.add(new Set(set_name, 0));
+        }
+
+        learning_sets_number.setText("You have " + user_sets.size() + " learning sets.");
+
+        new_set_btn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                if (!new_set_clicked) {
+                    new_set_btn.setText("OK");
+                    new_set_txt.setVisibility(View.GONE);
+                    new_set_name.setVisibility(View.VISIBLE);
+                    new_set_clicked = true;
+                }
+                else {
+                    String create_set_name = new_set_name.getText().toString();
+                    if (create_set_name.equals(""))
+                        Toast.makeText(CreateOwnTermSets.this, "Enter new set name.", Toast.LENGTH_SHORT).show();
+
+                    else {
+                        handler.newLearningSet(create_set_name);
+                        new_set_name.setVisibility(View.GONE);
+                        new_set_txt.setVisibility(View.VISIBLE);
+                        new_set_btn.setText("+");
+                        new_set_clicked = false;
+
+                        finish();
+                        startActivity(getIntent());
+                    }
+                }
+            }
+        });
 
         sets_view = findViewById(R.id.sets_recycler_view);
         SetListRecViewAdapter adapter = new SetListRecViewAdapter(this);
-        adapter.setItems(example_sets);
+        adapter.setItems(user_sets);
         sets_view.setAdapter(adapter);
         sets_view.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.start_menu, menu);
         return true;

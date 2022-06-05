@@ -48,7 +48,7 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
         // We have to know which set we are editing.
         // We will pass it in the extras bundle.
         holder.editBtn.setOnClickListener(view -> {
-            Intent EditSetIntent = new Intent(context, EditText.class);
+            Intent EditSetIntent = new Intent(context, EditSet.class);
 
             Bundle editSetBundle = new Bundle();
             editSetBundle.putString("set_name", items.get(position).getName());

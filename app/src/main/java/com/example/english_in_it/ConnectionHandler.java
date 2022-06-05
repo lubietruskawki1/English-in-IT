@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import learning_sets.Set;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -52,7 +53,6 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         //sql_inserts = new Scanner(new File(path)).useDelimiter("\\Z").next();
         db.execSQL(sql_inserts);
         for (int i = 1; i < single_inserts.length - 1; i++) {
-            System.out.println(i);
             db.execSQL(single_inserts[i]);
         }
     }
@@ -127,7 +127,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL(insert_query);
     }
 
-    public ArrayList<String> getAllLearningSets() {
+    public ArrayList<String> getAllLearningSetNames() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<String> result = new ArrayList<>();
 
@@ -141,6 +141,44 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         }
 
         return result;
+    }
+
+    public ArrayList<String> getEmptySets() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<String> result = new ArrayList<>();
+
+        String selectQuery = "select * from learning_sets where set_name not in (select set_name from learning_sets_contents);";
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        return result;
+    }
+
+    public ArrayList<Set> getAllLearningSets() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Set> result = new ArrayList<>();
+
+        String countQuery = "select set_name, count(term) from learning_sets_contents " +
+                            "group by set_name;";
+
+        @SuppressLint("Recycle") Cursor count_cursor = db.rawQuery(countQuery, null);
+        if (count_cursor.moveToFirst()) {
+            do {
+                result.add(new Set(count_cursor.getString(0), count_cursor.getInt(1)));
+            } while (count_cursor.moveToNext());
+        }
+        return result;
+    }
+
+    public void deleteAllSets() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String delete_query = "delete from learning_sets";
+
+        db.execSQL(delete_query);
     }
 
     public HashMap<String, String> getGlossaryMapTermToDef(int term_to_def) { // term -> definition
@@ -183,11 +221,4 @@ public class ConnectionHandler extends SQLiteOpenHelper {
 
         return glossary;
     }
-
-    /*public void add() {
-        System.out.println("XXXXADD");
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "insert into glossary values('aaaaaterm', 'dummy definition.')";
-        db.execSQL(query);
-    }*/
 }

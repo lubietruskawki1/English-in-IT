@@ -7,33 +7,45 @@
     android:background="@color/white"
     tools:context="learning_sets.EditSet" >
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/set_name"
-        android:textSize="20sp"
+        android:text="@string/set_name_dummy"
+        android:textSize="30sp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
-        android:id="@+id/set_name_editxt"/>
+        android:layout_marginTop="25dp"
+        android:id="@+id/set_name_edit_set"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/finish"
-        android:layout_alignParentEnd="true"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="30dp"
-        android:id="@+id/finish_btn"/>
+        android:layout_marginTop="25dp"
+        android:id="@+id/finish_btn"
+        android:layout_alignParentEnd="true"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_some_terms"
-        android:textSize="17sp"
-        android:layout_below="@+id/set_name_editxt"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:id="@+id/add_some_terms_txt"/>
+        android:layout_below="@id/set_name_edit_set"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_words_btn"
+            android:text="@string/plus"
+            android:layout_marginStart="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_terms"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

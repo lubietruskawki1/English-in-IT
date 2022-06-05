@@ -33,12 +33,27 @@
                 android:layout_marginStart="15dp"
                 android:id="@+id/new_set_btn"/>
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/new_set"
-                android:textSize="18sp"
-                android:layout_marginStart="5dp"/>
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/new_set"
+                    android:textSize="18sp"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/new_set_txt"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="new set name"
+                    android:textSize="18sp"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/new_set_name_edit"
+                    android:visibility="gone"/>
+            </RelativeLayout>
 
     </LinearLayout>
 

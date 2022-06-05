@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
@@ -113,7 +114,9 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         break;
                     case 6:
                         Intent typing_exercise_intent = new Intent(context, TypingWordsExercise.class);
-                        //TODO trzeba dodać z jakich słów ma być to ćwiczenie
+                        Bundle repetitions_bundle = new Bundle();
+                        repetitions_bundle.putBoolean("repetitions", false);
+                        typing_exercise_intent.putExtras(repetitions_bundle);
                         context.startActivity(typing_exercise_intent);
                         break;
                     case 7:

@@ -12,5 +12,4 @@ public class Set {
 
     public int getTerms_number() { return terms_number; }
     public String getName() { return name; }
-
 }
