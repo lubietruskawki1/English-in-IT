@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,13 +47,6 @@ public class TypingWordsExercise extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*Word word1 = new Word("abstract method","Method with only a signature and no implementation body.",0,0,new Date());
-        Word word2 = new Word("algorithm","An unambiguous specification of how to solve a class of problems.",0,0,new Date());
-        words.add(word1);
-        words.add(word2);*/
-        //Bundle b = getIntent().getExtras();
-        //ArrayList<Word> words = (ArrayList<Word>) getIntent().getParcelableExtra("words");
-        //Intent intent = getIntent();
         Bundle repetitions_bundle = getIntent().getExtras();
         Boolean repetitions = repetitions_bundle.getBoolean("repetitions");
         connection_handler = new ConnectionHandler(TypingWordsExercise.this);
@@ -66,7 +60,6 @@ public class TypingWordsExercise extends AppCompatActivity {
             connection_handler.setWordDaysWaitedPrev("bit", 1);
             for(int i = 0; i < all_sets.size(); i++) {
                 Date today = new Date();
-                //connection_handler.setWordRepetitionDate("bit", today);
                 try {
                     ArrayList<Word> current_list = connection_handler.getLearningSetList(all_sets.get(i));
                     for(int j = 0; j < current_list.size(); j++) {
@@ -80,9 +73,8 @@ public class TypingWordsExercise extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            System.out.println("Przed ifem isEmpty");
             if(words.isEmpty()) {
-                System.out.println(" w ifie isEmpty");
+                Toast.makeText(TypingWordsExercise.this, "No repetitions for today :)", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
                 startActivity(intent);
                 return;
@@ -93,8 +85,6 @@ public class TypingWordsExercise extends AppCompatActivity {
         }
 
         Iterator<Word> iter = words.iterator();
-
-        //super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_typing_words);
 
