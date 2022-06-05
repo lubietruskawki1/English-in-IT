@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -24,7 +26,7 @@ import activities_menu.StartListActivity;
 
 public class TypingWordsExercise extends AppCompatActivity {
 
-    ArrayList<Word> words;// = new ArrayList<Word>();
+    ArrayList<Word> words = new ArrayList<Word>();
     //ArrayList<Word> words = (ArrayList<Word>) getIntent().getSerializableExtra("words");
 
     private ConnectionHandler connection_handler;
@@ -50,12 +52,32 @@ public class TypingWordsExercise extends AppCompatActivity {
         words.add(word2);*/
         //Bundle b = getIntent().getExtras();
         //ArrayList<Word> words = (ArrayList<Word>) getIntent().getParcelableExtra("words");
-        Intent intent = getIntent();
-        Bundle args = intent.getBundleExtra("bundle");
-        words = (ArrayList<Word>) args.getSerializable("words");
-        System.out.println("W Typin:");
-        for(int i = 0; i < words.size(); i++) {
-            System.out.println(words.get(i).word);
+        //Intent intent = getIntent();
+        Bundle repetitions_bundle = getIntent().getExtras();
+        Boolean repetitions = repetitions_bundle.getBoolean("repetitions");
+        connection_handler = new ConnectionHandler(TypingWordsExercise.this);
+
+        if(repetitions) {
+            ArrayList<String> all_sets = connection_handler.getAllLearningSets();
+            for(int i = 0; i < all_sets.size(); i++) {
+                Date today = new Date();
+                //connection_handler.setWordRepetitionDate("bit", today);
+                try {
+                    ArrayList<Word> current_list = connection_handler.getLearningSetList(all_sets.get(i));
+                    for(int j = 0; j < current_list.size(); j++) {
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+                        String formated_today = formatter.format(today);
+                        if(current_list.get(j).when_to_remind != null && formated_today.equals(formatter.format(current_list.get(j).when_to_remind))) {
+                            words.add(current_list.get(j));
+                        }
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else {
+
         }
 
         Iterator<Word> iter = words.iterator();
@@ -65,7 +87,7 @@ public class TypingWordsExercise extends AppCompatActivity {
         setTheme(Utils.getTheme(pref.getString("theme", null)));
         setContentView(R.layout.activity_typing_words);
 
-        connection_handler = new ConnectionHandler(TypingWordsExercise.this);
+
 
         meaning = findViewById(R.id.meaning);
         check_button = findViewById(R.id.check_button);

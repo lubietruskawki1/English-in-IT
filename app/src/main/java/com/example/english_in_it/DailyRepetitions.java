@@ -23,31 +23,12 @@ import comet.CometTimerActivity;
 public class DailyRepetitions extends AppCompatActivity {
     private ConnectionHandler connection_handler;
 
-    //TODO trzeba podać mu arraylistę (edytowalną) ze słówkami do powtórzenia
-    ArrayList<Word> list_to_repeat = new ArrayList<Word>();
     Button start_button;// = findViewById();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         connection_handler = new ConnectionHandler(DailyRepetitions.this);
-        ArrayList<String> all_sets2 = connection_handler.getAllLearningSets();
-        for(int i = 0; i < all_sets2.size(); i++) {
-            Date today = new Date();
-            connection_handler.setWordRepetitionDate("bit", today);
-            try {
-                ArrayList<Word> current_list = connection_handler.getLearningSetList(all_sets2.get(i));
-                for(int j = 0; j < current_list.size(); j++) {
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
-                    String formated_today = formatter.format(today);
-                    if(current_list.get(j).when_to_remind != null && formated_today.equals(formatter.format(current_list.get(j).when_to_remind))) {
-                        list_to_repeat.add(current_list.get(j));
-                    }
-                }
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         setTheme(Utils.getTheme(pref.getString("theme", null)));
@@ -56,6 +37,9 @@ public class DailyRepetitions extends AppCompatActivity {
 
         start_button.setOnClickListener( v -> {
                 Intent intent = new Intent(DailyRepetitions.this, TypingWordsExercise.class);
+                Bundle repetitions_bundle = new Bundle();
+                repetitions_bundle.putBoolean("repetitions", true);
+                intent.putExtras(repetitions_bundle);
                 startActivity(intent);
         });
 
