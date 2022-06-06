@@ -73,7 +73,9 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
                         Intent intent = new Intent(context, CreateOwnTermSets.class);
                         context.startActivity(intent);
                     })
-                    .setNegativeButton("NO", (dialogInterface, i) -> Toast.makeText(context, "Cancelled.", Toast.LENGTH_SHORT).show());
+                    .setNegativeButton("NO", (dialogInterface, i) -> {
+                        Toast.makeText(context, "Cancelled.", Toast.LENGTH_SHORT).show();
+                    });
             AlertDialog alert = builder.create();
             alert.show();
         });

@@ -3,8 +3,7 @@ package learning_sets;
 import activities_menu.StartListActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -15,8 +14,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.english_in_it.*;
-import memory.MemoryGame;
-import memory.MemoryWin;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -68,5 +65,29 @@ public class EditSet extends AppCompatActivity {
                 EditSet.this, android.R.layout.simple_list_item_1, strings);
 
         browseVocabularyList.setAdapter(browseVocabularyAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.start_menu, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings_menu:
+                Intent settings_intent = new Intent(EditSet.this, Settings.class);
+                startActivity(settings_intent);
+                return true;
+            case R.id.home_menu:
+                Intent home_intent = new Intent(EditSet.this, StartListActivity.class);
+                startActivity(home_intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
