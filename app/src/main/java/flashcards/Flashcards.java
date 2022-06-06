@@ -85,12 +85,17 @@ public class Flashcards extends AppCompatActivity {
         flashcard_txt.setText(front_sides[current_flashcard - 1]);
         HashMap<String, String> finalGlossary = glossary;
 
-        boolean front = true;
+        final boolean[] front = {true}; // niezbyt rozumiem czemu tak dziwnie musi być, ale intellij zmienił ze zwykłego boola xd
         flashcard.setOnClickListener(new View.OnClickListener() {
             @Override
             //tu bedzie flip jeśli zachce mi sie go zrobić
             public void onClick(View view) {
-                flashcard_txt.setText(finalGlossary.get(front_sides[current_flashcard - 1]));
+                if (front[0]) {
+                    flashcard_txt.setText(finalGlossary.get(front_sides[current_flashcard - 1]));
+                } else {
+                    flashcard_txt.setText(front_sides[current_flashcard - 1]);
+                }
+                front[0] = !front[0];
             }
         });
 
@@ -102,6 +107,7 @@ public class Flashcards extends AppCompatActivity {
 
                     flashcard_txt.setText(front_sides[current_flashcard - 1]);
                     progress_txt.setText(current_flashcard + "/" + cards_number.toString());
+                    front[0] = true;
                 }
             }
         });
@@ -114,6 +120,7 @@ public class Flashcards extends AppCompatActivity {
 
                     flashcard_txt.setText(front_sides[current_flashcard - 1]);
                     progress_txt.setText(current_flashcard + "/" + cards_number.toString());
+                    front[0] = true;
                 }
             }
         });
