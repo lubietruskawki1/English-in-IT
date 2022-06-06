@@ -2,16 +2,14 @@ package learning_sets;
 
 import activities_menu.StartListActivity;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.*;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.example.english_in_it.*;
 
@@ -41,14 +39,14 @@ public class EditSet extends AppCompatActivity {
             startActivity(intent);
         });
 
-        Button finishButton = findViewById(R.id.finish_btn); // TODO: nie jestem pewna, czy on powiniem prowadzić do setów czy menu ?
+        Button finishButton = findViewById(R.id.finish_btn); // TODO: nie jestem pewna, czy on powinien prowadzić do setów czy menu ?
         finishButton.setOnClickListener(view -> {
             Intent intent = new Intent(EditSet.this, CreateOwnTermSets.class);
             startActivity(intent);
         });
 
         ConnectionHandler handler = new ConnectionHandler(this);
-        ArrayList<Word> words = new ArrayList<>();
+        ArrayList<Word> words;
         try {
             words = handler.getLearningSetList(set_name);
         } catch (ParseException e) {
@@ -60,11 +58,27 @@ public class EditSet extends AppCompatActivity {
             strings.add(word.getWord() + ": " + word.getMeaning());
         }
 
-        ListView browseVocabularyList = findViewById(R.id.words_list);
-        ArrayAdapter<String> browseVocabularyAdapter = new ArrayAdapter<>(
+        ListView editSetList = findViewById(R.id.words_list);
+        ArrayAdapter<String> editSetAdapter = new ArrayAdapter<>(
                 EditSet.this, android.R.layout.simple_list_item_1, strings);
+        editSetList.setAdapter(editSetAdapter);
 
-        browseVocabularyList.setAdapter(browseVocabularyAdapter);
+        editSetList.setOnItemClickListener((parent, view, position, id) -> {
+            String chosen = (String) parent.getItemAtPosition(position);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            String term = chosen.split(":")[0];
+            builder.setMessage("Are you sure you want to delete word " + term + " from set?")
+                    .setPositiveButton("YES", (dialogInterface, i) -> {
+                        Toast.makeText(this, "Deleted word " + term, Toast.LENGTH_SHORT).show();
+                        handler.deleteWordFromLearningSet(term, set_name);
+                        startActivity(getIntent());
+                    })
+                    .setNegativeButton("NO", (dialogInterface, i) -> {
+                        Toast.makeText(this, "Cancelled.", Toast.LENGTH_SHORT).show();
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        });
     }
 
     @Override

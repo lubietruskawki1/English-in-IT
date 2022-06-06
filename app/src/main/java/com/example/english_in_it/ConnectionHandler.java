@@ -153,6 +153,12 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL(insert_query);
     }
 
+    public void deleteWordFromLearningSet(String word, String set_name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String delete_query = "delete from learning_sets_contents where set_name = '" + set_name + "' and term ='" + word + "';";
+        db.execSQL(delete_query);
+    }
+
     public ArrayList<String> getAllLearningSetNames() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<String> result = new ArrayList<>();
