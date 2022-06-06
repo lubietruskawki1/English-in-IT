@@ -30,9 +30,11 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
     SharedPreferences.Editor editor;
     private ArrayList<Set> items = new ArrayList<>();
     private Context context;
+    private ConnectionHandler connectionHandler;
 
-    public SetListRecViewAdapter(Context context) {
+    public SetListRecViewAdapter(Context context, ConnectionHandler connectionHandler) {
         this.context = context;
+        this.connectionHandler = connectionHandler;
     }
 
     @NonNull
@@ -67,8 +69,6 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
             builder.setMessage("Are you sure you want to delete set " + set_name + "?")
                     .setPositiveButton("YES", (dialogInterface, i) -> {
                         Toast.makeText(context, "Deleted set " + set_name, Toast.LENGTH_SHORT).show();
-                        // TODO: żeby to działało nie może być tworzony nowy connection handler tylko musi być ten z contextu
-                        ConnectionHandler connectionHandler = new ConnectionHandler(context);
                         connectionHandler.deleteLearningSet(set_name);
                         Intent intent = new Intent(context, CreateOwnTermSets.class);
                         context.startActivity(intent);

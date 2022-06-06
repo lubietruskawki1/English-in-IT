@@ -93,7 +93,7 @@ public class CreateOwnTermSets extends AppCompatActivity {
         });
 
         sets_view = findViewById(R.id.sets_recycler_view);
-        SetListRecViewAdapter adapter = new SetListRecViewAdapter(this);
+        SetListRecViewAdapter adapter = new SetListRecViewAdapter(this, handler);
         adapter.setItems(user_sets);
         sets_view.setAdapter(adapter);
         sets_view.setLayoutManager(new LinearLayoutManager(this));
