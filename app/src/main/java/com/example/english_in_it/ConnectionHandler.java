@@ -137,7 +137,6 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    @SuppressLint("Recycle")
     public void deleteLearningSet(String set_name) {
         SQLiteDatabase db = this.getWritableDatabase();
 
