@@ -23,7 +23,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     public ConnectionHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
-        onCreate(this.getWritableDatabase());
+        //onCreate(this.getWritableDatabase());
     }
 
     @Override
@@ -79,6 +79,22 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         return glossary;
     }
 
+    public ArrayList<String> getGlossaryJustTerms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ArrayList<String> glossary = new ArrayList<>();
+        String selectQuery = "select * from glossary";
+
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                glossary.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+        return glossary;
+    }
+
     public ArrayList<Word> getLearningSetList(String set_name) throws ParseException {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Word> result = new ArrayList<>();
@@ -118,6 +134,13 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     public void newLearningSet(String set_name) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "insert into learning_sets values('" + set_name + "');";
+        db.execSQL(query);
+    }
+
+    public void deleteLearningSet(String set_name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "delete from learning_sets where set_name = '" + set_name + "';";
+        System.out.println(query);
         db.execSQL(query);
     }
 

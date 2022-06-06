@@ -6,8 +6,3 @@
     android:singleLine = "false"
     android:layout_height="fill_parent">
 </TextView>
-
-<!--    android:layout_width="10dp"-->
-<!--    android:layout_height="300dp"-->
-<!--    android:singleLine="false"-->
-<!--    android:inputType="textMultiLine"-->

@@ -54,4 +54,12 @@ public class Word {
         when_to_remind = addDays(today, days_to_wait_until_next_remind);
         System.out.println("data na koniec funkcji: " + when_to_remind);
     }
+
+    public String getWord() {
+        return word;
+    }
+
+    public String getMeaning() {
+        return meaning;
+    }
 }

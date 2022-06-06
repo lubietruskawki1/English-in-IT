@@ -37,6 +37,7 @@
     <string name="new_set">New set</string>
     <string name="no_sets">You have 0 learning sets.</string>
     <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
     <string name="set_name_dummy">This is set name</string>
     <string name="set_terms_number_dummy">This is a number of sets you have</string>
     <string name="set_name">new set name</string>

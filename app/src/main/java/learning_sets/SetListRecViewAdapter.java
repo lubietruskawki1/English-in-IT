@@ -1,6 +1,8 @@
 package learning_sets;
 
-import com.example.english_in_it.R;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import com.example.english_in_it.*;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import flashcards.FlashcardsOptions;
@@ -45,16 +48,34 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
         holder.setName.setText(items.get(position).getName());
         holder.termsNumber.setText(String.valueOf(items.get(position).getTerms_number()) + " terms");
 
+        String set_name = items.get(position).getName();
+
         // We have to know which set we are editing.
         // We will pass it in the extras bundle.
         holder.editBtn.setOnClickListener(view -> {
             Intent EditSetIntent = new Intent(context, EditSet.class);
 
             Bundle editSetBundle = new Bundle();
-            editSetBundle.putString("set_name", items.get(position).getName());
+            editSetBundle.putString("set_name", set_name);
             EditSetIntent.putExtras(editSetBundle);
 
             context.startActivity(EditSetIntent);
+        });
+
+        holder.deleteBtn.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage("Are you sure you want to delete set " + set_name + "?")
+                    .setPositiveButton("YES", (dialogInterface, i) -> {
+                        Toast.makeText(context, "Deleted set " + set_name, Toast.LENGTH_SHORT).show();
+                        // TODO: żeby to działało nie może być tworzony nowy connection handler tylko musi być ten z contextu
+                        ConnectionHandler connectionHandler = new ConnectionHandler(context);
+                        connectionHandler.deleteLearningSet(set_name);
+                        Intent intent = new Intent(context, CreateOwnTermSets.class);
+                        context.startActivity(intent);
+                    })
+                    .setNegativeButton("NO", (dialogInterface, i) -> Toast.makeText(context, "Cancelled.", Toast.LENGTH_SHORT).show());
+            AlertDialog alert = builder.create();
+            alert.show();
         });
     }
 
@@ -70,6 +91,7 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView setName;
         private final Button editBtn;
+        private final Button deleteBtn;
         private final TextView termsNumber;
         private final LinearLayout parent;
         View itemView;
@@ -78,6 +100,7 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
             super(itemView);
             setName = itemView.findViewById(R.id.set_name);
             editBtn = itemView.findViewById(R.id.edit_btn);
+            deleteBtn = itemView.findViewById(R.id.delete_btn);
             termsNumber = itemView.findViewById(R.id.set_items_number);
             parent = itemView.findViewById(R.id.set_parent);
             this.itemView = itemView;

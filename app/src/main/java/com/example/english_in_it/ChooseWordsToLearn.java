@@ -78,6 +78,10 @@ public class ChooseWordsToLearn extends AppCompatActivity {
 
         wordsList.setAdapter(words_adapter);
 
+        Bundle extras = getIntent().getExtras();
+        String set_name = extras.getString("set_name");
+        ArrayList<String> glossaryJustTerms = connection_handler.getGlossaryJustTerms();
+
         wordsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -91,6 +95,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Toast.makeText(ChooseWordsToLearn.this, "Added " + glossary.get(position), Toast.LENGTH_SHORT).show();
                                 //TODO dodawanie do bazy
+                                connection_handler.addWordToLearningSet(glossaryJustTerms.get(position), set_name);
                                 String firstDat = "2/11/2023";
                                 Word to_add = null;
                                 try {
@@ -104,7 +109,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                         .setNegativeButton("NO", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(ChooseWordsToLearn.this, "Canceled.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChooseWordsToLearn.this, "Cancelled.", Toast.LENGTH_SHORT).show();
                             }
                         });
                 AlertDialog alert = builder.create();
