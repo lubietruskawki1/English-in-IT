@@ -10,17 +10,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
+import com.example.english_in_it.ConnectionHandler;
 import com.example.english_in_it.R;
 import com.example.english_in_it.Settings;
 import activities_menu.StartListActivity;
 import com.example.english_in_it.Utils;
+import learning_sets.Set;
+
+import java.util.ArrayList;
 
 public class FlashcardsOptions extends AppCompatActivity {
     private boolean defToTerm = true;
-    private RadioGroup HowToLearn;
+    private String selectedSet;
+    private RadioGroup howToLearn;
+    private Spinner setSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +38,9 @@ public class FlashcardsOptions extends AppCompatActivity {
         setTheme(Utils.getTheme(pref.getString("theme", null)));
         setContentView(R.layout.activity_flashcards_options);
 
-        HowToLearn = findViewById(R.id.termDefinitionChoice);
-        HowToLearn.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        setSpinner = findViewById(R.id.setSpinner);
+        howToLearn = findViewById(R.id.termDefinitionChoice);
+        howToLearn.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch(i) {
@@ -44,6 +54,33 @@ public class FlashcardsOptions extends AppCompatActivity {
             }
         });
 
+        ConnectionHandler c = new ConnectionHandler(this);
+        ArrayList<Set> setsAndTermNumbers = c.getAllLearningSets();
+        setsAndTermNumbers.add(new Set("All terms", 282));
+        ArrayList<String> sets = new ArrayList<>();
+        for (Set set : setsAndTermNumbers) {
+            sets.add(set.getName() + " (" + set.getTerms_number() + " terms)");
+        }
+
+        ArrayAdapter<String> setsAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                sets
+        );
+
+        setSpinner.setAdapter(setsAdapter);
+        setSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedSet = setsAndTermNumbers.get(i).getName();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) { }
+        });
+
+
+
         Button goToFlashcardsButton = findViewById(R.id.btnFlashcards);
         goToFlashcardsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +89,7 @@ public class FlashcardsOptions extends AppCompatActivity {
 
                 Bundle flashcards_bundle = new Bundle();
                 flashcards_bundle.putBoolean("defToTerm", defToTerm);
+                flashcards_bundle.putString("selectedSet", selectedSet);
                 intent.putExtras(flashcards_bundle);
 
                 startActivity(intent);

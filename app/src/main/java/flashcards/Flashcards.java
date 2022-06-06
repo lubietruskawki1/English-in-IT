@@ -21,6 +21,7 @@ import com.example.english_in_it.Settings;
 import activities_menu.StartListActivity;
 import com.example.english_in_it.Utils;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -51,13 +52,28 @@ public class Flashcards extends AppCompatActivity {
 
         Bundle flashcards_bundle = getIntent().getExtras();
         Boolean defToTerm = flashcards_bundle.getBoolean("defToTerm");
+        String selectedSet = flashcards_bundle.getString("selectedSet");
 
         if (defToTerm) {
             glossary = connection_handler.getGlossaryMapTermToDef(0);
+            if (!selectedSet.equals("All terms")) {
+                try {
+                    glossary = connection_handler.getSetGlossaryMapDefToTerm(selectedSet);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
             Toast.makeText(Flashcards.this, "definition to term", Toast.LENGTH_SHORT).show();
         }
         else {
             glossary = connection_handler.getGlossaryMapTermToDef(1);
+            if (!selectedSet.equals("All terms")) {
+                try {
+                    glossary = connection_handler.getSetGlossaryMapTermToDef(selectedSet, 1);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
             Toast.makeText(Flashcards.this, "term to definition", Toast.LENGTH_SHORT).show();
         }
 
@@ -67,11 +83,14 @@ public class Flashcards extends AppCompatActivity {
 
         progress_txt.setText("1/" + cards_number.toString());
         flashcard_txt.setText(front_sides[current_flashcard - 1]);
+        HashMap<String, String> finalGlossary = glossary;
+
+        boolean front = true;
         flashcard.setOnClickListener(new View.OnClickListener() {
             @Override
             //tu bedzie flip jeśli zachce mi sie go zrobić
             public void onClick(View view) {
-                flashcard_txt.setText(glossary.get(front_sides[current_flashcard - 1]));
+                flashcard_txt.setText(finalGlossary.get(front_sides[current_flashcard - 1]));
             }
         });
 

@@ -50,18 +50,35 @@
 
     </RadioGroup>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose learning set"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/termDefinitionChoice"
+        android:id="@+id/chooseSetTxt"
+        android:textSize="20sp"
+        android:textColor="?attr/buttonColor"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
 
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/setSpinner"
+        android:layout_below="@+id/chooseSetTxt"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/termDefinitionChoice"
+        android:layout_below="@+id/setSpinner"
         android:text="OK"
         android:id="@+id/btnFlashcards"
         android:layout_marginTop="20dp"
         android:textColor="@color/white"
-        android:backgroundTint="?attr/buttonColor"
-        />
+        android:backgroundTint="?attr/buttonColor" />
 
 </RelativeLayout>

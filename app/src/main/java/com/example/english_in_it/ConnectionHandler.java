@@ -110,6 +110,49 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         return result;
     }
 
+    public HashMap<String, String> getSetGlossaryMapTermToDef(String set_name, int term_to_def) throws ParseException {
+        SQLiteDatabase db = this.getReadableDatabase();
+        HashMap<String, String> result = new HashMap<>();
+
+        String selectQuery = "select * from glossary join learning_sets_contents s on glossary.term = s.term where s.set_name = '" + set_name + "';";
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                result.put(cursor.getString(1 - term_to_def + 1), cursor.getString(term_to_def + 1));
+            } while (cursor.moveToNext());
+        }
+        return result;
+    }
+
+    public HashMap<String, String> getSetGlossaryMapDefToTerm(String set_name) throws ParseException { // definition -> term
+        return getSetGlossaryMapTermToDef(set_name, 0);
+    }
+
+
+    /*
+        public HashMap<String, String> getGlossaryMapTermToDef(int term_to_def) { // term -> definition
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        HashMap<String, String> glossary = new HashMap<>();
+        String selectQuery = "select * from glossary";
+
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                glossary.put(cursor.getString(1-term_to_def + 1), cursor.getString(term_to_def + 1));
+            } while (cursor.moveToNext());
+        }
+        return glossary;
+    }
+
+    public HashMap<String, String> getGlossaryMapDefToTerm() { // definition -> term
+        return getGlossaryMapTermToDef(0);
+    }
+
+     */
+
     public void setWordDaysWaitedPrev(String word_term, int new_value) {
         SQLiteDatabase db = this.getWritableDatabase();
 
