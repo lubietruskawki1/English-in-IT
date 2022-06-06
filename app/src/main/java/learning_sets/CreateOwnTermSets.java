@@ -61,7 +61,11 @@ public class CreateOwnTermSets extends AppCompatActivity {
             user_sets.add(new Set(set_name, 0));
         }
 
-        learning_sets_number.setText("You have " + user_sets.size() + " learning sets.");
+        if (user_sets.size() == 1) {
+            learning_sets_number.setText("You have " + user_sets.size() + " learning set.");
+        } else {
+            learning_sets_number.setText("You have " + user_sets.size() + " learning sets.");
+        }
 
         new_set_btn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
