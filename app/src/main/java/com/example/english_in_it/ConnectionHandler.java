@@ -3,6 +3,7 @@ package com.example.english_in_it;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -23,14 +24,14 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     public ConnectionHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
-        //onCreate(this.getWritableDatabase());
+        onCreate(this.getWritableDatabase());
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("drop table if exists glossary"); // to będzie do wykasowania gdy już będzie gotowa baza
-        db.execSQL("drop table if exists learning_sets_contents");
-        db.execSQL("drop table if exists learning_sets");
+        //db.execSQL("drop table if exists glossary"); // to będzie do wykasowania gdy już będzie gotowa baza
+        //db.execSQL("drop table if exists learning_sets_contents");
+        //db.execSQL("drop table if exists learning_sets");
 
         String query_gloss = "create table if not exists glossary (id integer, term text unique, definition text, days_waited_prev integer, repetition_date text)";
         String query_sets_contents = "create table if not exists learning_sets_contents (term text, set_name text)";
@@ -39,7 +40,14 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL(query_gloss);
         db.execSQL(query_sets_contents);
         db.execSQL(query_sets);
-        fillDatabase(db);
+
+        if (isTableEmpty(DB_NAME)) {
+            fillDatabase(db);
+        }
+    }
+
+    public boolean isTableEmpty(String tablename) {
+        return DatabaseUtils.queryNumEntries(this.getWritableDatabase(), tablename) < 1;
     }
 
     public void fillDatabase(SQLiteDatabase db) {
