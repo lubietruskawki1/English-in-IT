@@ -43,7 +43,7 @@ public class FallingCometGame extends AppCompatActivity {
 
     ObjectAnimator fallingCometAnimation(View view, int height) {
         view.setVisibility(View.VISIBLE);
-        ObjectAnimator animation = ObjectAnimator.ofFloat(view, "translationY", height + 1400);
+        ObjectAnimator animation = ObjectAnimator.ofFloat(view, "translationY", height + 1100);
         animation.setDuration(20000);
         return animation;
     }

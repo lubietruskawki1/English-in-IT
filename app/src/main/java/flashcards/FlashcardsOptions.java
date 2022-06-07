@@ -25,6 +25,11 @@ import learning_sets.Set;
 
 import java.util.ArrayList;
 
+/*
+ A class handling flashcards options:
+ - choosing a learning style: term to definition/definition to term
+ - choosing a learning set
+*/
 public class FlashcardsOptions extends AppCompatActivity {
     private boolean defToTerm = true;
     private String selectedSet;
@@ -78,8 +83,6 @@ public class FlashcardsOptions extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { }
         });
-
-
 
         Button goToFlashcardsButton = findViewById(R.id.btnFlashcards);
         goToFlashcardsButton.setOnClickListener(new View.OnClickListener() {

@@ -11,14 +11,15 @@
 
     <TextView
         android:id="@+id/headline"
-        android:text="CHOOSE WORDS TO LEARN"
+        android:text="@string/select_new_words"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="28sp"
+        android:textSize="25sp"
         android:layout_weight="1"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:textAlignment="center"
         />
 
 
@@ -35,13 +36,11 @@
         android:id="@+id/startLearning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_weight="1"
-        android:text="START LEARNING SELECTED WORDS"
+        android:text="@string/save_caps"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         />
-
 
 </LinearLayout>
