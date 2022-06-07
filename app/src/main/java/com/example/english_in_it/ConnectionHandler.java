@@ -29,10 +29,6 @@ public class ConnectionHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //db.execSQL("drop table if exists glossary"); // to będzie do wykasowania gdy już będzie gotowa baza
-        //db.execSQL("drop table if exists learning_sets_contents");
-        //db.execSQL("drop table if exists learning_sets");
-
         String query_gloss = "create table if not exists glossary (id integer, term text unique, definition text, days_waited_prev integer, repetition_date text)";
         String query_sets_contents = "create table if not exists learning_sets_contents (term text, set_name text)";
         String query_sets = "create table if not exists learning_sets (set_name text)";
@@ -41,13 +37,13 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL(query_sets_contents);
         db.execSQL(query_sets);
 
-        if (isTableEmpty(DB_NAME)) {
+        if (isTableEmpty(db, DB_NAME)) {
             fillDatabase(db);
         }
     }
 
-    public boolean isTableEmpty(String tablename) {
-        return DatabaseUtils.queryNumEntries(this.getWritableDatabase(), tablename) < 1;
+    public boolean isTableEmpty(SQLiteDatabase db, String tablename) {
+        return DatabaseUtils.queryNumEntries(db, tablename) < 1;
     }
 
     public void fillDatabase(SQLiteDatabase db) {
