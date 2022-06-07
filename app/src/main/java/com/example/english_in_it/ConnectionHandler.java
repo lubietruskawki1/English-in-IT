@@ -130,30 +130,6 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         return getSetGlossaryMapTermToDef(set_name, 0);
     }
 
-
-    /*
-        public HashMap<String, String> getGlossaryMapTermToDef(int term_to_def) { // term -> definition
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        HashMap<String, String> glossary = new HashMap<>();
-        String selectQuery = "select * from glossary";
-
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                glossary.put(cursor.getString(1-term_to_def + 1), cursor.getString(term_to_def + 1));
-            } while (cursor.moveToNext());
-        }
-        return glossary;
-    }
-
-    public HashMap<String, String> getGlossaryMapDefToTerm() { // definition -> term
-        return getGlossaryMapTermToDef(0);
-    }
-
-     */
-
     public void setWordDaysWaitedPrev(String word_term, int new_value) {
         SQLiteDatabase db = this.getWritableDatabase();
 
