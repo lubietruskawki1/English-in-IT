@@ -29,8 +29,8 @@ public class ConnectionHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query_gloss = "create table if not exists glossary (id integer, term text unique, definition text, days_waited_prev integer, repetition_date text)";
-        String query_sets_contents = "create table if not exists learning_sets_contents (term text, set_name text)";
+        String query_gloss = "create table if not exists glossary (id integer, term text unique, definition text unique, days_waited_prev integer, repetition_date text)";
+        String query_sets_contents = "create table if not exists learning_sets_contents (term text unique, set_name text)";
         String query_sets = "create table if not exists learning_sets (set_name text)";
 
         db.execSQL(query_gloss);
@@ -57,6 +57,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         //sql_inserts = new Scanner(new File(path)).useDelimiter("\\Z").next();
         db.execSQL(sql_inserts);
         for (int i = 1; i < single_inserts.length - 1; i++) {
+            System.out.println(i);
             db.execSQL(single_inserts[i]);
         }
     }
@@ -194,10 +195,18 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    public Cursor getData(String sql){
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(sql, null);
+    }
+
     public void addWordToLearningSet(String word, String set_name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String insert_query = "insert into learning_sets_contents values('" + word + "','" + set_name + "');";
-        db.execSQL(insert_query);
+        String select_query = "select * from learning_sets_contents where set_name = '" + set_name + "' and term ='" + word + "';";
+        if (getData(select_query).getCount() == 0) {
+            String insert_query = "insert into learning_sets_contents values('" + word + "','" + set_name + "');";
+            db.execSQL(insert_query);
+        }
     }
 
     public void deleteWordFromLearningSet(String word, String set_name) {
