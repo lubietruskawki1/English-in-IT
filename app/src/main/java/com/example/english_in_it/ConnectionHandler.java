@@ -24,7 +24,6 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     public ConnectionHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
-        onCreate(this.getWritableDatabase());
     }
 
     @Override
@@ -37,9 +36,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         db.execSQL(query_sets_contents);
         db.execSQL(query_sets);
 
-        if (isTableEmpty(db, DB_NAME)) {
-            fillDatabase(db);
-        }
+        fillDatabase(db);
     }
 
     public boolean isTableEmpty(SQLiteDatabase db, String tablename) {
@@ -57,7 +54,6 @@ public class ConnectionHandler extends SQLiteOpenHelper {
         //sql_inserts = new Scanner(new File(path)).useDelimiter("\\Z").next();
         db.execSQL(sql_inserts);
         for (int i = 1; i < single_inserts.length - 1; i++) {
-            System.out.println(i);
             db.execSQL(single_inserts[i]);
         }
     }

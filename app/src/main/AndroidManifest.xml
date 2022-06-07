@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.english_in_it">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--TODO-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -17,7 +17,7 @@
             android:exported="false" />
         <activity
             android:name="learning_sets.CreateOwnTermSets"
-            android:exported="false" /> <!-- android:theme="@style/LightTheme"> -->
+            android:exported="false" />
         <activity
             android:name=".DailyRepetitions"
             android:exported="false" />
