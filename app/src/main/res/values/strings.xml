@@ -46,6 +46,8 @@
     <string name="add_terms">Add terms</string>
     <string name="select_new_words">Click on a selected word to add it to your set.</string>
     <string name="save_caps">SAVE</string>
+    <string name="term_dummy">Term</string>
+    <string name="def_dummy">Definition of a term might be a looong definition lalalala defining some term, definition could be long or shorter</string>
 
 
 

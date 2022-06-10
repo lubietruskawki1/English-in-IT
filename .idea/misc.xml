@@ -25,6 +25,8 @@
         <entry key="app/src/main/res/layout/my_list_item.xml" value="0.264" />
         <entry key="app/src/main/res/layout/sets_list_item.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/table_row_template.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/vocabulary_item.xml" value="0.32864583333333336" />
+        <entry key="app/src/main/res/layout/vocobulary_item.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/menu/start_menu.xml" value="0.35" />
       </map>
     </option>

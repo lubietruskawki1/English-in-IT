@@ -94,7 +94,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Toast.makeText(ChooseWordsToLearn.this, "Added " + glossary.get(position), Toast.LENGTH_SHORT).show();
-                                //TODO dodawanie do bazy
+                                //TODO sprawdzenie czy nie dodaje sie 2 razy to samo
                                 connection_handler.addWordToLearningSet(glossaryJustTerms.get(position), set_name);
                                 String firstDat = "2/11/2023";
                                 Word to_add = null;
@@ -138,13 +138,11 @@ public class ChooseWordsToLearn extends AppCompatActivity {
         });
     }
 
-
     private void showSnackbar() {
         Snackbar.make(wordsList,"Add to your base?", Snackbar.LENGTH_INDEFINITE)
                 .setAction("Yes", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         Toast.makeText(ChooseWordsToLearn.this, "Added.", Toast.LENGTH_SHORT).show();
                     }
                 })

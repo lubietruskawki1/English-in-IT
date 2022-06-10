@@ -11,13 +11,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import activities_menu.StartListActivity;
+import learning_sets.SetListRecViewAdapter;
 
 public class BrowseVocabulary extends AppCompatActivity {
     private ConnectionHandler connection_handler;
+    private RecyclerView vocabulary_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +34,20 @@ public class BrowseVocabulary extends AppCompatActivity {
 
         connection_handler = new ConnectionHandler(BrowseVocabulary.this);
 
-        ArrayList<String> glossary = connection_handler.getGlossary();
+        HashMap<String, String> glossary = connection_handler.getGlossaryMapTermToDef(1);
+        ArrayList<String> glossary_terms = connection_handler.getGlossaryJustTerms();
+        ArrayList<TermAndDef> vocab = new ArrayList<>();
 
-        ListView browseVocabularyList = findViewById(R.id.browseVocabularyList);
-        ArrayAdapter<String> browseVocabularyAdapter = new ArrayAdapter<>(
-                BrowseVocabulary.this, android.R.layout.simple_list_item_1, glossary);
+        for (String term : glossary_terms) {
+            vocab.add(new TermAndDef(term, glossary.get(term)));
+        }
 
-        browseVocabularyList.setAdapter(browseVocabularyAdapter);
+        vocabulary_view = findViewById(R.id.VocabularyRecRecView);
+        VocabularyRecViewAdapter adapter = new VocabularyRecViewAdapter(this);
+        adapter.setVocabulary(vocab);
+        vocabulary_view.setAdapter(adapter);
+        vocabulary_view.setLayoutManager(new LinearLayoutManager(this));
+        vocabulary_view.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     }
 
     @Override

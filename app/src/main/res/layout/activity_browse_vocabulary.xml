@@ -7,10 +7,9 @@
                 android:layout_height="match_parent"
                 tools:context=".BrowseVocabulary">
 
-    <ListView
-        android:id="@+id/browseVocabularyList"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white" />
+        android:layout_width="wrap_content"
+        android:id="@+id/VocabularyRecRecView"/>
 
 </RelativeLayout>
