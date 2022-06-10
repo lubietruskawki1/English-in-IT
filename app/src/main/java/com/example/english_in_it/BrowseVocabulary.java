@@ -36,9 +36,10 @@ public class BrowseVocabulary extends AppCompatActivity {
         setContentView(R.layout.activity_browse_vocabulary);
 
         connection_handler = new ConnectionHandler(BrowseVocabulary.this);
+        ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(connection_handler);
 
-        HashMap<String, String> glossary = ConnectionHandlerUtils.getGlossaryMapTermToDef(connection_handler, 1);
-        ArrayList<String> glossary_terms = ConnectionHandlerUtils.getGlossaryJustTerms(connection_handler);
+        HashMap<String, String> glossary = connection_handler_utils.getGlossaryMapTermToDef(1);
+        ArrayList<String> glossary_terms = connection_handler_utils.getGlossaryJustTerms();
         ArrayList<TermAndDef> vocab = new ArrayList<>();
 
         for (String term : glossary_terms) {

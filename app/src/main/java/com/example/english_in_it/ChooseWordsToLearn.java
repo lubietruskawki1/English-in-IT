@@ -69,8 +69,9 @@ public class ChooseWordsToLearn extends AppCompatActivity {
         setContentView(R.layout.activity_choose_words);
 
         connection_handler = new ConnectionHandler(ChooseWordsToLearn.this);
+        ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(connection_handler);
 
-        final ArrayList<String> glossary = ConnectionHandlerUtils.getGlossary(connection_handler);
+        final ArrayList<String> glossary = connection_handler_utils.getGlossary();
 
         wordsList = findViewById(R.id.wordsList);
         ArrayAdapter<String> words_adapter = new ArrayAdapter<>(
@@ -80,7 +81,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String set_name = extras.getString("set_name");
-        ArrayList<String> glossaryJustTerms = ConnectionHandlerUtils.getGlossaryJustTerms(connection_handler);
+        ArrayList<String> glossaryJustTerms = connection_handler_utils.getGlossaryJustTerms();
 
         wordsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -95,7 +96,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Toast.makeText(ChooseWordsToLearn.this, "Added " + glossary.get(position), Toast.LENGTH_SHORT).show();
                                 //TODO sprawdzenie czy nie dodaje sie 2 razy to samo
-                                ConnectionHandlerUtils.addWordToLearningSet(connection_handler, glossaryJustTerms.get(position), set_name);
+                                connection_handler_utils.addWordToLearningSet(glossaryJustTerms.get(position), set_name);
                                 String firstDat = "2/11/2023";
                                 Word to_add = null;
                                 try {

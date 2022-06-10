@@ -97,8 +97,9 @@ public class Memory extends AppCompatActivity {
             }
 
             ConnectionHandler connectionHandler = new ConnectionHandler(Memory.this);
+            ConnectionHandlerUtils connectionHandlerUtils = new ConnectionHandlerUtils(connectionHandler);
             HashMap<String, String> fullGlossary =
-                    ConnectionHandlerUtils.getFilteredGlossaryMapTermToDef(connectionHandler, maxLength);
+                    connectionHandlerUtils.getFilteredGlossaryMapTermToDef(maxLength);
 
             ArrayList<String> keys = new ArrayList<>(fullGlossary.keySet());
 
