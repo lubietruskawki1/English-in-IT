@@ -23,15 +23,15 @@
         />
 
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/wordsList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:backgroundTint="@color/white"
         android:layout_weight="50"
-
         />
+
     <Button
         android:id="@+id/startLearning"
         android:layout_width="wrap_content"

@@ -63,7 +63,7 @@ public class VocabularyRecViewAdapter extends RecyclerView.Adapter<VocabularyRec
             else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (TermAndDef item : fullVocabulary) {
-                    if (item.getTerm().toLowerCase().contains(constraint)) {
+                    if (item.getTerm().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
@@ -96,5 +96,9 @@ public class VocabularyRecViewAdapter extends RecyclerView.Adapter<VocabularyRec
             parent = itemView.findViewById(R.id.vocabulary_parent);
             this.itemView = itemView;
         }
+    }
+
+    public ArrayList<TermAndDef> getVocabulary() {
+        return new ArrayList<TermAndDef>(vocabulary);
     }
 }
