@@ -41,7 +41,6 @@ public class Memory extends AppCompatActivity {
     private static final int BUTTON_HEIGHT_LEVEL_HARD = 308;
 
     private final HashMap<String, String> glossary = new HashMap<>();
-    // todo: instrukcja
     private int level = LEVEL_NOT_SET;
     private int cards;
     private int maxLength;
@@ -100,7 +99,6 @@ public class Memory extends AppCompatActivity {
             ConnectionHandler connectionHandler = new ConnectionHandler(Memory.this);
             HashMap<String, String> fullGlossary =
                     ConnectionHandlerUtils.getFilteredGlossaryMapTermToDef(connectionHandler, maxLength);
-            System.out.println("rozmiaar " + fullGlossary.size());
 
             ArrayList<String> keys = new ArrayList<>(fullGlossary.keySet());
 
