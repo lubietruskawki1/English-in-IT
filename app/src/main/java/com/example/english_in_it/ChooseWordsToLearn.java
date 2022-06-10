@@ -46,7 +46,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
     private Button startLearningButton;
     private RecyclerView vocabulary_view;
     private VocabularyRecViewAdapter adapter;
-    private ArrayList<String> glossaryJustTerms;
+    // private ArrayList<String> glossaryJustTerms;
 
 
     private void saveData() {
@@ -72,7 +72,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // loadData();
+        loadData();
         super.onCreate(savedInstanceState);
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         setTheme(Utils.getTheme(pref.getString("theme", null)));
@@ -100,11 +100,6 @@ public class ChooseWordsToLearn extends AppCompatActivity {
         vocabulary_view.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         //glossaryJustTerms = connection_handler_utils.getGlossaryJustTerms();
-        glossaryJustTerms = new ArrayList<>();
-        ArrayList<TermAndDef> terms_and_defs = adapter.getVocabulary();// connection_handler_utils.getGlossaryJustTerms();
-        for (TermAndDef t : terms_and_defs) {
-            glossaryJustTerms.add(t.getTerm());
-        }
 
         vocabulary_view.addOnItemTouchListener(new RecyclerItemClickListener(this, vocabulary_view, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
@@ -115,13 +110,13 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //TODO sprawdzenie czy nie dodaje sie 2 razy to samo
-                                String word = glossaryJustTerms.get(position);
-                                connection_handler_utils.addWordToLearningSet(word, set_name);
-                                Toast.makeText(ChooseWordsToLearn.this, "Added " + word, Toast.LENGTH_SHORT).show();
+                                TermAndDef word = adapter.getVocabulary().get(position);
+                                connection_handler_utils.addWordToLearningSet(word.getTerm(), set_name);
+                                Toast.makeText(ChooseWordsToLearn.this, "Added " + word.getTerm(), Toast.LENGTH_SHORT).show();
                                 String firstDat = "2/11/2023";
                                 Word to_add = null;
                                 try {
-                                    to_add = new Word(word,  word, 0, firstDat);
+                                    to_add = new Word(word.getTerm(),  word.getDef(), 0, firstDat);
                                 } catch (ParseException e) {
                                     e.printStackTrace();
                                 }
@@ -188,21 +183,12 @@ public class ChooseWordsToLearn extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                /*ArrayList<TermAndDef> terms_and_defs = adapter.getVocabulary();// connection_handler_utils.getGlossaryJustTerms();
-                for (TermAndDef t : terms_and_defs) {
-                    glossaryJustTerms.add(t.getTerm());
-                }*/
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
-                glossaryJustTerms.clear();
-                ArrayList<TermAndDef> terms_and_defs = adapter.getVocabulary();// connection_handler_utils.getGlossaryJustTerms();
-                for (TermAndDef t : terms_and_defs) {
-                    glossaryJustTerms.add(t.getTerm());
-                }
                 return false;
             }
         });

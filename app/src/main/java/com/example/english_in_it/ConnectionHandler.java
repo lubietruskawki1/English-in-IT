@@ -26,7 +26,7 @@ public class ConnectionHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query_gloss = "create table if not exists glossary (id integer, term text unique, definition text unique, days_waited_prev integer, repetition_date text)";
-        String query_sets_contents = "create table if not exists learning_sets_contents (term text unique, set_name text)";
+        String query_sets_contents = "create table if not exists learning_sets_contents (term text, set_name text)";
         String query_sets = "create table if not exists learning_sets (set_name text)";
 
         db.execSQL(query_gloss);
