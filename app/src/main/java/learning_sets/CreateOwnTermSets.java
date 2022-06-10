@@ -47,11 +47,12 @@ public class CreateOwnTermSets extends AppCompatActivity {
         new_set_txt = findViewById(R.id.new_set_txt);
 
         ConnectionHandler handler = new ConnectionHandler(this);
+        ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(handler);
         //handler.deleteAllSets();
         //handler.addWordToLearningSet("algorithm", "se");
 
-        ArrayList<Set> user_sets = ConnectionHandlerUtils.getAllLearningSets(handler);
-        ArrayList<String> empty_sets = ConnectionHandlerUtils.getEmptySets(handler);
+        ArrayList<Set> user_sets = connection_handler_utils.getAllLearningSets();
+        ArrayList<String> empty_sets = connection_handler_utils.getEmptySets();
 
         for (String set_name : empty_sets) {
             user_sets.add(new Set(set_name, 0));
@@ -79,7 +80,7 @@ public class CreateOwnTermSets extends AppCompatActivity {
                         Toast.makeText(CreateOwnTermSets.this, "Enter new set name.", Toast.LENGTH_SHORT).show();
 
                     else {
-                        ConnectionHandlerUtils.newLearningSet(handler, create_set_name);
+                        connection_handler_utils.newLearningSet(create_set_name);
                         new_set_name.setVisibility(View.GONE);
                         new_set_txt.setVisibility(View.VISIBLE);
                         new_set_btn.setText("+");
@@ -93,7 +94,7 @@ public class CreateOwnTermSets extends AppCompatActivity {
         });
 
         sets_view = findViewById(R.id.sets_recycler_view);
-        SetListRecViewAdapter adapter = new SetListRecViewAdapter(this, handler);
+        SetListRecViewAdapter adapter = new SetListRecViewAdapter(this, connection_handler_utils);
         adapter.setItems(user_sets);
         sets_view.setAdapter(adapter);
         sets_view.setLayoutManager(new LinearLayoutManager(this));

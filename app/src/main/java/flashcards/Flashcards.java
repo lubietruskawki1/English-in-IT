@@ -49,6 +49,7 @@ public class Flashcards extends AppCompatActivity {
         progress_txt = findViewById(R.id.progressNumberTxt);
 
         connection_handler = new ConnectionHandler(Flashcards.this);
+        ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(connection_handler);
         HashMap<String, String> glossary;
 
         // get data from flashcards options - selected set and def to term/term to def
@@ -57,10 +58,10 @@ public class Flashcards extends AppCompatActivity {
         String selectedSet = flashcards_bundle.getString("selectedSet");
 
         if (defToTerm) {
-            glossary = ConnectionHandlerUtils.getGlossaryMapTermToDef(connection_handler, 0);
+            glossary = connection_handler_utils.getGlossaryMapTermToDef(0);
             if (!selectedSet.equals("All terms")) {
                 try {
-                    glossary = ConnectionHandlerUtils.getSetGlossaryMapDefToTerm(connection_handler, selectedSet);
+                    glossary = connection_handler_utils.getSetGlossaryMapDefToTerm(selectedSet);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -68,10 +69,10 @@ public class Flashcards extends AppCompatActivity {
             Toast.makeText(Flashcards.this, "definition to term", Toast.LENGTH_SHORT).show();
         }
         else {
-            glossary = ConnectionHandlerUtils.getGlossaryMapTermToDef(connection_handler, 1);
+            glossary = connection_handler_utils.getGlossaryMapTermToDef(1);
             if (!selectedSet.equals("All terms")) {
                 try {
-                    glossary = ConnectionHandlerUtils.getSetGlossaryMapTermToDef(connection_handler, selectedSet, 1);
+                    glossary = connection_handler_utils.getSetGlossaryMapTermToDef(selectedSet, 1);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

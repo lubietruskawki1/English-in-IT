@@ -46,9 +46,10 @@ public class EditSet extends AppCompatActivity {
         });
 
         ConnectionHandler handler = new ConnectionHandler(this);
+        ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(handler);
         ArrayList<Word> words;
         try {
-            words = ConnectionHandlerUtils.getLearningSetList(handler, set_name);
+            words = connection_handler_utils.getLearningSetList(set_name);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -70,7 +71,7 @@ public class EditSet extends AppCompatActivity {
             builder.setMessage("Are you sure you want to delete word " + term + " from set?")
                     .setPositiveButton("YES", (dialogInterface, i) -> {
                         Toast.makeText(this, "Deleted word " + term, Toast.LENGTH_SHORT).show();
-                        ConnectionHandlerUtils.deleteWordFromLearningSet(handler, term, set_name);
+                        connection_handler_utils.deleteWordFromLearningSet(term, set_name);
                         startActivity(getIntent());
                     })
                     .setNegativeButton("NO", (dialogInterface, i) -> {

@@ -71,7 +71,8 @@ public class FallingCometGame extends AppCompatActivity {
         cometImg.setRotation(-35);
 
         connection_handler = new ConnectionHandler(FallingCometGame.this);
-        glossary = ConnectionHandlerUtils.getGlossaryMapTermToDef(connection_handler, 0);
+        ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(connection_handler);
+        glossary = connection_handler_utils.getGlossaryMapTermToDef(0);
         Set<String> definitions_set = glossary.keySet();
         int definitions_number = definitions_set.size();
         String[] definitions = definitions_set.toArray(new String[definitions_number]);

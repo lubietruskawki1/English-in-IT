@@ -57,7 +57,8 @@ public class FlashcardsOptions extends AppCompatActivity {
         });
 
         ConnectionHandler c = new ConnectionHandler(this);
-        ArrayList<Set> setsAndTermNumbers = ConnectionHandlerUtils.getAllLearningSets(c);
+        ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(c);
+        ArrayList<Set> setsAndTermNumbers = connection_handler_utils.getAllLearningSets();
         setsAndTermNumbers.add(new Set("All terms", 282));
         ArrayList<String> sets = new ArrayList<>();
         for (Set set : setsAndTermNumbers) {
