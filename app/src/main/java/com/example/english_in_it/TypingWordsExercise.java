@@ -56,12 +56,12 @@ public class TypingWordsExercise extends AppCompatActivity {
 
         if(repetitions) {
             System.out.println("Próbuję liczyć powtórki");
-            ArrayList<String> all_sets = connection_handler.getAllLearningSetNames();
-            connection_handler.setWordDaysWaitedPrev("bit", 1);
+            ArrayList<String> all_sets = ConnectionHandlerUtils.getAllLearningSetNames(connection_handler);
+            ConnectionHandlerUtils.setWordDaysWaitedPrev(connection_handler,"bit", 1);
             for(int i = 0; i < all_sets.size(); i++) {
                 Date today = new Date();
                 try {
-                    ArrayList<Word> current_list = connection_handler.getLearningSetList(all_sets.get(i));
+                    ArrayList<Word> current_list = ConnectionHandlerUtils.getLearningSetList(connection_handler, all_sets.get(i));
                     for(int j = 0; j < current_list.size(); j++) {
                         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
                         String formated_today = formatter.format(today);
@@ -131,8 +131,8 @@ public class TypingWordsExercise extends AppCompatActivity {
                         int len = words.size();
                         for(int i = 0; i < len; i++) {
                             System.out.println(words.get(i).when_to_remind);
-                            connection_handler.setWordRepetitionDate(words.get(i).word, words.get(i).when_to_remind);
-                            connection_handler.setWordDaysWaitedPrev(words.get(i).word, words.get(i).days_we_waited_previously);
+                            ConnectionHandlerUtils.setWordRepetitionDate(connection_handler, words.get(i).word, words.get(i).when_to_remind);
+                            ConnectionHandlerUtils.setWordDaysWaitedPrev(connection_handler, words.get(i).word, words.get(i).days_we_waited_previously);
                         }
                         Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
                         startActivity(intent);

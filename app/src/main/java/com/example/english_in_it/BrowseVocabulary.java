@@ -34,8 +34,8 @@ public class BrowseVocabulary extends AppCompatActivity {
 
         connection_handler = new ConnectionHandler(BrowseVocabulary.this);
 
-        HashMap<String, String> glossary = connection_handler.getGlossaryMapTermToDef(1);
-        ArrayList<String> glossary_terms = connection_handler.getGlossaryJustTerms();
+        HashMap<String, String> glossary = ConnectionHandlerUtils.getGlossaryMapTermToDef(connection_handler, 1);
+        ArrayList<String> glossary_terms = ConnectionHandlerUtils.getGlossaryJustTerms(connection_handler);
         ArrayList<TermAndDef> vocab = new ArrayList<>();
 
         for (String term : glossary_terms) {

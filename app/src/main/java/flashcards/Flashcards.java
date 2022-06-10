@@ -15,11 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.english_in_it.ConnectionHandler;
-import com.example.english_in_it.R;
-import com.example.english_in_it.Settings;
+import com.example.english_in_it.*;
 import activities_menu.StartListActivity;
-import com.example.english_in_it.Utils;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -60,10 +57,10 @@ public class Flashcards extends AppCompatActivity {
         String selectedSet = flashcards_bundle.getString("selectedSet");
 
         if (defToTerm) {
-            glossary = connection_handler.getGlossaryMapTermToDef(0);
+            glossary = ConnectionHandlerUtils.getGlossaryMapTermToDef(connection_handler, 0);
             if (!selectedSet.equals("All terms")) {
                 try {
-                    glossary = connection_handler.getSetGlossaryMapDefToTerm(selectedSet);
+                    glossary = ConnectionHandlerUtils.getSetGlossaryMapDefToTerm(connection_handler, selectedSet);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -71,10 +68,10 @@ public class Flashcards extends AppCompatActivity {
             Toast.makeText(Flashcards.this, "definition to term", Toast.LENGTH_SHORT).show();
         }
         else {
-            glossary = connection_handler.getGlossaryMapTermToDef(1);
+            glossary = ConnectionHandlerUtils.getGlossaryMapTermToDef(connection_handler, 1);
             if (!selectedSet.equals("All terms")) {
                 try {
-                    glossary = connection_handler.getSetGlossaryMapTermToDef(selectedSet, 1);
+                    glossary = ConnectionHandlerUtils.getSetGlossaryMapTermToDef(connection_handler, selectedSet, 1);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
