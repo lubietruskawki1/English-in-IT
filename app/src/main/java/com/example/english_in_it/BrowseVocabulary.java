@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -24,6 +26,7 @@ import learning_sets.SetListRecViewAdapter;
 public class BrowseVocabulary extends AppCompatActivity {
     private ConnectionHandler connection_handler;
     private RecyclerView vocabulary_view;
+    private VocabularyRecViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,7 @@ public class BrowseVocabulary extends AppCompatActivity {
         }
 
         vocabulary_view = findViewById(R.id.VocabularyRecRecView);
-        VocabularyRecViewAdapter adapter = new VocabularyRecViewAdapter(this);
+        adapter = new VocabularyRecViewAdapter(this);
         adapter.setVocabulary(vocab);
         vocabulary_view.setAdapter(adapter);
         vocabulary_view.setLayoutManager(new LinearLayoutManager(this));
@@ -53,7 +56,25 @@ public class BrowseVocabulary extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.start_menu, menu);
+        inflater.inflate(R.menu.browse_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
         return true;
     }
 

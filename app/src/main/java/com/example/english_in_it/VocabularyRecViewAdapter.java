@@ -4,15 +4,20 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.List;
 
-public class VocabularyRecViewAdapter extends RecyclerView.Adapter<VocabularyRecViewAdapter.ViewHolder> {
-    private ArrayList<TermAndDef> vocabulary = new ArrayList<>();
+public class VocabularyRecViewAdapter extends RecyclerView.Adapter<VocabularyRecViewAdapter.ViewHolder> implements Filterable {
+    private List<TermAndDef> vocabulary = new ArrayList<>();
+    private List<TermAndDef> fullVocabulary;
+
     private Context context;
 
     public VocabularyRecViewAdapter(Context context) {
@@ -39,8 +44,43 @@ public class VocabularyRecViewAdapter extends RecyclerView.Adapter<VocabularyRec
     }
     public void setVocabulary(ArrayList<TermAndDef> voc) {
         this.vocabulary = voc;
+        fullVocabulary = new ArrayList<>(voc);
     }
     public Context getContext() { return context; }
+
+    @Override
+    public Filter getFilter() {
+        return wordsFilter;
+    }
+
+    private Filter wordsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<TermAndDef> filteredList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(fullVocabulary);
+            }
+            else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (TermAndDef item : fullVocabulary) {
+                    if (item.getTerm().toLowerCase().contains(constraint)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @SuppressLint("NotifyDataSetChanged")
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            vocabulary.clear();
+            vocabulary.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView term;
