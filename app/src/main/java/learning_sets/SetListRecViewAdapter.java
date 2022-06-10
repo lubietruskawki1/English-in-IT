@@ -69,7 +69,7 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
             builder.setMessage("Are you sure you want to delete set " + set_name + "?")
                     .setPositiveButton("YES", (dialogInterface, i) -> {
                         Toast.makeText(context, "Deleted set " + set_name, Toast.LENGTH_SHORT).show();
-                        connectionHandler.deleteLearningSet(set_name);
+                        ConnectionHandlerUtils.deleteLearningSet(connectionHandler, set_name);
                         Intent intent = new Intent(context, CreateOwnTermSets.class);
                         context.startActivity(intent);
                     })

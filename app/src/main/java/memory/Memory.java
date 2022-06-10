@@ -11,11 +11,8 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.english_in_it.ConnectionHandler;
-import com.example.english_in_it.R;
-import com.example.english_in_it.Settings;
+import com.example.english_in_it.*;
 import activities_menu.StartListActivity;
-import com.example.english_in_it.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -102,7 +99,7 @@ public class Memory extends AppCompatActivity {
 
             ConnectionHandler connectionHandler = new ConnectionHandler(Memory.this);
             HashMap<String, String> fullGlossary =
-                    connectionHandler.getFilteredGlossaryMapTermToDef(maxLength);
+                    ConnectionHandlerUtils.getFilteredGlossaryMapTermToDef(connectionHandler, maxLength);
             System.out.println("rozmiaar " + fullGlossary.size());
 
             ArrayList<String> keys = new ArrayList<>(fullGlossary.keySet());

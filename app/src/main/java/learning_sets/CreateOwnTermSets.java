@@ -18,11 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.english_in_it.ConnectionHandler;
-import com.example.english_in_it.MainActivity;
-import com.example.english_in_it.R;
-import com.example.english_in_it.Settings;
-import com.example.english_in_it.Utils;
+import com.example.english_in_it.*;
 
 import java.util.ArrayList;
 
@@ -54,8 +50,8 @@ public class CreateOwnTermSets extends AppCompatActivity {
         //handler.deleteAllSets();
         //handler.addWordToLearningSet("algorithm", "se");
 
-        ArrayList<Set> user_sets = handler.getAllLearningSets();
-        ArrayList<String> empty_sets = handler.getEmptySets();
+        ArrayList<Set> user_sets = ConnectionHandlerUtils.getAllLearningSets(handler);
+        ArrayList<String> empty_sets = ConnectionHandlerUtils.getEmptySets(handler);
 
         for (String set_name : empty_sets) {
             user_sets.add(new Set(set_name, 0));
@@ -83,7 +79,7 @@ public class CreateOwnTermSets extends AppCompatActivity {
                         Toast.makeText(CreateOwnTermSets.this, "Enter new set name.", Toast.LENGTH_SHORT).show();
 
                     else {
-                        handler.newLearningSet(create_set_name);
+                        ConnectionHandlerUtils.newLearningSet(handler, create_set_name);
                         new_set_name.setVisibility(View.GONE);
                         new_set_txt.setVisibility(View.VISIBLE);
                         new_set_btn.setText("+");

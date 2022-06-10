@@ -70,7 +70,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
 
         connection_handler = new ConnectionHandler(ChooseWordsToLearn.this);
 
-        final ArrayList<String> glossary = connection_handler.getGlossary();
+        final ArrayList<String> glossary = ConnectionHandlerUtils.getGlossary(connection_handler);
 
         wordsList = findViewById(R.id.wordsList);
         ArrayAdapter<String> words_adapter = new ArrayAdapter<>(
@@ -80,7 +80,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String set_name = extras.getString("set_name");
-        ArrayList<String> glossaryJustTerms = connection_handler.getGlossaryJustTerms();
+        ArrayList<String> glossaryJustTerms = ConnectionHandlerUtils.getGlossaryJustTerms(connection_handler);
 
         wordsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -95,7 +95,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Toast.makeText(ChooseWordsToLearn.this, "Added " + glossary.get(position), Toast.LENGTH_SHORT).show();
                                 //TODO sprawdzenie czy nie dodaje sie 2 razy to samo
-                                connection_handler.addWordToLearningSet(glossaryJustTerms.get(position), set_name);
+                                ConnectionHandlerUtils.addWordToLearningSet(connection_handler, glossaryJustTerms.get(position), set_name);
                                 String firstDat = "2/11/2023";
                                 Word to_add = null;
                                 try {

@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,13 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
 public class SettingsListRecViewAdapter extends RecyclerView.Adapter<SettingsListRecViewAdapter.ViewHolder> {
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
     private ArrayList<String> items = new ArrayList<>();
     private Context context;
 

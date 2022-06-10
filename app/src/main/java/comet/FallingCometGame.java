@@ -19,11 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.english_in_it.ConnectionHandler;
-import com.example.english_in_it.R;
-import com.example.english_in_it.Settings;
+import com.example.english_in_it.*;
 import activities_menu.StartListActivity;
-import com.example.english_in_it.Utils;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -74,7 +71,7 @@ public class FallingCometGame extends AppCompatActivity {
         cometImg.setRotation(-35);
 
         connection_handler = new ConnectionHandler(FallingCometGame.this);
-        glossary = connection_handler.getGlossaryMapTermToDef(0);
+        glossary = ConnectionHandlerUtils.getGlossaryMapTermToDef(connection_handler, 0);
         Set<String> definitions_set = glossary.keySet();
         int definitions_number = definitions_set.size();
         String[] definitions = definitions_set.toArray(new String[definitions_number]);

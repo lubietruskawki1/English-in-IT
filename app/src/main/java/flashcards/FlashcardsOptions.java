@@ -16,11 +16,8 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import com.example.english_in_it.ConnectionHandler;
-import com.example.english_in_it.R;
-import com.example.english_in_it.Settings;
+import com.example.english_in_it.*;
 import activities_menu.StartListActivity;
-import com.example.english_in_it.Utils;
 import learning_sets.Set;
 
 import java.util.ArrayList;
@@ -60,7 +57,7 @@ public class FlashcardsOptions extends AppCompatActivity {
         });
 
         ConnectionHandler c = new ConnectionHandler(this);
-        ArrayList<Set> setsAndTermNumbers = c.getAllLearningSets();
+        ArrayList<Set> setsAndTermNumbers = ConnectionHandlerUtils.getAllLearningSets(c);
         setsAndTermNumbers.add(new Set("All terms", 282));
         ArrayList<String> sets = new ArrayList<>();
         for (Set set : setsAndTermNumbers) {
