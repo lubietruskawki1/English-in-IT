@@ -39,6 +39,8 @@ public class TypingWordsExercise extends AppCompatActivity {
     public EditText word;
     public TextView good_bad;
     public TextView correct_answer;
+    public TextView good;
+    public TextView bad;
     private Word current_word;
     private int counter_for_clicks;
 
@@ -111,6 +113,8 @@ public class TypingWordsExercise extends AppCompatActivity {
         check_button = findViewById(R.id.check_button);
         word = findViewById(R.id.word);
         good_bad = findViewById(R.id.good_bad);
+        good = findViewById(R.id.correct);
+        bad = findViewById(R.id.incorrect);
         correct_answer = findViewById(R.id.correct_answer);
 
         current_word = iter.next();
@@ -118,6 +122,8 @@ public class TypingWordsExercise extends AppCompatActivity {
         counter_for_clicks = 0;
         correct_answer.setText("");
         good_bad.setText("");
+        good.setText("");
+        bad.setText("");
 
         check_button.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
             @SuppressLint("ClickableViewAccessibility")
@@ -126,15 +132,22 @@ public class TypingWordsExercise extends AppCompatActivity {
                 if(counter_for_clicks%2 == 0) {//wpisywanie tłumaczenia, po którym pojawia się feedback
                     correct_answer.setText("");
                     good_bad.setText("");
+                    good.setText("");
+                    bad.setText("");
                     String entered_word = word.getText().toString();
                     if (entered_word.equals(current_word.word)) {
-                        good_bad.setText("CORRECT!");
+                        //good_bad.setText("CORRECT!");
+                        good.setText("CORRECT");
+                        bad.setText("");
                         current_word.set_date_to_remind(true);
                         //good_bad.setTextColor(Color.parseColor("0xff00ff00"));
                     } else {
-                        good_bad.setText("INCORRECT");
+                        //good_bad.setText("INCORRECT");
+                        good.setText("");
+                        bad.setText("INCORRECT");
                         correct_answer.setText("correct answer: " + current_word.word);
                         current_word.set_date_to_remind(false);
+
                         //good_bad.setTextColor(Color.parseColor("0xffff0000"));
                     }
                     check_button.setText("CONTINUE");
@@ -144,6 +157,8 @@ public class TypingWordsExercise extends AppCompatActivity {
                     //good_bad.setTextColor(Color.parseColor("0xff000000"));
                     correct_answer.setText("");
                     good_bad.setText("");
+                    good.setText("");
+                    bad.setText("");
                     check_button.setText("CHECK");
                     if (!iter.hasNext()) {
                         //zapisuję do bazy danych info kiedy co powtórzyć
@@ -161,10 +176,8 @@ public class TypingWordsExercise extends AppCompatActivity {
                     word.setText("");
                     counter_for_clicks++;
                 }
-
             }
         }));
-
     }
 
     @Override
