@@ -28,7 +28,6 @@ import activities_menu.StartListActivity;
 public class TypingWordsExercise extends AppCompatActivity {
 
     ArrayList<Word> words = new ArrayList<Word>();
-    //ArrayList<Word> words = (ArrayList<Word>) getIntent().getSerializableExtra("words");
 
     private ConnectionHandler connection_handler;
 
@@ -40,7 +39,6 @@ public class TypingWordsExercise extends AppCompatActivity {
     public EditText word;
     public TextView good_bad;
     public TextView correct_answer;
-    //private Iterator<Word> iter = words.iterator();
     private Word current_word;
     private int counter_for_clicks;
 
@@ -57,7 +55,6 @@ public class TypingWordsExercise extends AppCompatActivity {
         setTheme(Utils.getTheme(pref.getString("theme", null)));
 
         if(repetitions) {
-            System.out.println("Próbuję liczyć powtórki");
             ArrayList<String> all_sets = connection_handler_utils.getAllLearningSetNames();
             connection_handler_utils.setWordDaysWaitedPrev("bit", 1);
             for(int i = 0; i < all_sets.size(); i++) {
@@ -83,7 +80,6 @@ public class TypingWordsExercise extends AppCompatActivity {
             }
         }
         else {
-            //TODO trzeba napisać skąd wziąć listę słówek, jeśli nie robimy powtórek tylko uczymy się z zestawu
             try {
                 words = connection_handler_utils.getLearningSetList(set_name);
                 Date today = new Date();
@@ -153,7 +149,6 @@ public class TypingWordsExercise extends AppCompatActivity {
                         //zapisuję do bazy danych info kiedy co powtórzyć
                         int len = words.size();
                         for(int i = 0; i < len; i++) {
-                            System.out.println(words.get(i).when_to_remind);
                             connection_handler_utils.setWordRepetitionDate(words.get(i).word, words.get(i).when_to_remind);
                             connection_handler_utils.setWordDaysWaitedPrev(words.get(i).word, words.get(i).days_we_waited_previously);
                         }

@@ -23,7 +23,7 @@ import comet.CometTimerActivity;
 public class DailyRepetitions extends AppCompatActivity {
     private ConnectionHandler connection_handler;
 
-    Button start_button;// = findViewById();
+    Button start_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,6 @@ public class DailyRepetitions extends AppCompatActivity {
         start_button = findViewById(R.id.start);
 
         start_button.setOnClickListener( v -> {
-            System.out.println("Przed wywołaniem Typing");
             Intent intent = new Intent(DailyRepetitions.this, TypingWordsExercise.class);
             Bundle repetitions_bundle = new Bundle();
             repetitions_bundle.putBoolean("repetitions", true);
@@ -59,7 +58,6 @@ public class DailyRepetitions extends AppCompatActivity {
         });
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

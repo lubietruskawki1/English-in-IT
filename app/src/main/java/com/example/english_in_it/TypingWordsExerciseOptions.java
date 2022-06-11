@@ -66,12 +66,10 @@ public class TypingWordsExerciseOptions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TypingWordsExerciseOptions.this, TypingWordsExercise.class);
-
                 Bundle repetitions_bundle = new Bundle();
                 repetitions_bundle.putBoolean("repetitions", false);
                 repetitions_bundle.putString("selectedSet", selectedSet);
                 intent.putExtras(repetitions_bundle);
-
                 startActivity(intent);
             }
         });

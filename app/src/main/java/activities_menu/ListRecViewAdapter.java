@@ -94,7 +94,6 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         break;
                     case 1:
                         Intent choose_intent = new Intent(context, CreateOwnTermSets.class);
-                        //Intent choose_intent = new Intent(context, ChooseWordsToLearn.class);
                         context.startActivity(choose_intent);
                         break;
                     case 2:
@@ -115,9 +114,6 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         break;
                     case 6:
                         Intent typing_exercise_intent = new Intent(context, TypingWordsExerciseOptions.class);
-                        //Bundle repetitions_bundle = new Bundle();
-                        //repetitions_bundle.putBoolean("repetitions", false);
-                        //typing_exercise_intent.putExtras(repetitions_bundle);
                         context.startActivity(typing_exercise_intent);
                         break;
                     case 7:

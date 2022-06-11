@@ -28,18 +28,13 @@ public class Word implements Serializable {
     }
 
     public static Date addDays(Date date, int days) {
-        System.out.println("data:" + date);
-        System.out.println("lizcba dni do dodania: " + days);
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.DATE, days); //minus number would decrement the days
-        System.out.println("otrzymana data: " + cal.getTime());
         return cal.getTime();
     }
 
     void set_date_to_remind(boolean correct_answer) {
-        //Calendar myCalendarInstance = new GregorianCalendar();
-        //Date today = new Date(myCalendarInstance.getTimeInMillis());
         Date today = new Date();
         int days_to_wait_until_next_remind = 1;
         if(correct_answer) {
@@ -51,7 +46,6 @@ public class Word implements Serializable {
             days_we_waited_previously = 1;
         }
         when_to_remind = addDays(today, days_to_wait_until_next_remind);
-        System.out.println("data na koniec funkcji: " + when_to_remind);
     }
 
     public String getWord() {
