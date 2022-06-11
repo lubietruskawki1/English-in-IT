@@ -35,7 +35,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/setSpinner"
         android:text="OK"
-        android:id="@+id/btnFlashcards"
+        android:id="@+id/btnExercise"
         android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:backgroundTint="?attr/buttonColor" />

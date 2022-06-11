@@ -18,20 +18,12 @@ import android.widget.Spinner;
 
 import com.example.english_in_it.*;
 import activities_menu.StartListActivity;
-import flashcards.Flashcards;
 import learning_sets.Set;
 
 import java.util.ArrayList;
 
-/*
- A class handling flashcards options:
- - choosing a learning style: term to definition/definition to term
- - choosing a learning set
-*/
 public class TypingWordsExerciseOptions extends AppCompatActivity {
-    //private boolean defToTerm = true;
     private String selectedSet;
-    //private RadioGroup howToLearn;
     private Spinner setSpinner;
 
     @Override
@@ -42,20 +34,6 @@ public class TypingWordsExerciseOptions extends AppCompatActivity {
         setContentView(R.layout.activity_typing_exercise_options);
 
         setSpinner = findViewById(R.id.setSpinner);
-        /*howToLearn = findViewById(R.id.termDefinitionChoice);
-        howToLearn.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch(i) {
-                    case R.id.defToTerm:
-                        defToTerm = true;
-                        break;
-                    case R.id.termToDef:
-                        defToTerm = false;
-                        break;
-                }
-            }
-        });*/
 
         ConnectionHandler c = new ConnectionHandler(this);
         ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(c);
@@ -83,8 +61,8 @@ public class TypingWordsExerciseOptions extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) { }
         });
 
-        Button goToFlashcardsButton = findViewById(R.id.btnFlashcards);
-        goToFlashcardsButton.setOnClickListener(new View.OnClickListener() {
+        Button goToExercise = findViewById(R.id.btnExercise);
+        goToExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TypingWordsExerciseOptions.this, TypingWordsExercise.class);
