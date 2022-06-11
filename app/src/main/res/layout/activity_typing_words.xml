@@ -50,7 +50,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
+        app:layout_constraintVertical_bias="0.321"
+        />
 
     <TextView
         android:id="@+id/accepted"
@@ -73,13 +74,15 @@
         android:text="correct_answer"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/word"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/meaning"
-        app:layout_constraintVertical_bias="0.501" />
+        app:layout_constraintVertical_bias="0.501"
+        app:layout_constraintWidth_max="340dp" />
 
     <TextView
         android:id="@+id/correct"
