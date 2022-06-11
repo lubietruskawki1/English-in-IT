@@ -144,12 +144,8 @@ public class ChooseWordsToLearn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveData();
-                Intent intent = new Intent(ChooseWordsToLearn.this, TypingWordsExercise.class);
-
-                Bundle args = new Bundle();
-                args.putSerializable("words",(Serializable)chosen_words);
-                intent.putExtra("bundle",args);
-
+                Toast.makeText(ChooseWordsToLearn.this, "Saved.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ChooseWordsToLearn.this, StartListActivity.class);
                 startActivity(intent);
             }
         });

@@ -97,7 +97,7 @@ public class TypingWordsExercise extends AppCompatActivity {
             }
 
             if(words.isEmpty()) {
-                //Toast.makeText(TypingWordsExercise.this, "Empty set was chosen.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TypingWordsExercise.this, "Empty set was chosen.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
                 startActivity(intent);
                 return;
