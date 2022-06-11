@@ -53,10 +53,11 @@
         app:layout_constraintVertical_bias="0.321" />
 
     <TextView
-        android:id="@+id/good_bad"
+        android:id="@+id/accepted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="good_bad"
+        android:text="ACCEPTED"
+        android:textColor="#FF7F50"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/meaning"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +87,7 @@
         android:layout_height="wrap_content"
         android:text="CORRECT"
         android:textColor="#008000"
-        android:textSize="22sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/meaning"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,9 +99,22 @@
         android:layout_height="wrap_content"
         android:text="INCORRECT"
         android:textColor="#FF0000"
-        android:textSize="22sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/meaning"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ACCEPT"
+        android:textSize="10sp"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/check_button"
+        app:layout_constraintTop_toBottomOf="@+id/word" />
 </androidx.constraintlayout.widget.ConstraintLayout>

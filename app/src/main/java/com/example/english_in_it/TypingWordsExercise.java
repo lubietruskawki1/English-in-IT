@@ -30,14 +30,13 @@ public class TypingWordsExercise extends AppCompatActivity {
     ArrayList<Word> words = new ArrayList<Word>();
 
     private ConnectionHandler connection_handler;
-
     private int mInterval = 5000; // 5 seconds by default, can be changed later
     private Handler mHandler;
-
     public TextView meaning;
     public Button check_button;
+    public Button accept_button;
     public EditText word;
-    public TextView good_bad;
+    public TextView accepted;
     public TextView correct_answer;
     public TextView good;
     public TextView bad;
@@ -112,18 +111,20 @@ public class TypingWordsExercise extends AppCompatActivity {
         meaning = findViewById(R.id.meaning);
         check_button = findViewById(R.id.check_button);
         word = findViewById(R.id.word);
-        good_bad = findViewById(R.id.good_bad);
+        accepted = findViewById(R.id.accepted);
         good = findViewById(R.id.correct);
         bad = findViewById(R.id.incorrect);
         correct_answer = findViewById(R.id.correct_answer);
+        accept_button = findViewById(R.id.accept);
 
         current_word = iter.next();
         meaning.setText(current_word.meaning);
         counter_for_clicks = 0;
         correct_answer.setText("");
-        good_bad.setText("");
+        accepted.setText("");
         good.setText("");
         bad.setText("");
+        accept_button.setVisibility(View.GONE);
 
         check_button.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
             @SuppressLint("ClickableViewAccessibility")
@@ -131,32 +132,43 @@ public class TypingWordsExercise extends AppCompatActivity {
             public void onClick(View view) {
                 if(counter_for_clicks%2 == 0) {//wpisywanie tłumaczenia, po którym pojawia się feedback
                     correct_answer.setText("");
-                    good_bad.setText("");
+                    accepted.setText("");
                     good.setText("");
                     bad.setText("");
+                    accept_button.setVisibility(View.GONE);
                     String entered_word = word.getText().toString();
                     if (entered_word.equals(current_word.word)) {
                         //good_bad.setText("CORRECT!");
                         good.setText("CORRECT");
                         bad.setText("");
                         current_word.set_date_to_remind(true);
-                        //good_bad.setTextColor(Color.parseColor("0xff00ff00"));
+                        accept_button.setVisibility(View.GONE);
                     } else {
                         //good_bad.setText("INCORRECT");
                         good.setText("");
                         bad.setText("INCORRECT");
                         correct_answer.setText("correct answer: " + current_word.word);
                         current_word.set_date_to_remind(false);
-
-                        //good_bad.setTextColor(Color.parseColor("0xffff0000"));
+                        accept_button.setText("ACCEPT");
+                        accept_button.setVisibility(View.VISIBLE);
+                        accept_button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                bad.setText("");
+                                accepted.setText("ACCEPTED");
+                                current_word.set_date_to_remind(true);
+                            }
+                        });
                     }
                     check_button.setText("CONTINUE");
+
                     counter_for_clicks++;
                 }
                 else {//pojawia się nowe słówko
                     //good_bad.setTextColor(Color.parseColor("0xff000000"));
+                    accept_button.setVisibility(View.GONE);
                     correct_answer.setText("");
-                    good_bad.setText("");
+                    accepted.setText("");
                     good.setText("");
                     bad.setText("");
                     check_button.setText("CHECK");
