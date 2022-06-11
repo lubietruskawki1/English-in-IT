@@ -144,10 +144,6 @@ public class ChooseWordsToLearn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveData();
-                for(int i = 0; i < chosen_words.size(); i++) {
-                    //Toast pokazujący, że wartości tablicy chosen_words zachowują się pomiedzy wywołaniami
-                    Toast.makeText(ChooseWordsToLearn.this, chosen_words.get(i).word, Toast.LENGTH_SHORT).show();
-                }
                 Intent intent = new Intent(ChooseWordsToLearn.this, TypingWordsExercise.class);
 
                 Bundle args = new Bundle();

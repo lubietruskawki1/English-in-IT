@@ -86,7 +86,6 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "selected " + items.get(position), Toast.LENGTH_SHORT).show();
                 switch (position) {
                     case 0:
                         Intent browse_intent = new Intent(context, BrowseVocabulary.class);
