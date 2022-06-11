@@ -1,13 +1,15 @@
 package com.example.english_in_it;
 
 import android.annotation.SuppressLint;
+
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class Word {
+public class Word implements Serializable {
     String word;
     String meaning;
     int days_we_waited_previously;
