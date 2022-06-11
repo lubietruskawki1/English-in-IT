@@ -49,6 +49,7 @@ public class TypingWordsExercise extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Bundle repetitions_bundle = getIntent().getExtras();
         Boolean repetitions = repetitions_bundle.getBoolean("repetitions");
+        String set_name = repetitions_bundle.getString("selectedSet");
         connection_handler = new ConnectionHandler(TypingWordsExercise.this);
         ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(connection_handler);
         super.onCreate(savedInstanceState);
@@ -83,6 +84,27 @@ public class TypingWordsExercise extends AppCompatActivity {
         }
         else {
             //TODO trzeba napisać skąd wziąć listę słówek, jeśli nie robimy powtórek tylko uczymy się z zestawu
+            try {
+                words = connection_handler_utils.getLearningSetList(set_name);
+                Date today = new Date();
+                for(int i = 0; i < words.size(); i++) {
+                    if(words.get(i).when_to_remind == null) {
+                        words.get(i).when_to_remind = today;
+                    }
+                    if(words.get(i).days_we_waited_previously < 0) {
+                        words.get(i).days_we_waited_previously = 1;
+                    }
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if(words.isEmpty()) {
+                Toast.makeText(TypingWordsExercise.this, "Empty set was chosen.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
+                startActivity(intent);
+                return;
+            }
         }
 
         Iterator<Word> iter = words.iterator();

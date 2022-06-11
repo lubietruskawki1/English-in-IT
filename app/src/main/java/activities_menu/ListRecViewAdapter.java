@@ -22,6 +22,7 @@ import com.example.english_in_it.DailyRepetitions;
 import com.example.english_in_it.R;
 import com.example.english_in_it.Settings;
 import com.example.english_in_it.TypingWordsExercise;
+import com.example.english_in_it.TypingWordsExerciseOptions;
 
 import java.util.ArrayList;
 
@@ -59,7 +60,7 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                 uri = "@drawable/choosing_img";
                 break;
             case 2:
-                uri = "@drawable/alarm_img";
+                uri = "@drawable/dali_clock";
                 break;
             case 3:
                 uri = "@drawable/flashcard_img";
@@ -113,10 +114,10 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                         context.startActivity(comet_intent);
                         break;
                     case 6:
-                        Intent typing_exercise_intent = new Intent(context, TypingWordsExercise.class);
-                        Bundle repetitions_bundle = new Bundle();
-                        repetitions_bundle.putBoolean("repetitions", false);
-                        typing_exercise_intent.putExtras(repetitions_bundle);
+                        Intent typing_exercise_intent = new Intent(context, TypingWordsExerciseOptions.class);
+                        //Bundle repetitions_bundle = new Bundle();
+                        //repetitions_bundle.putBoolean("repetitions", false);
+                        //typing_exercise_intent.putExtras(repetitions_bundle);
                         context.startActivity(typing_exercise_intent);
                         break;
                     case 7:

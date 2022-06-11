@@ -45,6 +45,9 @@
             android:name=".TypingWordsExercise"
             android:exported="true" />
         <activity
+            android:name=".TypingWordsExerciseOptions"
+            android:exported="true" />
+        <activity
             android:name="activities_menu.StartListActivity"
             android:exported="true" />
         <activity
