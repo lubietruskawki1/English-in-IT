@@ -105,7 +105,6 @@ public class TypingWordsExercise extends AppCompatActivity {
         }
 
         Iterator<Word> iter = words.iterator();
-
         setContentView(R.layout.activity_typing_words);
 
         meaning = findViewById(R.id.meaning);
@@ -138,13 +137,11 @@ public class TypingWordsExercise extends AppCompatActivity {
                     accept_button.setVisibility(View.GONE);
                     String entered_word = word.getText().toString();
                     if (entered_word.equals(current_word.word)) {
-                        //good_bad.setText("CORRECT!");
                         good.setText("CORRECT");
                         bad.setText("");
                         current_word.set_date_to_remind(true);
                         accept_button.setVisibility(View.GONE);
                     } else {
-                        //good_bad.setText("INCORRECT");
                         good.setText("");
                         bad.setText("INCORRECT");
                         correct_answer.setText("correct answer: " + current_word.word);
@@ -161,11 +158,9 @@ public class TypingWordsExercise extends AppCompatActivity {
                         });
                     }
                     check_button.setText("CONTINUE");
-
                     counter_for_clicks++;
                 }
                 else {//pojawia się nowe słówko
-                    //good_bad.setTextColor(Color.parseColor("0xff000000"));
                     accept_button.setVisibility(View.GONE);
                     correct_answer.setText("");
                     accepted.setText("");
