@@ -37,6 +37,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import activities_menu.StartListActivity;
+import learning_sets.CreateOwnTermSets;
 
 
 public class ChooseWordsToLearn extends AppCompatActivity {
@@ -105,7 +106,7 @@ public class ChooseWordsToLearn extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ChooseWordsToLearn.this);
-                builder.setMessage("Add this word to your base?")
+                builder.setMessage("Add this word to your set?")
                         .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -145,14 +146,14 @@ public class ChooseWordsToLearn extends AppCompatActivity {
             public void onClick(View view) {
                 saveData();
                 Toast.makeText(ChooseWordsToLearn.this, "Saved.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ChooseWordsToLearn.this, StartListActivity.class);
+                Intent intent = new Intent(ChooseWordsToLearn.this, CreateOwnTermSets.class);
                 startActivity(intent);
             }
         });
     }
 
     private void showSnackbar() {
-        Snackbar.make(vocabulary_view,"Add to your base?", Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(vocabulary_view,"Add to your set?", Snackbar.LENGTH_INDEFINITE)
                 .setAction("Yes", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
