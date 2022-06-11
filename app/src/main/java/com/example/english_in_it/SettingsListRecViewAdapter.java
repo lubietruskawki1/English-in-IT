@@ -46,7 +46,7 @@ public class SettingsListRecViewAdapter extends RecyclerView.Adapter<SettingsLis
                 uri = "@drawable/sun";
                 break;
             case 1:
-                uri = "@drawable/dali_clock";
+                uri = "@drawable/moon";
                 break;
         }
 
