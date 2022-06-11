@@ -60,7 +60,7 @@ public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.
                 uri = "@drawable/choosing_img";
                 break;
             case 2:
-                uri = "@drawable/dali_clock";
+                uri = "@drawable/jumping_clock_img";
                 break;
             case 3:
                 uri = "@drawable/flashcard_img";
