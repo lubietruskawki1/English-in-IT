@@ -45,10 +45,15 @@ public class SetListRecViewAdapter extends RecyclerView.Adapter<SetListRecViewAd
         return holder;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull SetListRecViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.setName.setText(items.get(position).getName());
-        holder.termsNumber.setText(String.valueOf(items.get(position).getTerms_number()) + " terms");
+        if (items.get(position).getTerms_number() == 1) {
+            holder.termsNumber.setText(items.get(position).getTerms_number() + " term");
+        } else {
+            holder.termsNumber.setText(items.get(position).getTerms_number() + " terms");
+        }
 
         String set_name = items.get(position).getName();
 
