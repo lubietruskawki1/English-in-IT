@@ -2,7 +2,6 @@ package learning_sets;
 
 import activities_menu.StartListActivity;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.*;
 import android.widget.*;
@@ -11,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.english_in_it.*;
 
 import java.text.ParseException;
@@ -18,6 +20,8 @@ import java.util.ArrayList;
 
 public class EditSet extends AppCompatActivity {
     private TextView set_name_view;
+    private RecyclerView vocabulary_view;
+    private VocabularyRecViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,32 +58,18 @@ public class EditSet extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-        ArrayList<String> strings = new ArrayList<>();
+        ArrayList<TermAndDef> vocabulary = new ArrayList<>();
         for (Word word : words) {
-            strings.add(word.getWord() + ": " + word.getMeaning());
+            vocabulary.add(new TermAndDef(word.getWord(), word.getMeaning()));
         }
 
-        ListView editSetList = findViewById(R.id.words_list);
-        ArrayAdapter<String> editSetAdapter = new ArrayAdapter<>(
-                EditSet.this, android.R.layout.simple_list_item_1, strings);
-        editSetList.setAdapter(editSetAdapter);
-
-        editSetList.setOnItemClickListener((parent, view, position, id) -> {
-            String chosen = (String) parent.getItemAtPosition(position);
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            String term = chosen.split(":")[0];
-            builder.setMessage("Are you sure you want to delete word " + term + " from set?")
-                    .setPositiveButton("YES", (dialogInterface, i) -> {
-                        Toast.makeText(this, "Deleted word " + term, Toast.LENGTH_SHORT).show();
-                        connection_handler_utils.deleteWordFromLearningSet(term, set_name);
-                        startActivity(getIntent());
-                    })
-                    .setNegativeButton("NO", (dialogInterface, i) -> {
-                        Toast.makeText(this, "Cancelled.", Toast.LENGTH_SHORT).show();
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
-        });
+        vocabulary_view = findViewById(R.id.words_list);
+        adapter = new VocabularyRecViewAdapter(this);
+        adapter.allowDelete(connection_handler_utils, set_name);
+        adapter.setVocabulary(vocabulary);
+        vocabulary_view.setAdapter(adapter);
+        vocabulary_view.setLayoutManager(new LinearLayoutManager(this));
+        vocabulary_view.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     }
 
     @Override
