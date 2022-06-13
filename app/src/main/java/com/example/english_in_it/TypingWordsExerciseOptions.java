@@ -38,7 +38,6 @@ public class TypingWordsExerciseOptions extends AppCompatActivity {
         ConnectionHandler c = new ConnectionHandler(this);
         ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(c);
         ArrayList<Set> setsAndTermNumbers = connection_handler_utils.getAllLearningSets();
-        setsAndTermNumbers.add(new Set("All terms", 282));
         ArrayList<String> sets = new ArrayList<>();
         for (Set set : setsAndTermNumbers) {
             sets.add(set.getName() + " (" + set.getTerms_number() + " terms)");

@@ -3,9 +3,10 @@ package memory;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.graphics.Point;
+import android.os.Build;
+import android.util.DisplayMetrics;
+import android.view.*;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,17 +29,13 @@ public class Memory extends AppCompatActivity {
     private static final int CARDS_LEVEL_MEDIUM = 16; // 4x4
     private static final int CARDS_LEVEL_HARD = 20; // 4x5
 
-    private static final int MAX_LENGTH_LEVEL_EASY = 110; // 204 pojęcia
-    private static final int MAX_LENGTH_LEVEL_MEDIUM = 90; // 120 pojęć
-    private static final int MAX_LENGTH_LEVEL_HARD = 70; // 58 pojęć
+    private static final int MAX_LENGTH_LEVEL_EASY = 110;
+    private static final int MAX_LENGTH_LEVEL_MEDIUM = 85;
+    private static final int MAX_LENGTH_LEVEL_HARD = 65;
 
     private static final int COLUMNS_LEVEL_EASY = 3; // 3x4
     private static final int COLUMNS_LEVEL_MEDIUM = 4; // 4x4
     private static final int COLUMNS_LEVEL_HARD = 4; // 4x5
-
-    private static final int BUTTON_HEIGHT_LEVEL_EASY = 385;
-    private static final int BUTTON_HEIGHT_LEVEL_MEDIUM = 385;
-    private static final int BUTTON_HEIGHT_LEVEL_HARD = 308;
 
     private final HashMap<String, String> glossary = new HashMap<>();
     private int level = LEVEL_NOT_SET;
@@ -80,21 +77,21 @@ public class Memory extends AppCompatActivity {
                     cards = CARDS_LEVEL_EASY;
                     maxLength = MAX_LENGTH_LEVEL_EASY;
                     columns = COLUMNS_LEVEL_EASY;
-                    buttonHeight = BUTTON_HEIGHT_LEVEL_EASY;
                     break;
                 case LEVEL_MEDIUM:
                     cards = CARDS_LEVEL_MEDIUM;
                     maxLength = MAX_LENGTH_LEVEL_MEDIUM;
                     columns = COLUMNS_LEVEL_MEDIUM;
-                    buttonHeight = BUTTON_HEIGHT_LEVEL_MEDIUM;
                     break;
                 case LEVEL_HARD:
                     cards = CARDS_LEVEL_HARD;
                     maxLength = MAX_LENGTH_LEVEL_HARD;
                     columns = COLUMNS_LEVEL_HARD;
-                    buttonHeight = BUTTON_HEIGHT_LEVEL_HARD;
                     break;
             }
+            int height = getDisplayContentHeight();
+            int rows = cards / columns;
+            buttonHeight = height / rows;
 
             ConnectionHandler connectionHandler = new ConnectionHandler(Memory.this);
             ConnectionHandlerUtils connectionHandlerUtils = new ConnectionHandlerUtils(connectionHandler);
@@ -117,6 +114,29 @@ public class Memory extends AppCompatActivity {
             intent.putExtra("buttonHeight", buttonHeight);
             startActivity(intent);
         });
+    }
+
+    private int getNavigationBarHeight() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int usableHeight = metrics.heightPixels;
+        getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        int realHeight = metrics.heightPixels;
+        if (realHeight > usableHeight) {
+            return realHeight - usableHeight;
+        } else {
+            return 0;
+        }
+    }
+
+    public int getDisplayContentHeight() {
+        final WindowManager windowManager = getWindowManager();
+        final Point size = new Point();
+        int actionBarHeight =  getNavigationBarHeight();
+        int contentTop = findViewById(android.R.id.content).getTop();
+        windowManager.getDefaultDisplay().getSize(size);
+        int screenHeight = size.y;
+        return screenHeight - contentTop - actionBarHeight;
     }
 
     @Override
