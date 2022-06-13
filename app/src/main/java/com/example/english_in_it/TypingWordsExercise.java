@@ -58,7 +58,6 @@ public class TypingWordsExercise extends AppCompatActivity {
 
         if(repetitions) {
             ArrayList<String> all_sets = connection_handler_utils.getAllLearningSetNames();
-            connection_handler_utils.setWordDaysWaitedPrev("bit", 1);
             for(int i = 0; i < all_sets.size(); i++) {
                 Date today = new Date();
                 try {

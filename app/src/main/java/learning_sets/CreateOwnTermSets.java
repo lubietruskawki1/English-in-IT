@@ -76,9 +76,18 @@ public class CreateOwnTermSets extends AppCompatActivity {
                 }
                 else {
                     String create_set_name = new_set_name.getText().toString();
+                    boolean already_exists = false;
+                    ArrayList<String> sets = connection_handler_utils.getAllLearningSetNames();
+                    for(int i = 0; i < sets.size(); i++) {
+                        if(create_set_name.equals(sets.get(i))) {
+                            already_exists = true;
+                        }
+                    }
                     if (create_set_name.equals(""))
                         Toast.makeText(CreateOwnTermSets.this, "Enter new set name.", Toast.LENGTH_SHORT).show();
-
+                    else if(already_exists) {
+                        Toast.makeText(CreateOwnTermSets.this, "Already exists.", Toast.LENGTH_SHORT).show();
+                    }
                     else {
                         connection_handler_utils.newLearningSet(create_set_name);
                         new_set_name.setVisibility(View.GONE);

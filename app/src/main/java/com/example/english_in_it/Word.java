@@ -27,17 +27,16 @@ public class Word implements Serializable {
         }
     }
 
-    public static Date addDays(Date date, int days) {
-        if (date == null) return Calendar.getInstance().getTime();
-
+    public static Date add_days_to_today(int days) {
+        Date today = new Date();
         Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
+        cal.setTime(today);
         cal.add(Calendar.DATE, days); //minus number would decrement the days
         return cal.getTime();
     }
 
     void set_date_to_remind(boolean correct_answer) {
-        Date today = new Date();
+        //Date today = new Date();
         int days_to_wait_until_next_remind = 1;
         if(correct_answer) {
             days_to_wait_until_next_remind = 2 * days_we_waited_previously;
@@ -47,7 +46,8 @@ public class Word implements Serializable {
             //days_to_wait_until_next_remind zostaje 1
             days_we_waited_previously = 1;
         }
-        when_to_remind = addDays(today, days_to_wait_until_next_remind);
+        when_to_remind = add_days_to_today(days_to_wait_until_next_remind);
+        //when_to_remind = addDays(today, days_to_wait_until_next_remind);
     }
 
     public String getWord() {
