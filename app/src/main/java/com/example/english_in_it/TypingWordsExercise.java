@@ -87,6 +87,7 @@ public class TypingWordsExercise extends AppCompatActivity {
         else {
             try {
                 words = connection_handler_utils.getLearningSetList(set_name);
+
                 Date today = new Date();
                 for(int i = 0; i < words.size(); i++) {
                     if(words.get(i).when_to_remind == null) {
