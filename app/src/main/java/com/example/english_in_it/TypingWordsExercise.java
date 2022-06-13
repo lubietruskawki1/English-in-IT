@@ -66,8 +66,10 @@ public class TypingWordsExercise extends AppCompatActivity {
                     for(int j = 0; j < current_list.size(); j++) {
                         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
                         String formated_today = formatter.format(today);
-                        if(current_list.get(j).when_to_remind != null && formated_today.equals(formatter.format(current_list.get(j).when_to_remind))
-                        || formated_today.compareTo(formatter.format(current_list.get(j).when_to_remind)) > 0) {
+                        if(current_list.get(j).when_to_remind != null && formated_today.equals(formatter.format(current_list.get(j).when_to_remind))) {
+                            words.add(current_list.get(j));
+                        }
+                        else if(current_list.get(j).when_to_remind != null && formated_today.compareTo(formatter.format(current_list.get(j).when_to_remind)) > 0) {
                             words.add(current_list.get(j));
                         }
                     }
