@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class ConnectionHandlerUtils {
-    private ConnectionHandler connection_handler;
+    private final ConnectionHandler connection_handler;
 
     public ConnectionHandlerUtils(ConnectionHandler connection_handler) {
         this.connection_handler = connection_handler;
