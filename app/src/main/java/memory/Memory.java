@@ -122,10 +122,11 @@ public class Memory extends AppCompatActivity {
         int usableHeight = metrics.heightPixels;
         getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
         int realHeight = metrics.heightPixels;
-        if (realHeight > usableHeight)
+        if (realHeight > usableHeight) {
             return realHeight - usableHeight;
-        else
+        } else {
             return 0;
+        }
     }
 
     public int getDisplayContentHeight() {
