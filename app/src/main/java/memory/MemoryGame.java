@@ -164,7 +164,9 @@ public class MemoryGame extends AppCompatActivity {
 
     public void winner() {
         Intent intent = new Intent(MemoryGame.this, MemoryWin.class);
-        int score = Math.max(Math.round(correctAnswers * 100 / totalAnswers), 0);
+        int allowedMistakes = totalCards / 2;
+        int score = Math.max(Math.round((correctAnswers + allowedMistakes) * 100 / totalAnswers), 0);
+        score = Math.min(score, 100);
         intent.putExtra("score", Integer.toString(score));
         startActivity(intent);
     }
