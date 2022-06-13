@@ -28,6 +28,8 @@ public class Word implements Serializable {
     }
 
     public static Date addDays(Date date, int days) {
+        if (date == null) return Calendar.getInstance().getTime();
+
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.DATE, days); //minus number would decrement the days
