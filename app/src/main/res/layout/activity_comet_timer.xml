@@ -5,9 +5,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/stars_bg"
+    android:background="@drawable/stars_bg2"
 
     tools:context="comet.CometTimerActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose learning set"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/cometChooseSetTxt"
+        android:textSize="20sp"
+        android:textColor="@android:color/holo_orange_light"
+        android:layout_above="@id/cometSetSpinner"
+        android:textStyle="bold"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/cometSetSpinner"
+        android:layout_above="@id/btnPlayComet"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:id="@+id/btnPlayComet"

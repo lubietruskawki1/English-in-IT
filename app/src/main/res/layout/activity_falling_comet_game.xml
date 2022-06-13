@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/stars_bg"
+    android:background="@drawable/stars_bg2"
     tools:context="comet.CometTimerActivity">
 
     <ImageView
@@ -67,6 +67,9 @@
         android:textSize="40sp"
         android:text="@string/game_over"
         android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textAlignment="center"
         android:id="@+id/gameOverTxt"/>
 
     <TextView
@@ -78,5 +81,16 @@
         android:textStyle="italic"
         android:textColor="@android:color/holo_orange_light"
         android:id="@+id/scoreTxt"/>
+
+    <Button
+        android:id="@+id/btnPlayAgainComet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/buttonColor"
+        android:text="@string/memory_play_again"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/scoreTxt"/>
 
 </RelativeLayout>
