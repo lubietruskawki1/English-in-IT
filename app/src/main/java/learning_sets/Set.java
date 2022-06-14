@@ -1,6 +1,8 @@
 package learning_sets;
 
-// A class for a user-made learning set.
+/**
+ * A class for a user-made learning set.
+ */
 public class Set {
     final private String name;
     final private int terms_number;

@@ -18,6 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * RecView of the Settings activity.
+ */
 public class SettingsListRecViewAdapter extends RecyclerView.Adapter<SettingsListRecViewAdapter.ViewHolder> {
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -32,8 +35,7 @@ public class SettingsListRecViewAdapter extends RecyclerView.Adapter<SettingsLis
     @Override
     public SettingsListRecViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_list_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -86,7 +88,7 @@ public class SettingsListRecViewAdapter extends RecyclerView.Adapter<SettingsLis
         this.items = items;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textName;
         private final CardView parent;
         private final ImageView image;

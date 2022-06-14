@@ -16,6 +16,9 @@ import com.example.english_in_it.Settings;
 import activities_menu.StartListActivity;
 import com.example.english_in_it.Utils;
 
+/**
+ * Winning screen of Memory game.
+ */
 public class MemoryWin extends AppCompatActivity {
 
     @Override

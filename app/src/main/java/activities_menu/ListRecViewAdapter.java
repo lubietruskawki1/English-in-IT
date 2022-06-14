@@ -4,24 +4,20 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.english_in_it.BrowseVocabulary;
-import com.example.english_in_it.ChooseWordsToLearn;
 import com.example.english_in_it.DailyRepetitions;
 import com.example.english_in_it.R;
 import com.example.english_in_it.Settings;
-import com.example.english_in_it.TypingWordsExercise;
 import com.example.english_in_it.TypingWordsExerciseOptions;
 
 import java.util.ArrayList;
@@ -31,6 +27,9 @@ import learning_sets.CreateOwnTermSets;
 import flashcards.FlashcardsOptions;
 import memory.Memory;
 
+/**
+ * RecView of the StartListActivity activity.
+ */
 public class ListRecViewAdapter extends RecyclerView.Adapter<ListRecViewAdapter.ViewHolder> {
     private ArrayList<String> items = new ArrayList<>();
     private Context context;

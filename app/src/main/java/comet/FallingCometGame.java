@@ -27,6 +27,9 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Actual game of Falling Comet, its starting and winning screen.
+ */
 public class FallingCometGame extends AppCompatActivity {
     private ConnectionHandler connection_handler;
     private ImageView cometImg;

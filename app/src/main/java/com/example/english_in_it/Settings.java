@@ -15,6 +15,10 @@ import java.util.ArrayList;
 
 import activities_menu.StartListActivity;
 
+/**
+ * Settings (course preferences) screen.
+ * @param[in] theme : user-selected app theme (as of now: light [default] / dark)
+ */
 public class Settings extends AppCompatActivity {
     private RecyclerView settings_list_view;
 

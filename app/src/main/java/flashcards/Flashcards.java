@@ -22,10 +22,10 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Set;
 
-/*
- A class handling the flashcard cardview.
- Implements prev/next buttons and card "flipping" (switching text from term to def).
-*/
+/**
+ * A class handling the flashcard cardview.
+ * Implements prev/next buttons and card "flipping" (switching text from term to def).
+ */
 public class Flashcards extends AppCompatActivity {
     private ConnectionHandler connection_handler;
     private Button next_btn;

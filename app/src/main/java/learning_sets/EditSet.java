@@ -18,6 +18,9 @@ import com.example.english_in_it.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+/**
+ * Shows content of user-chosen set and allows its modification.
+ */
 public class EditSet extends AppCompatActivity {
     private TextView set_name_view;
     private RecyclerView vocabulary_view;

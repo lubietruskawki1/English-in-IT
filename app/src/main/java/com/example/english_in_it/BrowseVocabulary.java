@@ -8,8 +8,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +19,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import activities_menu.StartListActivity;
-import learning_sets.SetListRecViewAdapter;
 
 public class BrowseVocabulary extends AppCompatActivity {
     private ConnectionHandler connection_handler;

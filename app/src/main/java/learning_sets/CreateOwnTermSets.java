@@ -1,7 +1,6 @@
 package learning_sets;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,9 +21,11 @@ import com.example.english_in_it.*;
 
 import java.util.ArrayList;
 
-import activities_menu.ListRecViewAdapter;
 import activities_menu.StartListActivity;
 
+/**
+ * Lists user's sets and allows their modification.
+ */
 public class CreateOwnTermSets extends AppCompatActivity {
     private RecyclerView sets_view;
     private Button new_set_btn;
@@ -48,8 +49,6 @@ public class CreateOwnTermSets extends AppCompatActivity {
 
         ConnectionHandler handler = new ConnectionHandler(this);
         ConnectionHandlerUtils connection_handler_utils = new ConnectionHandlerUtils(handler);
-        //handler.deleteAllSets();
-        //handler.addWordToLearningSet("algorithm", "se");
 
         ArrayList<Set> user_sets = connection_handler_utils.getAllLearningSets();
         ArrayList<String> empty_sets = connection_handler_utils.getEmptySets();

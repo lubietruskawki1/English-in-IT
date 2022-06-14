@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,6 +29,9 @@ import com.example.english_in_it.Utils;
 
 import java.util.ArrayList;
 
+/**
+ * Timer from the Falling Comet game.
+ */
 public class CometTimerActivity extends AppCompatActivity {
     private int counter;
     private String selectedSet;

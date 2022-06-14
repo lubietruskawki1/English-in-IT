@@ -22,6 +22,9 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Actual game of Memory.
+ */
 public class MemoryGame extends AppCompatActivity {
     private static final int PADDING_LEFT_AND_RIGHT = 15;
     private static final int PADDING_TOP_AND_BOTTOM = 0;
@@ -73,6 +76,7 @@ public class MemoryGame extends AppCompatActivity {
         int buttonsInCurrentRow = 0;
 
         for (int i = 0; i < totalCards; i++) {
+            // Generating a random place on board to place current card,
             int random_card = randomGenerator.nextInt(totalCards);
             while (cards.get(random_card).second) {
                 random_card = randomGenerator.nextInt(totalCards);
@@ -121,10 +125,12 @@ public class MemoryGame extends AppCompatActivity {
                         totalAnswers++;
                         if ((!Objects.equals(glossary.get(board[firstCard]), board[finalI]) &&
                                 !Objects.equals(glossary.get(board[finalI]), board[firstCard])) ||
-                                firstCard == finalI) { // niepoprawne
+                                firstCard == finalI) {
+                            // Incorrect.
                             secondCard = finalI;
                             purgatory = true;
-                        } else { // poprawne
+                        } else {
+                            // Correct.
                             board[finalI] = "done";
                             board[firstCard] = "done";
                             correctAnswers++;
@@ -145,6 +151,7 @@ public class MemoryGame extends AppCompatActivity {
         shown = false;
     }
 
+    // If card wasn't matched yet, switches to hidden if was shown and vice versa.
     public void switchSpot(int i) {
         if (!Objects.equals(board[i], "done")) {
             if (Objects.equals(buttons[i].getText(), "")){
@@ -155,6 +162,7 @@ public class MemoryGame extends AppCompatActivity {
         }
     }
 
+    // Checks if all matches have been made and switches to winner screen if so.
     public void checkWin() {
         if (pairsLeftToMatch > 0) {
             return;

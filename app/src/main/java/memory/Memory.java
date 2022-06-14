@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
-import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.*;
 import android.widget.Button;
@@ -19,6 +18,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * Starting screen of Memory game.
+ * @param[in] difficulty : user-selected game difficulty (easy - 12 cards, medium - 16 cards, hard - 20 cards)
+ */
 public class Memory extends AppCompatActivity {
     private static final int LEVEL_NOT_SET = -1;
     private static final int LEVEL_EASY = 1;
@@ -72,6 +75,7 @@ public class Memory extends AppCompatActivity {
         buttonStart.setOnClickListener(view -> {
             switch (level) {
                 case LEVEL_NOT_SET:
+                    // User hasn't chosen difficulty yet, nothing happens.
                     return;
                 case LEVEL_EASY:
                     cards = CARDS_LEVEL_EASY;
@@ -100,6 +104,7 @@ public class Memory extends AppCompatActivity {
 
             ArrayList<String> keys = new ArrayList<>(fullGlossary.keySet());
 
+            // Generating a random glossary subset for current game.
             while (2 * glossary.size() != cards) {
                 String key = keys.get(randomGenerator.nextInt(keys.size()));
                 while (glossary.containsKey(key)) {

@@ -22,11 +22,11 @@ import learning_sets.Set;
 
 import java.util.ArrayList;
 
-/*
- A class handling flashcards options:
- - choosing a learning style: term to definition/definition to term
- - choosing a learning set
-*/
+/**
+ *  A class handling flashcards options:
+ *  - choosing a learning style: term to definition/definition to term
+ *  - choosing a learning set
+ */
 public class FlashcardsOptions extends AppCompatActivity {
     private boolean defToTerm = true;
     private String selectedSet;

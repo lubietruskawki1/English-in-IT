@@ -19,6 +19,9 @@ import com.example.english_in_it.Utils;
 
 import java.util.ArrayList;
 
+/**
+ * Main menu screen.
+ */
 public class StartListActivity extends AppCompatActivity {
     private RecyclerView main_list_view;
 
