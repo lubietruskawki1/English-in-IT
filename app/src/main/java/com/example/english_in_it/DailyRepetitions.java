@@ -20,6 +20,10 @@ import java.util.Date;
 import activities_menu.StartListActivity;
 import comet.CometTimerActivity;
 
+/**Class implements activity daily repetitions.
+ * It calls activity typing words exercise with repetitions option.*/
+
+
 public class DailyRepetitions extends AppCompatActivity {
     private ConnectionHandler connection_handler;
 

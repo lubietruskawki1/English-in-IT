@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ *Class shares methods of connection handler, that are used in other classes.
+ * It provides convenient access to database in the whole application.*/
+
 public class ConnectionHandlerUtils {
     private final ConnectionHandler connection_handler;
 

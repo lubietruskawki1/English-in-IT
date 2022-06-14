@@ -15,6 +15,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/** Class creates database and handles connection.
+ * */
+
+
 public class ConnectionHandler extends SQLiteOpenHelper {
     private static final String DB_NAME = "glossary";
     private static final int DB_VERSION = 1;

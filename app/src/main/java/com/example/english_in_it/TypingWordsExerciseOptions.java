@@ -22,6 +22,9 @@ import learning_sets.Set;
 
 import java.util.ArrayList;
 
+/** Class implements choice of word set for typing word exercise.
+ */
+
 public class TypingWordsExerciseOptions extends AppCompatActivity {
     private String selectedSet;
     private Spinner setSpinner;

@@ -1,5 +1,9 @@
 package com.example.english_in_it;
 
+/**
+ * Class provides method getTheme used for setting a theme.
+ */
+
 public class Utils {
     public static int getTheme(String theme) {
         switch (theme) {

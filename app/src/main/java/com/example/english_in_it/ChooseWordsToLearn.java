@@ -39,6 +39,8 @@ import java.util.HashMap;
 import activities_menu.StartListActivity;
 import learning_sets.CreateOwnTermSets;
 
+/**Class implements the choice of words added to set.
+ */
 
 public class ChooseWordsToLearn extends AppCompatActivity {
     ArrayList<Word> chosen_words; //= new ArrayList<Word>();

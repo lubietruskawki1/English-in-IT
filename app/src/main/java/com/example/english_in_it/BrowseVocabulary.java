@@ -20,6 +20,10 @@ import java.util.HashMap;
 
 import activities_menu.StartListActivity;
 
+/**
+ * Class implements browsing vocabulary.
+ */
+
 public class BrowseVocabulary extends AppCompatActivity {
     private ConnectionHandler connection_handler;
     private RecyclerView vocabulary_view;

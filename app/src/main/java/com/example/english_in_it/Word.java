@@ -9,6 +9,12 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * Class represents word, is used to store words as objects.
+ * Is contains methods which are used to calculate repetitions.
+ */
+
+
 public class Word implements Serializable {
     String word;
     String meaning;

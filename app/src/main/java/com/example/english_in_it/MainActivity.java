@@ -9,6 +9,9 @@ import android.os.Bundle;
 
 import activities_menu.StartListActivity;
 
+/**
+ * Class implements starting screen of application.*/
+
 public class MainActivity extends AppCompatActivity {
     SharedPreferences pref;
     SharedPreferences.Editor editor;

@@ -24,6 +24,13 @@ import java.util.Iterator;
 
 import activities_menu.StartListActivity;
 
+/**
+ * Class implements activity typing words exercise.
+ * Repetitions are calculated based on this exercise.
+ * This activity collects data about users results.
+ * Repetitions also use this activity.
+ */
+
 
 public class TypingWordsExercise extends AppCompatActivity {
 
