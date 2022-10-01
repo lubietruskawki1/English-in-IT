@@ -86,6 +86,7 @@ public class TypingWordsExercise extends AppCompatActivity {
             if(words.isEmpty()) {
                 Toast.makeText(TypingWordsExercise.this, "No repetitions for today :)", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
+                finish();
                 startActivity(intent);
                 return;
             }
@@ -185,6 +186,7 @@ public class TypingWordsExercise extends AppCompatActivity {
                             connection_handler_utils.setWordRepetitionDate(words.get(i).word, words.get(i).when_to_remind);
                             connection_handler_utils.setWordDaysWaitedPrev(words.get(i).word, words.get(i).days_we_waited_previously);
                         }
+                        Toast.makeText(TypingWordsExercise.this, "Repetitions done :)", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(TypingWordsExercise.this, StartListActivity.class);
                         startActivity(intent);
                         return;

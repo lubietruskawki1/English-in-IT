@@ -59,6 +59,7 @@ public class FallingCometGame extends AppCompatActivity {
         overridePendingTransition(0, 0);
     }
 
+    // Make unnecessary elements invisible and clear score.
     private void finish_game() {
         submitButton.setVisibility(View.GONE);
         answerEdtTxt.setVisibility(View.GONE);
