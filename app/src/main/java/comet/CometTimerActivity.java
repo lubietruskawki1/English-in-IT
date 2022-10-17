@@ -18,14 +18,14 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.english_in_it.ConnectionHandler;
-import com.example.english_in_it.ConnectionHandlerUtils;
-import com.example.english_in_it.R;
-import com.example.english_in_it.Settings;
+import com.technetapps.english_in_it.ConnectionHandler;
+import com.technetapps.english_in_it.ConnectionHandlerUtils;
+import com.technetapps.english_in_it.R;
+import com.technetapps.english_in_it.Settings;
 import activities_menu.StartListActivity;
 import learning_sets.Set;
 
-import com.example.english_in_it.Utils;
+import com.technetapps.english_in_it.Utils;
 
 import java.util.ArrayList;
 

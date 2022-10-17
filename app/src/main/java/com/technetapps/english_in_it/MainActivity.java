@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package com.technetapps.english_in_it;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.technetapps.english_in_it.R;
 
 import activities_menu.StartListActivity;
 

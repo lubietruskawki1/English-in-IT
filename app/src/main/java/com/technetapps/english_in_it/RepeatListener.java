@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package com.technetapps.english_in_it;
 
 import android.os.Handler;
 import android.view.MotionEvent;

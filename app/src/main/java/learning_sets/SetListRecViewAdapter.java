@@ -1,7 +1,10 @@
 package learning_sets;
 
 import android.app.AlertDialog;
-import com.example.english_in_it.*;
+
+import com.technetapps.english_in_it.ConnectionHandlerUtils;
+import com.technetapps.english_in_it.R;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;

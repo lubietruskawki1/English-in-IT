@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package com.technetapps.english_in_it;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,6 +11,9 @@ import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.technetapps.english_in_it.R;
+
 import learning_sets.EditSet;
 
 import java.util.ArrayList;

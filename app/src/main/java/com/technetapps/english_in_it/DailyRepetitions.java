@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package com.technetapps.english_in_it;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,14 +11,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import com.technetapps.english_in_it.R;
 
 import activities_menu.StartListActivity;
-import comet.CometTimerActivity;
 
 /**Class implements activity daily repetitions.
  * It calls activity typing words exercise with repetitions option.*/

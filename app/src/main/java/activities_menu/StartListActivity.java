@@ -13,9 +13,9 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.english_in_it.R;
-import com.example.english_in_it.Settings;
-import com.example.english_in_it.Utils;
+import com.technetapps.english_in_it.R;
+import com.technetapps.english_in_it.Settings;
+import com.technetapps.english_in_it.Utils;
 
 import java.util.ArrayList;
 

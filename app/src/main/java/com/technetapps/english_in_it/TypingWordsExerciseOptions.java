@@ -1,4 +1,4 @@
-package com.example.english_in_it;
+package com.technetapps.english_in_it;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
@@ -13,10 +13,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import com.example.english_in_it.*;
+import com.technetapps.english_in_it.*;
 import activities_menu.StartListActivity;
 import learning_sets.Set;
 

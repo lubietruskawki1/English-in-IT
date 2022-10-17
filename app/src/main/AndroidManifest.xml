@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.english_in_it">
+    package="com.technetapps.english_in_it">
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,7 @@
             android:name="learning_sets.CreateOwnTermSets"
             android:exported="false" />
         <activity
-            android:name=".DailyRepetitions"
+            android:name="com.technetapps.english_in_it.DailyRepetitions"
             android:exported="false" />
         <activity
             android:name="comet.FallingCometGame"
@@ -30,28 +30,28 @@
             android:name="flashcards.FlashcardsOptions"
             android:exported="false" />
         <activity
-            android:name=".BrowseVocabulary"
+            android:name="com.technetapps.english_in_it.BrowseVocabulary"
             android:exported="true" />
         <activity
             android:name="memory.Memory"
             android:exported="true" />
         <activity
-            android:name=".Settings"
+            android:name="com.technetapps.english_in_it.Settings"
             android:exported="true" />
         <activity
-            android:name=".ChooseWordsToLearn"
+            android:name="com.technetapps.english_in_it.ChooseWordsToLearn"
             android:exported="true" />
         <activity
-            android:name=".TypingWordsExercise"
+            android:name="com.technetapps.english_in_it.TypingWordsExercise"
             android:exported="true" />
         <activity
-            android:name=".TypingWordsExerciseOptions"
+            android:name="com.technetapps.english_in_it.TypingWordsExerciseOptions"
             android:exported="true" />
         <activity
             android:name="activities_menu.StartListActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.technetapps.english_in_it.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -13,7 +13,16 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.english_in_it.*;
+
+import com.technetapps.english_in_it.ChooseWordsToLearn;
+import com.technetapps.english_in_it.ConnectionHandler;
+import com.technetapps.english_in_it.ConnectionHandlerUtils;
+import com.technetapps.english_in_it.R;
+import com.technetapps.english_in_it.Settings;
+import com.technetapps.english_in_it.TermAndDef;
+import com.technetapps.english_in_it.Utils;
+import com.technetapps.english_in_it.VocabularyRecViewAdapter;
+import com.technetapps.english_in_it.Word;
 
 import java.text.ParseException;
 import java.util.ArrayList;

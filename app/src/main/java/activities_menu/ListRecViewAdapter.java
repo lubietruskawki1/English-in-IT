@@ -14,11 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.english_in_it.BrowseVocabulary;
-import com.example.english_in_it.DailyRepetitions;
-import com.example.english_in_it.R;
-import com.example.english_in_it.Settings;
-import com.example.english_in_it.TypingWordsExerciseOptions;
+import com.technetapps.english_in_it.BrowseVocabulary;
+import com.technetapps.english_in_it.DailyRepetitions;
+import com.technetapps.english_in_it.R;
+import com.technetapps.english_in_it.Settings;
+import com.technetapps.english_in_it.TypingWordsExerciseOptions;
 
 import java.util.ArrayList;
 

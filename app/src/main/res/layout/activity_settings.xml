@@ -5,12 +5,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settings"
+    tools:context="com.technetapps.english_in_it.Settings"
     android:background="?attr/backgroundColor">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/settingsListRecView"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@android:dimen/app_icon_size"
+        android:layout_centerInParent="true"
+        android:text="Authors: \n Mikołaj Szkaradek, Agata Załęska, Zofia Ogonek, Aleksandra Kurc"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="@android:dimen/app_icon_size"/>
 
 </RelativeLayout>

@@ -11,7 +11,12 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.english_in_it.*;
+import com.technetapps.english_in_it.ConnectionHandler;
+import com.technetapps.english_in_it.ConnectionHandlerUtils;
+import com.technetapps.english_in_it.R;
+import com.technetapps.english_in_it.Settings;
+import com.technetapps.english_in_it.Utils;
+
 import activities_menu.StartListActivity;
 
 import java.util.ArrayList;
