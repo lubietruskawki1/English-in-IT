@@ -18,7 +18,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@android:dimen/app_icon_size"
         android:layout_centerInParent="true"
-        android:text="Authors: \n Mikołaj Szkaradek, Agata Załęska, Zofia Ogonek, Aleksandra Kurc"
+        android:text="Authors: \n Zofia Ogonek, Mikołaj Szkaradek, Agata Załęska, Aleksandra Kurc"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:layout_marginHorizontal="@android:dimen/app_icon_size"/>
